@@ -1,4 +1,8 @@
 {
   "presets": ["env"],
-  "plugins": ["transform-react-jsx", ["styled-components", { "ssr": true }]]
+  "plugins": [
+    "transform-react-jsx",
+    "transform-class-properties",
+    ["styled-components", { "ssr": true }]
+  ]
 }
