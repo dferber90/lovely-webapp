@@ -6,6 +6,14 @@ import serve from 'koa-static';
 const app = new Koa();
 
 app.use(serve('static'));
+app.use(serve('client'));
+
+const appBundle =
+  process.env.NODE_ENV === 'production'
+    ? `<script src="/${
+        require('./client/stats.json').assetsByChunkName.main
+      }"></script>`
+    : '';
 
 app.use(async context => {
   context.body = `
@@ -18,6 +26,7 @@ app.use(async context => {
   </head>
   <body>
     <div id="app">${renderToString(<Application />)}</div>
+    ${appBundle}
   </body>
 </html>`;
 });

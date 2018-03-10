@@ -4,8 +4,10 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "scripts": {
+    "build:client": "webpack --config packages/client/webpack.config.prod.js",
     "start:client": "webpack-serve --config packages/client/webpack.config.dev.js",
-    "start:server": "webpack --watch --config packages/server/webpack.config.dev.js"
+    "start:server": "webpack --watch --config packages/server/webpack.config.dev.js",
+    "build:server": "webpack --config packages/server/webpack.config.prod.js"
   },
   "workspaces": [
     "packages/*"

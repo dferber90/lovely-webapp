@@ -18,6 +18,7 @@
     "babel-preset-env": "1.6.1",
     "webpack": "4.1.1",
     "webpack-cli": "2.0.10",
-    "webpack-serve": "0.2.0"
+    "webpack-serve": "0.2.0",
+    "webpack-stats-plugin": "0.2.1"
   }
 }

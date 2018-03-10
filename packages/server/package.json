@@ -16,6 +16,7 @@
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-env": "1.6.1",
+    "copy-webpack-plugin": "4.5.1",
     "koa-static": "4.0.2",
     "nodemon-webpack-plugin": "0.1.6",
     "react-dom": "16.2.0",
