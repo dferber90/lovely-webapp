@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["env", { "targets": { "node": "current" }, "useBuiltIns": true }]
+  ],
+  "plugins": ["transform-react-jsx", "transform-async-to-generator"]
+}
