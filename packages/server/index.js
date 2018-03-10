@@ -60,7 +60,13 @@ app.use(async context => {
   }
 });
 
-app.listen(3000);
+const port = 3000;
+app.listen(port, () =>
+  console.log(
+    // eslint-disable-line no-console
+    `App Server is now running on http://localhost:${port}`
+  )
+);
 
 if (module.hot) {
   module.hot.accept(() => {
