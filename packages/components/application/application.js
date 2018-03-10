@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Route, Link } from 'react-router-dom';
 
 const Button = styled.button`
   padding: 0.5em;
@@ -37,7 +38,19 @@ class Toggle extends React.Component {
 export const Application = () => (
   <div>
     Hello there
-    <Toggle />
-    {process.env.NODE_ENV}
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/a">A</Link>
+      </li>
+      <li>
+        <Link to="/b">B</Link>
+      </li>
+    </ul>
+    <Route path="/" exact render={() => <Toggle />} />
+    <Route path="/a" render={() => 'a'} />
+    <Route path="/b" render={() => 'b'} />
   </div>
 );

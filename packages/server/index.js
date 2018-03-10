@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server';
 import Koa from 'koa';
 import serve from 'koa-static';
 import { ServerStyleSheet } from 'styled-components';
+import { StaticRouter } from 'react-router';
 const app = new Koa();
 
 app.use(serve('static'));
@@ -34,14 +35,29 @@ const html = ({ title, body, styles }) => {
 
 app.use(async context => {
   const sheet = new ServerStyleSheet();
-  const body = renderToString(sheet.collectStyles(<Application />));
-  const styles = sheet.getStyleTags();
+  const routingContext = {};
+  const body = renderToString(
+    sheet.collectStyles(
+      <StaticRouter location={context.request.url} context={routingContext}>
+        <Application />
+      </StaticRouter>
+    )
+  );
 
-  context.body = html({
-    title: 'Webapp',
-    body,
-    styles,
-  });
+  if (routingContext.url) {
+    context.body = `should redirect to ${routingContext.url} using koa`;
+    // can use the `routingContext.status` that
+    // we added in RedirectWithStatus
+    // redirect(routingContext.status, routingContext.url);
+  } else {
+    const styles = sheet.getStyleTags();
+
+    context.body = html({
+      title: 'Webapp',
+      body,
+      styles,
+    });
+  }
 });
 
 app.listen(3000);

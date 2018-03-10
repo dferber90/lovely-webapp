@@ -1,4 +1,6 @@
 const path = require('path');
+const history = require('connect-history-api-fallback');
+const convert = require('koa-connect');
 
 module.exports = {
   mode: 'development',
@@ -23,5 +25,11 @@ module.exports = {
     hot: {},
     clipboard: false,
     dev: { publicPath: '/' },
+    add: (app, middleware, options) => {
+      const historyOptions = {
+        // ... see: https://github.com/bripkens/connect-history-api-fallback#options
+      };
+      app.use(convert(history(historyOptions)));
+    },
   },
 };
