@@ -1,4 +1,4 @@
 {
   "presets": ["env"],
-  "plugins": ["transform-react-jsx"]
+  "plugins": ["transform-react-jsx", ["styled-components", { "ssr": true }]]
 }
