@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 const Button = styled.button`
   padding: 0.5em;
@@ -35,6 +37,25 @@ class Toggle extends React.Component {
   }
 }
 
+const PlainData = ({ data: { allMovies, refetch } }) => (
+  <div>
+    <button onClick={() => refetch()}>Refresh</button>
+    <ul>
+      {allMovies &&
+        allMovies.map(movie => <li key={movie.id}>{movie.title}</li>)}
+    </ul>
+  </div>
+);
+
+const Data = graphql(gql`
+  query {
+    allMovies {
+      id
+      title
+    }
+  }
+`)(PlainData);
+
 export const Application = () => (
   <div>
     Hello there
@@ -48,9 +69,13 @@ export const Application = () => (
       <li>
         <Link to="/b">B</Link>
       </li>
+      <li>
+        <Link to="/data">Data</Link>
+      </li>
     </ul>
     <Route path="/" exact render={() => <Toggle />} />
     <Route path="/a" render={() => 'a'} />
     <Route path="/b" render={() => 'b'} />
+    <Route path="/data" render={() => <Data />} />
   </div>
 );

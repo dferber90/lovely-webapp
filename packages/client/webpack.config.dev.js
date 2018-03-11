@@ -1,6 +1,8 @@
+const webpack = require('webpack');
 const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
+const config = require('../../config.json');
 
 module.exports = {
   mode: 'development',
@@ -20,6 +22,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
+    }),
+  ],
   serve: {
     content: ['static', path.join(__dirname, 'static')],
     hot: {},

@@ -3,6 +3,7 @@ const NodemonPlugin = require('nodemon-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const config = require('../../config.json');
 
 module.exports = {
   target: 'node',
@@ -17,7 +18,7 @@ module.exports = {
   // entry: ['webpack/hot/signal', './index.js'],
   entry: './index.js',
   output: {
-    filename: 'dist/server.js',
+    filename: 'server.js',
   },
   module: {
     rules: [
@@ -31,6 +32,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.EnvironmentPlugin({
+      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
+    }),
     new NodemonPlugin(),
     // Only use this in DEVELOPMENT
     // new StartServerPlugin({

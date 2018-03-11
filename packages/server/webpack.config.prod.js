@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const config = require('../../config.json');
 
 module.exports = {
   target: 'node',
@@ -29,6 +30,9 @@ module.exports = {
         to: path.join(process.cwd(), 'dist', 'static'),
       },
     ]),
+    new webpack.EnvironmentPlugin({
+      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
+    }),
   ],
   externals: {
     './client/stats.json': "require('./client/stats.json')",

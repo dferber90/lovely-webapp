@@ -1,5 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
 const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+const config = require('../../config.json');
 
 module.exports = {
   mode: 'production',
@@ -24,6 +26,9 @@ module.exports = {
     // Write out stats file to build directory.
     new StatsWriterPlugin({
       filename: 'stats.json',
+    }),
+    new webpack.EnvironmentPlugin({
+      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
   ],
 };

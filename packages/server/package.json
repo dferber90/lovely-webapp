@@ -6,8 +6,19 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "dependencies": {
+    "apollo-cache-inmemory": "1.1.10",
+    "apollo-client": "2.2.6",
+    "apollo-link": "1.2.1",
+    "apollo-link-error": "1.0.7",
+    "apollo-link-http": "1.5.3",
+    "apollo-link-persisted-queries": "0.2.0",
+    "apollo-link-ws": "1.0.7",
+    "graphql": "0.13.1",
+    "graphql-tag": "2.8.0",
     "koa": "2.5.0",
-    "react": "16.2.0"
+    "node-fetch": "2.1.1",
+    "react": "16.2.0",
+    "react-apollo": "2.0.4"
   },
   "devDependencies": {
     "@wa/components": "*",
@@ -15,6 +26,7 @@
     "babel-loader": "7.1.4",
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-preset-env": "1.6.1",
     "copy-webpack-plugin": "4.5.1",
