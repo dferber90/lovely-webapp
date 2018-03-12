@@ -10,6 +10,7 @@
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
+* precompile queries (https://www.apollographql.com/docs/react/recipes/babel.html)
 
 ## Server-Side Rendering
 
@@ -20,3 +21,7 @@
   * respect redirects
   * respect 404s
     * render 404 using react, but add information to context, then use status from there for response-status-code on server
+
+## GraphCool
+
+* add permissions / restricted views

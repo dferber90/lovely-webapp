@@ -37,24 +37,38 @@ class Toggle extends React.Component {
   }
 }
 
-const PlainData = ({ data: { allMovies, refetch } }) => (
+const PlainData = ({ data: { allPosts, refetch } }) => (
   <div>
     <button onClick={() => refetch()}>Refresh</button>
     <ul>
-      {allMovies &&
-        allMovies.map(movie => <li key={movie.id}>{movie.title}</li>)}
+      {allPosts && allPosts.map(post => <li key={post.id}>{post.title}</li>)}
     </ul>
   </div>
 );
 
 const Data = graphql(gql`
-  query {
-    allMovies {
+  query allPosts {
+    allPosts {
       id
       title
     }
   }
 `)(PlainData);
+
+const PlainMessage = ({ data: { hello, refetch }, loading }) => (
+  <div>
+    <button onClick={() => refetch()}>Refresh</button>
+    <div>{hello ? hello.message : '...'}</div>
+  </div>
+);
+
+const Message = graphql(gql`
+  query aMessage {
+    hello(name: "Startup Stack") {
+      message
+    }
+  }
+`)(PlainMessage);
 
 export const Application = () => (
   <div>
@@ -76,6 +90,14 @@ export const Application = () => (
     <Route path="/" exact render={() => <Toggle />} />
     <Route path="/a" render={() => 'a'} />
     <Route path="/b" render={() => 'b'} />
-    <Route path="/data" render={() => <Data />} />
+    <Route
+      path="/data"
+      render={() => (
+        <React.Fragment>
+          <Data />
+          <Message />
+        </React.Fragment>
+      )}
+    />
   </div>
 );
