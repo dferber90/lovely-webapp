@@ -25,3 +25,14 @@
 ## GraphCool
 
 * add permissions / restricted views
+
+## Dev Exp
+
+* add ESlint
+* add Jest
+* add Enzyme
+
+## CI / CD
+
+* setup CircleCI
+* add E2E
