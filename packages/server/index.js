@@ -6,6 +6,8 @@ import serve from 'koa-static';
 import { ServerStyleSheet } from 'styled-components';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import tinyHtml from 'tinyhtml';
+import pretty from 'pretty';
 import { createApolloClient } from './create-apollo-client';
 const app = new Koa();
 
@@ -65,13 +67,16 @@ app.use(async context => {
       // redirect(routingContext.status, routingContext.url);
     } else {
       const styles = sheet.getStyleTags();
-
-      context.body = html({
+      const markup = html({
         title: 'Webapp',
         body,
         styles,
         cachedData: apolloClient.cache.extract(),
       });
+      context.body =
+        process.env.NODE_ENV === 'production'
+          ? tinyHtml(markup)
+          : pretty(markup);
     }
   } catch (e) {
     context.body = `Rendering Error: ${e.stack}`;
