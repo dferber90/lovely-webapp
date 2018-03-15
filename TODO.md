@@ -8,7 +8,6 @@
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
-* precompile queries (https://www.apollographql.com/docs/react/recipes/babel.html)
 
 ## Server-Side Rendering
 

@@ -12,6 +12,7 @@
     "react-router-dom": "4.2.2"
   },
   "devDependencies": {
+    "babel-plugin-graphql-tag": "1.5.0",
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "styled-components": "3.2.1"
