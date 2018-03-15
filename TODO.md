@@ -5,9 +5,14 @@
 * shrink bundle size
   * use uglifyjs (with `screw_ie8` option)
 
+## Minification
+
+* compile prop-types out
+
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
+* use persisted queries (https://github.com/apollographql/apollo-link-persisted-queries)
 
 ## Server-Side Rendering
 

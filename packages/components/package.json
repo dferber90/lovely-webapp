@@ -7,14 +7,15 @@
   "license": "MIT",
   "dependencies": {
     "graphql-tag": "2.8.0",
+    "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-apollo": "2.0.4",
-    "react-router-dom": "4.2.2"
+    "react-router-dom": "4.2.2",
+    "styled-components": "3.2.1"
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "1.5.0",
     "babel-plugin-styled-components": "1.5.1",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "styled-components": "3.2.1"
+    "babel-plugin-transform-class-properties": "6.24.1"
   }
 }

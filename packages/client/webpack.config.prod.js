@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const config = require('../../config.json');
 
 module.exports = {

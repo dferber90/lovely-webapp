@@ -5,5 +5,5 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 export const apolloClient = new ApolloClient({
   link: new HttpLink({ uri: process.env.GRAPHQL_ENDPOINT }),
   connectToDevTools: DEV,
-  cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+  cache: new InMemoryCache().restore(window.APOLLO_STATE),
 });

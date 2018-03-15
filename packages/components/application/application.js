@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import gql from 'graphql-tag';
@@ -46,6 +47,13 @@ const PlainData = ({ data: { allPosts, refetch } }) => (
   </div>
 );
 
+PlainData.propTypes = {
+  data: PropTypes.shape({
+    allPosts: PropTypes.array,
+    refetch: PropTypes.func,
+  }).isRequired,
+};
+
 const Data = graphql(gql`
   query allPosts {
     allPosts {
@@ -55,12 +63,19 @@ const Data = graphql(gql`
   }
 `)(PlainData);
 
-const PlainMessage = ({ data: { hello, refetch }, loading }) => (
+const PlainMessage = ({ data: { hello, refetch } }) => (
   <div>
     <button onClick={() => refetch()}>Refresh</button>
     <div>{hello ? hello.message : '...'}</div>
   </div>
 );
+
+PlainMessage.propTypes = {
+  data: PropTypes.shape({
+    hello: PropTypes.string,
+    refetch: PropTypes.func,
+  }).isRequired,
+};
 
 const Message = graphql(gql`
   query aMessage {
@@ -74,6 +89,7 @@ const Status = ({ code, children }) => (
   <Route
     render={({ staticContext }) => {
       if (SERVER) {
+        // eslint-disable-next-line no-param-reassign
         if (staticContext) staticContext.status = code;
       }
       return children;
@@ -81,16 +97,28 @@ const Status = ({ code, children }) => (
   />
 );
 
+Status.propTypes = {
+  code: PropTypes.number.isRequired,
+  children: PropTypes.node,
+};
+
 const RedirectWithStatus = ({ from, to, status }) => (
   <Route
     render={({ staticContext }) => {
       // there is no `staticContext` on the client, so
       // we need to guard against that here
+      // eslint-disable-next-line no-param-reassign
       if (staticContext) staticContext.status = status;
       return <Redirect from={from} to={to} />;
     }}
   />
 );
+
+RedirectWithStatus.propTypes = {
+  from: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  status: PropTypes.number,
+};
 
 const NotFound = () => (
   <Status code={404}>

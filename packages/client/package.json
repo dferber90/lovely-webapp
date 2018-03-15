@@ -6,6 +6,7 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "dependencies": {
+    "@wa/components": "*",
     "apollo-cache-inmemory": "1.1.10",
     "apollo-client": "2.2.6",
     "apollo-link-http": "1.5.3",
@@ -17,7 +18,6 @@
     "react-router-dom": "4.2.2"
   },
   "devDependencies": {
-    "@wa/components": "*",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.4",
     "babel-plugin-transform-async-to-generator": "6.24.1",

@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { apolloClient } from './apollo-client';
 import { ApolloProvider } from 'react-apollo';
+import { apolloClient } from './apollo-client';
 
 const renderApp = () => {
+  // eslint-disable-next-line global-require
   const { Application } = require('@wa/components');
   const component = (
     <ApolloProvider client={apolloClient}>

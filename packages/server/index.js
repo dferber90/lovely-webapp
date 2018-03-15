@@ -1,6 +1,6 @@
+/* eslint-disable no-param-reassign, no-console */
 import React from 'react';
 import { Application } from '@wa/components';
-import { renderToString } from 'react-dom/server';
 import Koa from 'koa';
 import serve from 'koa-static';
 import { ServerStyleSheet } from 'styled-components';
@@ -9,6 +9,7 @@ import { ApolloProvider, renderToStringWithData } from 'react-apollo';
 import tinyHtml from 'tinyhtml';
 import pretty from 'pretty';
 import { createApolloClient } from './create-apollo-client';
+
 const app = new Koa();
 
 app.use(serve('static'));
@@ -18,11 +19,12 @@ const html = ({ title, body, styles, cachedData }) => {
   const appBundle = DEV
     ? '<!-- client-side app bundle omitted in server-development -->'
     : `<script src="/${
+        // eslint-disable-next-line global-require, import/no-unresolved
         require('./client/stats.json').assetsByChunkName.main
       }"></script>`;
   const dataScript = DEV
     ? '<!-- data for rehydration -->'
-    : `<script>window.__APOLLO_STATE__=${JSON.stringify(cachedData)};</script>`;
+    : `<script>window.APOLLO_STATE=${JSON.stringify(cachedData)};</script>`;
 
   return `
     <!DOCTYPE html>
@@ -88,6 +90,6 @@ app.listen(port, () =>
 
 if (module.hot) {
   module.hot.accept(() => {
-    console.log('received new hm', msg);
+    console.log('received new hm');
   });
 }

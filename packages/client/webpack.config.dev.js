@@ -36,7 +36,7 @@ module.exports = {
     hot: {},
     clipboard: false,
     dev: { publicPath: '/' },
-    add: (app, middleware, options) => {
+    add: app => {
       const historyOptions = {
         // ... see: https://github.com/bripkens/connect-history-api-fallback#options
       };
