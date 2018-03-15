@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier"],
+  "rules": {
+    "strict": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+    "react/require-default-props": 0,
+    "jsx-a11y/anchor-is-valid": 0
+  },
+  "globals": {
+    "DEV": false,
+    "SERVER": false
+  }
+}
