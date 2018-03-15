@@ -61,11 +61,12 @@ app.use(async context => {
     );
 
     if (routingContext.url) {
-      context.body = `should redirect to ${routingContext.url} using koa`;
-      // can use the `routingContext.status` that
-      // we added in RedirectWithStatus
-      // redirect(routingContext.status, routingContext.url);
+      // we use `routingContext.status` by in RedirectWithStatus
+      if (routingContext.status) context.status = routingContext.status;
+      context.redirect(routingContext.url);
     } else {
+      // add 404
+      if (routingContext.status) context.status = routingContext.status;
       const styles = sheet.getStyleTags();
       const markup = html({
         title: 'Webapp',

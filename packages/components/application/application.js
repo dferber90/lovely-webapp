@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
@@ -70,6 +70,36 @@ const Message = graphql(gql`
   }
 `)(PlainMessage);
 
+const Status = ({ code, children }) => (
+  <Route
+    render={({ staticContext }) => {
+      if (SERVER) {
+        if (staticContext) staticContext.status = code;
+      }
+      return children;
+    }}
+  />
+);
+
+const RedirectWithStatus = ({ from, to, status }) => (
+  <Route
+    render={({ staticContext }) => {
+      // there is no `staticContext` on the client, so
+      // we need to guard against that here
+      if (staticContext) staticContext.status = status;
+      return <Redirect from={from} to={to} />;
+    }}
+  />
+);
+
+const NotFound = () => (
+  <Status code={404}>
+    <div>
+      <h1>Sorry, can’t find that.</h1>
+    </div>
+  </Status>
+);
+
 export const Application = () => (
   <div>
     Hello there
@@ -86,18 +116,30 @@ export const Application = () => (
       <li>
         <Link to="/data">Data</Link>
       </li>
+      <li>
+        <Link to="/something-that-does-not-exist">
+          Something that does not exist
+        </Link>
+      </li>
+      <li>
+        <Link to="/redirect-to-home">Redirect to home</Link>
+      </li>
     </ul>
-    <Route path="/" exact render={() => <Toggle />} />
-    <Route path="/a" render={() => 'a'} />
-    <Route path="/b" render={() => 'b'} />
-    <Route
-      path="/data"
-      render={() => (
-        <React.Fragment>
-          <Data />
-          <Message />
-        </React.Fragment>
-      )}
-    />
+    <Switch>
+      <Route path="/" exact render={() => <Toggle />} />
+      <Route path="/a" render={() => 'a'} />
+      <Route path="/b" render={() => 'b'} />
+      <Route
+        path="/data"
+        render={() => (
+          <React.Fragment>
+            <Data />
+            <Message />
+          </React.Fragment>
+        )}
+      />
+      <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
+      <Route component={NotFound} />
+    </Switch>
   </div>
 );
