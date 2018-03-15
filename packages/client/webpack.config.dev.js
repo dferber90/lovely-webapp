@@ -6,6 +6,7 @@ const config = require('../../config.json');
 
 module.exports = {
   mode: 'development',
+  devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: './index.js',
   output: {

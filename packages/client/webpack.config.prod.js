@@ -2,9 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const config = require('../../config.json');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'production',
+  devtool: 'source-map',
   context: __dirname,
   entry: './index.js',
   output: {
@@ -33,6 +35,13 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
+    }),
+    new UglifyJSPlugin({
+      sourceMap: true,
+      parallel: true,
+      uglifyOptions: {
+        ecma: 6,
+      },
     }),
   ],
 };

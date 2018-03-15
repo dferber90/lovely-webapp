@@ -18,10 +18,15 @@ app.use(serve('client'));
 const html = ({ title, body, styles, cachedData }) => {
   const appBundle = DEV
     ? '<!-- client-side app bundle omitted in server-development -->'
-    : `<script src="/${
+    : (() => {
         // eslint-disable-next-line global-require, import/no-unresolved
-        require('./client/stats.json').assetsByChunkName.main
-      }"></script>`;
+        const assets = require('./client/stats.json').assetsByChunkName.main;
+        return assets
+          .filter(asset => asset.endsWith('.js'))
+          .map(asset => `<script src="/${asset}"></script>`)
+          .join('');
+      })();
+
   const dataScript = DEV
     ? '<!-- data for rehydration -->'
     : `<script>window.APOLLO_STATE=${JSON.stringify(cachedData)};</script>`;

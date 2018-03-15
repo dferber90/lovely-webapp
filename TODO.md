@@ -21,6 +21,7 @@
 * add ESlint
 * add Jest
 * add Enzyme
+* add do-expressions
 
 ## CI / CD
 
