@@ -32,6 +32,7 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       SERVER: 'true',
+      DEV: 'false',
     }),
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,

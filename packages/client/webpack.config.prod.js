@@ -25,6 +25,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       SERVER: 'false',
+      DEV: 'false',
     }),
     // Write out stats file to build directory.
     new StatsWriterPlugin({
