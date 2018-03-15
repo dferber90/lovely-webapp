@@ -1,10 +1,20 @@
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const webpack = require('webpack');
 const config = require('../../config.json');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   target: 'node',
   mode: 'development',
+  externals: [
+    nodeExternals({
+      whitelist: [
+        // we need to include the components, otherwise they won't get transpiled
+        '@wa/components',
+        'webpack/hot/dev-server',
+      ],
+    }),
+  ],
   context: __dirname,
   // entry: ['webpack/hot/signal', './index.js'],
   entry: './index.js',
