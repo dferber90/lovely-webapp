@@ -30,6 +30,9 @@ module.exports = {
         to: path.join(process.cwd(), 'dist', 'static'),
       },
     ]),
+    new webpack.DefinePlugin({
+      SERVER: 'true',
+    }),
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
