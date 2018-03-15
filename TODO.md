@@ -1,10 +1,5 @@
 # TODO
 
-## Webpack
-
-* shrink bundle size
-  * use uglifyjs (with `screw_ie8` option)
-
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
@@ -18,7 +13,6 @@
 
 ## Dev Exp
 
-* add ESlint
 * add Jest
 * add Enzyme
 * add do-expressions
