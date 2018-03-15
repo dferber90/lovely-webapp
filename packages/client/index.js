@@ -14,10 +14,10 @@ const renderApp = () => {
     </ApolloProvider>
   );
   const app = document.getElementById('app');
-  if (process.env.NODE_ENV === 'production') {
-    hydrate(component, app);
-  } else {
+  if (DEV) {
     render(component, app);
+  } else {
+    hydrate(component, app);
   }
 };
 

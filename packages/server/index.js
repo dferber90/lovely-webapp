@@ -15,22 +15,18 @@ app.use(serve('static'));
 app.use(serve('client'));
 
 const html = ({ title, body, styles, cachedData }) => {
-  const appBundle =
-    process.env.NODE_ENV === 'production'
-      ? `<script src="/${
-          require('./client/stats.json').assetsByChunkName.main
-        }"></script>`
-      : '<!-- client-side app bundle omitted in server-development -->';
-  const dataScript =
-    process.env.NODE_ENV === 'production'
-      ? `<script>window.__APOLLO_STATE__=${JSON.stringify(
-          cachedData
-        )};</script>`
-      : '<!-- data for rehydration -->';
+  const appBundle = DEV
+    ? '<!-- client-side app bundle omitted in server-development -->'
+    : `<script src="/${
+        require('./client/stats.json').assetsByChunkName.main
+      }"></script>`;
+  const dataScript = DEV
+    ? '<!-- data for rehydration -->'
+    : `<script>window.__APOLLO_STATE__=${JSON.stringify(cachedData)};</script>`;
 
   return `
     <!DOCTYPE html>
-      <html>
+    <html>
       <head>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="/favicon.png">
@@ -42,7 +38,8 @@ const html = ({ title, body, styles, cachedData }) => {
         ${dataScript}
         ${appBundle}
       </body>
-    </html>`;
+    </html>
+  `;
 };
 
 app.use(async context => {
@@ -74,10 +71,7 @@ app.use(async context => {
         styles,
         cachedData: apolloClient.cache.extract(),
       });
-      context.body =
-        process.env.NODE_ENV === 'production'
-          ? tinyHtml(markup)
-          : pretty(markup);
+      context.body = DEV ? pretty(markup) : tinyHtml(markup);
     }
   } catch (e) {
     context.body = `Rendering Error: ${e.stack}`;
