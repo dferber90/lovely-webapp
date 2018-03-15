@@ -12,7 +12,7 @@
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
-* use persisted queries (https://github.com/apollographql/apollo-link-persisted-queries)
+* LATER: use persisted queries (https://github.com/apollographql/apollo-link-persisted-queries) (not yet supported by GraphCool)
 
 ## Server-Side Rendering
 
