@@ -5,5 +5,10 @@
     "transform-class-properties",
     "graphql-tag",
     ["styled-components", { "ssr": true }]
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  }
 }
