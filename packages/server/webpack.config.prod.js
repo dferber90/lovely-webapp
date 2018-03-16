@@ -39,5 +39,6 @@ module.exports = {
   ],
   externals: {
     './client/stats.json': "require('./client/stats.json')",
+    './client/react-loadable.json': "require('./client/react-loadable.json')",
   },
 };

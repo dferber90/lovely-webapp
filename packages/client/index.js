@@ -2,6 +2,7 @@ import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
+import { preloadReady } from 'react-loadable';
 import { apolloClient } from './apollo-client';
 
 const renderApp = () => {
@@ -18,7 +19,15 @@ const renderApp = () => {
   if (DEV) {
     render(component, app);
   } else {
-    hydrate(component, app);
+    preloadReady().then(
+      () => {
+        hydrate(component, app);
+      },
+      error => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
+    );
   }
 };
 

@@ -1,17 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
-const config = require('../../config.json');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const config = require('../../config.json');
 
+const outputPath = path.join(process.cwd(), 'dist', 'client');
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
   context: __dirname,
   entry: './index.js',
   output: {
-    path: path.join(process.cwd(), 'dist', 'client'),
+    path: outputPath,
     filename: 'bundle.[hash].js',
+    chunkFilename: '[name].[hash].bundle.js',
   },
   module: {
     rules: [
@@ -42,6 +45,9 @@ module.exports = {
       uglifyOptions: {
         ecma: 6,
       },
+    }),
+    new ReactLoadablePlugin({
+      filename: path.join(outputPath, 'react-loadable.json'),
     }),
   ],
 };

@@ -6,7 +6,9 @@ import serve from 'koa-static';
 import { ServerStyleSheet } from 'styled-components';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
+import Loadable from 'react-loadable';
 import tinyHtml from 'tinyhtml';
+import uniq from 'lodash.uniq';
 import pretty from 'pretty';
 import { createApolloClient } from './create-apollo-client';
 
@@ -15,10 +17,15 @@ const app = new Koa();
 app.use(serve('static'));
 app.use(serve('client'));
 
-const html = ({ title, body, styles, cachedData }) => {
+const html = ({ title, body, styles, cachedData, loadableModules }) => {
   const appBundle = DEV
     ? '<!-- client-side app bundle omitted in server-development -->'
     : (() => {
+        // const assets = Object.values(
+        //   // eslint-disable-next-line global-require, import/no-unresolved
+        //   require('./client/stats.json').assetsByChunkName
+        // ).reduce((acc, assetList) => [...acc, ...assetList], []);
+
         // eslint-disable-next-line global-require, import/no-unresolved
         const assets = require('./client/stats.json').assetsByChunkName.main;
         return assets
@@ -30,6 +37,25 @@ const html = ({ title, body, styles, cachedData }) => {
   const dataScript = DEV
     ? '<!-- data for rehydration -->'
     : `<script>window.APOLLO_STATE=${JSON.stringify(cachedData)};</script>`;
+
+  // It is important that the bundles are included before the main bundle,
+  // so that they can be loaded by the browser prior to the app rendering.
+  // However, as the Webpack manifest (including the logic for parsing bundles)
+  // lives in the main bundle, it will need to be extracted into its own chunk.
+  //  - from https://github.com/jamiebuilds/react-loadable
+  const loadableBundles = DEV
+    ? '<!-- bundles from code-splitting through react-loadable -->'
+    : (() => {
+        // eslint-disable-next-line global-require, import/no-unresolved
+        const stats = require('./client/react-loadable.json');
+        // eslint-disable-next-line global-require
+        const { getBundles } = require('react-loadable/webpack');
+        const bundles = getBundles(stats, loadableModules);
+
+        return uniq(bundles.filter(bundle => bundle.file.endsWith('.js')))
+          .map(bundle => `<script src="/${bundle.file}"></script>`)
+          .join('\n');
+      })();
 
   return `
     <!DOCTYPE html>
@@ -44,6 +70,7 @@ const html = ({ title, body, styles, cachedData }) => {
         <div id="app">${body}</div>
         ${dataScript}
         ${appBundle}
+        ${loadableBundles}
       </body>
     </html>
   `;
@@ -53,14 +80,20 @@ app.use(async context => {
   const apolloClient = createApolloClient();
   const sheet = new ServerStyleSheet();
   const routingContext = {};
+  const modules = [];
   try {
     const body = await renderToStringWithData(
       sheet.collectStyles(
-        <ApolloProvider client={apolloClient}>
-          <StaticRouter location={context.request.url} context={routingContext}>
-            <Application />
-          </StaticRouter>
-        </ApolloProvider>
+        <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+          <ApolloProvider client={apolloClient}>
+            <StaticRouter
+              location={context.request.url}
+              context={routingContext}
+            >
+              <Application />
+            </StaticRouter>
+          </ApolloProvider>
+        </Loadable.Capture>
       )
     );
 
@@ -77,6 +110,7 @@ app.use(async context => {
         body,
         styles,
         cachedData: apolloClient.cache.extract(),
+        loadableModules: modules,
       });
       context.body = DEV ? pretty(markup) : tinyHtml(markup);
     }
@@ -86,12 +120,15 @@ app.use(async context => {
 });
 
 const port = 3000;
-app.listen(port, () =>
-  console.log(
-    // eslint-disable-line no-console
-    `App Server is now running on http://localhost:${port}`
-  )
-);
+
+Loadable.preloadAll().then(() => {
+  app.listen(port, () =>
+    console.log(
+      // eslint-disable-line no-console
+      `App Server is now running on http://localhost:${port}`
+    )
+  );
+});
 
 if (module.hot) {
   module.hot.accept(() => {

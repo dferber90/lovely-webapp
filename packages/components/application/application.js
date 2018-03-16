@@ -9,9 +9,10 @@ import {
 } from '@wa/design-system';
 import { Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
-import { Toggle } from '../toggle';
+import Loadable from 'react-loadable';
 import { Message } from '../message';
 import { Data } from '../data';
+import { Loading } from '../loading';
 import { RedirectWithStatus, NotFound } from '../route-helpers';
 
 // eslint-disable-next-line no-unused-expressions
@@ -19,6 +20,13 @@ injectGlobal`
   * { box-sizing: border-box; }
   body { margin: 0; padding: 0; }
 `;
+
+const LoadableToggle = Loadable({
+  loader: () => import('../toggle'),
+  // eslint-disable-next-line react/prop-types
+  render: ({ Toggle }, props) => <Toggle {...props} />,
+  loading: Loading,
+});
 
 export const Application = () => (
   <Provider>
@@ -36,7 +44,7 @@ export const Application = () => (
       <Box px={2} my={2}>
         <Container>
           <Switch>
-            <Route path="/" exact render={() => <Toggle />} />
+            <Route path="/" exact render={() => <LoadableToggle />} />
             <Route path="/a" render={() => 'a'} />
             <Route path="/b" render={() => 'b'} />
             <Route

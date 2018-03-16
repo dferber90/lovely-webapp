@@ -2,6 +2,14 @@
 
 * use defer/async attributes on script tags instead of placing them in the body
 
+## Webpack
+
+* split out Vendor chunk
+* add polyfills?
+* long-term caching
+* spilt output to `dist-development` and `dist-production`
+* BUG: make `injectGlobal` work
+
 ## Apollo
 
 * add error handling to GraphQL Apollo Links
