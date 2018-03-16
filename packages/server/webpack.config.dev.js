@@ -11,6 +11,7 @@ module.exports = {
       whitelist: [
         // we need to include the components, otherwise they won't get transpiled
         '@wa/components',
+        '@wa/design-system',
         'webpack/hot/dev-server',
       ],
     }),

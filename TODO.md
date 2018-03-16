@@ -1,5 +1,7 @@
 # TODO
 
+* use defer/async attributes on script tags instead of placing them in the body
+
 ## Apollo
 
 * add error handling to GraphQL Apollo Links

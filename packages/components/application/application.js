@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import {
+  Provider,
+  Button,
+  Container,
+  Toolbar,
+  NavItem,
+  Flex,
+  Box,
+} from '@wa/design-system';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { injectGlobal } from 'styled-components';
 
-const Button = styled.button`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: palevioletred;
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-  outline: 0;
-  cursor: pointer;
-
-  &:hover {
-    background: #ccbfaa;
-  }
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; }
 `;
 
 class Toggle extends React.Component {
@@ -72,7 +72,9 @@ const PlainMessage = ({ data: { hello, refetch } }) => (
 
 PlainMessage.propTypes = {
   data: PropTypes.shape({
-    hello: PropTypes.string,
+    hello: PropTypes.shape({
+      message: PropTypes.string,
+    }),
     refetch: PropTypes.func,
   }).isRequired,
 };
@@ -129,45 +131,38 @@ const NotFound = () => (
 );
 
 export const Application = () => (
-  <div>
-    Hello there
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/a">A</Link>
-      </li>
-      <li>
-        <Link to="/b">B</Link>
-      </li>
-      <li>
-        <Link to="/data">Data</Link>
-      </li>
-      <li>
-        <Link to="/something-that-does-not-exist">
-          Something that does not exist
-        </Link>
-      </li>
-      <li>
-        <Link to="/redirect-to-home">Redirect to home</Link>
-      </li>
-    </ul>
-    <Switch>
-      <Route path="/" exact render={() => <Toggle />} />
-      <Route path="/a" render={() => 'a'} />
-      <Route path="/b" render={() => 'b'} />
-      <Route
-        path="/data"
-        render={() => (
-          <React.Fragment>
-            <Data />
-            <Message />
-          </React.Fragment>
-        )}
-      />
-      <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
-      <Route component={NotFound} />
-    </Switch>
-  </div>
+  <Provider>
+    <Toolbar>
+      <NavItem to="/">PoC</NavItem>
+      <NavItem ml="auto" to="/a">
+        A
+      </NavItem>
+      <NavItem to="/b">B</NavItem>
+      <NavItem to="/data">Data</NavItem>
+      <NavItem to="/something-that-does-not-exist">404</NavItem>
+      <NavItem to="/redirect-to-home">Redirect</NavItem>
+    </Toolbar>
+    <Flex>
+      <Box px={2} my={2}>
+        <Container>
+          <Switch>
+            <Route path="/" exact render={() => <Toggle />} />
+            <Route path="/a" render={() => 'a'} />
+            <Route path="/b" render={() => 'b'} />
+            <Route
+              path="/data"
+              render={() => (
+                <React.Fragment>
+                  <Data />
+                  <Message />
+                </React.Fragment>
+              )}
+            />
+            <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
+            <Route component={NotFound} />
+          </Switch>
+        </Container>
+      </Box>
+    </Flex>
+  </Provider>
 );

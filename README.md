@@ -25,3 +25,8 @@ graphcool playground
 ```
 
 https://console.graph.cool/wa/playground
+
+## Design System
+
+The app uses a design-system. It lives in `packages/design-system` and is
+based on [rebass](http://jxnblk.com/rebass/) which is in turn built with [styled-components](https://github.com/styled-components/styled-components), [styled-system](https://github.com/jxnblk/styled-system) and [grid-styled](https://github.com/jxnblk/grid-styled).
