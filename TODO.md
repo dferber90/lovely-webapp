@@ -1,7 +1,5 @@
 # TODO
 
-* use defer/async attributes on script tags instead of placing them in the body
-
 ## Webpack
 
 * split out Vendor chunk
