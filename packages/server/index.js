@@ -20,19 +20,14 @@ app.use(serve('client'));
 const html = ({ title, body, styles, cachedData, loadableModules }) => {
   const appBundle = DEV
     ? '<!-- client-side app bundle omitted in server-development -->'
-    : (() => {
-        // const assets = Object.values(
-        //   // eslint-disable-next-line global-require, import/no-unresolved
-        //   require('./client/stats.json').assetsByChunkName
-        // ).reduce((acc, assetList) => [...acc, ...assetList], []);
-
+    : do {
         // eslint-disable-next-line global-require, import/no-unresolved
         const assets = require('./client/stats.json').assetsByChunkName.main;
-        return assets
+        assets
           .filter(asset => asset.endsWith('.js'))
           .map(asset => `<script src="/${asset}"></script>`)
           .join('');
-      })();
+      };
 
   const dataScript = DEV
     ? '<!-- data for rehydration -->'
@@ -45,17 +40,17 @@ const html = ({ title, body, styles, cachedData, loadableModules }) => {
   //  - from https://github.com/jamiebuilds/react-loadable
   const loadableBundles = DEV
     ? '<!-- bundles from code-splitting through react-loadable -->'
-    : (() => {
+    : do {
         // eslint-disable-next-line global-require, import/no-unresolved
         const stats = require('./client/react-loadable.json');
         // eslint-disable-next-line global-require
         const { getBundles } = require('react-loadable/webpack');
         const bundles = getBundles(stats, loadableModules);
 
-        return uniq(bundles.filter(bundle => bundle.file.endsWith('.js')))
+        uniq(bundles.filter(bundle => bundle.file.endsWith('.js')))
           .map(bundle => `<script src="/${bundle.file}"></script>`)
           .join('\n');
-      })();
+      };
 
   return `
     <!DOCTYPE html>
