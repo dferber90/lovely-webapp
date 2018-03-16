@@ -3,12 +3,14 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('../../config.json');
 
+const outputPath = path.join(process.cwd(), 'dist-production');
 module.exports = {
   target: 'node',
   mode: 'production',
   context: __dirname,
   entry: './index.js',
   output: {
+    path: outputPath,
     filename: 'server.js',
   },
   module: {
@@ -26,7 +28,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: path.join(process.cwd(), 'static'),
-        to: path.join(process.cwd(), 'dist', 'static'),
+        to: path.join(outputPath, 'static'),
       },
     ]),
     new webpack.DefinePlugin({

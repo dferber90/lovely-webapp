@@ -4,13 +4,15 @@ const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const config = require('../../config.json');
 
+const outputPath = path.join(process.cwd(), 'dist-development', 'client');
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: './index.js',
   output: {
-    filename: 'dist/bundle.js',
+    path: outputPath,
+    filename: 'bundle.js',
   },
   module: {
     rules: [

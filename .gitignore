@@ -1,3 +1,4 @@
-dist
+dist-production
+dist-development
 node_modules
 yarn-error.log

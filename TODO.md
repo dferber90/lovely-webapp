@@ -7,7 +7,6 @@
 * split out Vendor chunk
 * add polyfills?
 * long-term caching
-* spilt output to `dist-development` and `dist-production`
 * BUG: make `injectGlobal` work
 
 ## Apollo
