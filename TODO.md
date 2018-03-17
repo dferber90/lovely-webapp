@@ -2,7 +2,6 @@
 
 ## Webpack
 
-* add polyfills?
 * long-term caching
 * add gzip and serve with koa
 
