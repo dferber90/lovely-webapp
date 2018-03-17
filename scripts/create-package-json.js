@@ -56,7 +56,7 @@ const excludedPkgs = pkgs.map(pkg => pkg.name);
 
 const pkg = {
   name: 'wa',
-  scripts: { start: 'node server.js' },
+  scripts: { start: 'NODE_ENV=production node server.js' },
   dependencies: omit(allDeps, excludedPkgs),
 };
 

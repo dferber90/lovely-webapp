@@ -8,6 +8,7 @@ const outputPath = path.join(process.cwd(), 'dist-development');
 module.exports = {
   target: 'node',
   mode: 'development',
+  stats: 'minimal',
   externals: [
     nodeExternals({
       whitelist: [

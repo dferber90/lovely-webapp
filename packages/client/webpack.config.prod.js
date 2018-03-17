@@ -11,10 +11,26 @@ module.exports = {
   devtool: 'source-map',
   context: __dirname,
   entry: './index.js',
+  performance: {
+    maxAssetSize: 260000,
+  },
   output: {
     path: outputPath,
-    filename: 'bundle.[hash].js',
-    chunkFilename: '[name].[hash].bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[chunkhash].chunk.js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /react|prop-types|apollo|graphql|styled-components/,
+          chunks: 'initial',
+          name: 'vendor',
+          enforce: true,
+        },
+      },
+    },
   },
   module: {
     rules: [

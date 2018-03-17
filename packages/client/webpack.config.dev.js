@@ -7,6 +7,7 @@ const config = require('../../config.json');
 const outputPath = path.join(process.cwd(), 'dist-development', 'client');
 module.exports = {
   mode: 'development',
+  stats: 'minimal',
   devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: './index.js',
