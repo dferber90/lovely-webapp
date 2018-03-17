@@ -12,7 +12,66 @@ $ yarn config set workspaces-experimental true
 
 [Blog post](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
 
-## GraphQL
+### Start Development
+
+You can start the frontend and the backend individually.
+
+#### Client
+
+The frontend can be started with the following command:
+
+```
+yarn client:start
+```
+
+* runs on [localhost:8080](http://localhost:8080)
+* does not use server-side rendering
+* has hot-loading
+
+#### Server
+
+In production, the server does server-side rendering and serves the client bundle.
+In development, the backend also does server-side rendering. However, it does not include the client-side bundle. That allows to experiment with the backend on its own.
+
+```
+yarn server:start
+```
+
+* runs on [localhost:3000](http://localhost:3000)
+* uses server-side rendering
+* restarts automatically on file changes (page reload required)
+
+#### API
+
+The application does not use a local API. Instead, it relies on GraphQL to provide a data-backend. It uses GraphCool, but that can be switched to any service.
+
+### Running in production, locally
+
+First, generate the client- & server-bundle
+
+```
+yarn build
+```
+
+Then, go to the `dist-production` folder and start the server.
+
+```
+cd dist-production
+NODE_ENV=production node server.js
+```
+
+_Even though the output bundle has a `package.json` with dependencies, it's not necessary to install them when running locally, node can resolve the dependencies from the project folder (which is the parent-folder of `dist-production`) already._
+
+## Deployment
+
+Install [now.sh](https://zeit.co/now) locally.
+
+Then run `yarn build` to generate a build to `dist-production`.
+Afterwards, run `yarn deploy` to deploy to any server using `now.sh`.
+
+## Technologies and Tools
+
+### GraphQL
 
 The app uses [graph.cool](https://www.graph.cool/) as a backend.
 
@@ -26,7 +85,7 @@ graphcool playground
 
 https://console.graph.cool/wa/playground
 
-## Design System
+### Design System
 
 The app uses a design-system. It lives in `packages/design-system` and is
 based on [rebass](http://jxnblk.com/rebass/) which is in turn built with [styled-components](https://github.com/styled-components/styled-components), [styled-system](https://github.com/jxnblk/styled-system) and [grid-styled](https://github.com/jxnblk/grid-styled).
