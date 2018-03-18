@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const path = require('path');
-const config = require('../../config.json');
+const config = require('../config.json');
 const nodeExternals = require('webpack-node-externals');
 const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
 
@@ -20,8 +21,7 @@ module.exports = {
       ],
     }),
   ],
-  context: __dirname,
-  // entry: ['webpack/hot/signal', './index.js'],
+  context: path.resolve(process.cwd(), 'packages', 'server'),
   entry: './index.js',
   output: {
     publicPath,

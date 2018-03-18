@@ -1,16 +1,17 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const config = require('../../config.json');
+const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-production', 'assets');
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
-  context: __dirname,
+  context: path.resolve(process.cwd(), 'packages', 'client'),
   entry: './index.js',
   performance: {
     maxAssetSize: 260000,

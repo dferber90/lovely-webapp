@@ -1,16 +1,19 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
-const config = require('../../config.json');
+const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
+
+console.log(path.resolve(process.cwd(), 'packages', 'client'));
 module.exports = {
   mode: 'development',
   stats: 'minimal',
   devtool: 'cheap-module-source-map',
-  context: __dirname,
+  context: path.resolve(process.cwd(), 'packages', 'client'),
   entry: ['babel-polyfill', './index.js'],
   output: {
     path: outputPath,
@@ -48,7 +51,10 @@ module.exports = {
     }),
   ],
   serve: {
-    content: ['static', path.join(__dirname, 'static')],
+    content: [
+      'static',
+      path.join(process.cwd(), 'packages', 'client', 'static'),
+    ],
     hot: {},
     clipboard: false,
     dev: { publicPath },

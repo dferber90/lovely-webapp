@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const config = require('../../config.json');
+const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-production');
@@ -11,13 +11,13 @@ const outputPath = path.join(process.cwd(), 'dist-production');
 // We could also use a simple Regex (/^@wa\//) and rely on a convention
 // of workspace packages starting with the same prefix
 const isWorkspacePackage = (() => {
-  const { workspaces } = require('../../package.json');
+  const { workspaces } = require('../package.json');
   const flatten = require('lodash.flatten');
   const glob = require('glob');
   const packageLists = workspaces.map(workspace => glob.sync(workspace));
   const pkgPaths = flatten(packageLists);
   const pkgs = pkgPaths.map(pkgPath => {
-    const pkg = require(`../../${pkgPath}/package.json`);
+    const pkg = require(`../${pkgPath}/package.json`);
     return pkg;
   }, {});
   const pkgNames = pkgs.map(pkg => pkg.name);
@@ -27,7 +27,7 @@ const isWorkspacePackage = (() => {
 module.exports = {
   target: 'node',
   mode: 'production',
-  context: __dirname,
+  context: path.resolve(process.cwd(), 'packages', 'server'),
   entry: './index.js',
   output: {
     path: outputPath,

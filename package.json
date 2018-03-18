@@ -5,22 +5,23 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist-production/*; NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build:client": "webpack --config packages/client/webpack.config.prod.js",
-    "build:server": "webpack --config packages/server/webpack.config.prod.js",
+    "build": "rm -rf dist-production/*; NODE_ENV=production webpack --config webpack/config.prod.js",
+    "build:client": "webpack --config webpack/config.client.prod.js",
+    "build:server": "webpack --config webpack/config.server.prod.js",
     "deploy": "now --public dist-production",
     "lint": "eslint packages",
     "postbuild": "node scripts/create-package-json.js",
     "postinstall": "node scripts/fix-node-server-plugin.js",
     "start": "concurrently --names \"client,server\" --prefix-colors \"cyan,magenta\" \"yarn start:client\" \"yarn start:server\"",
-    "start:client": "webpack-serve --config packages/client/webpack.config.dev.js",
-    "start:server": "webpack --watch --config packages/server/webpack.config.dev.js",
+    "start:client": "webpack-serve --config webpack/config.client.dev.js",
+    "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "test": "echo not implemented"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
+    "babel-loader": "7.1.4",
     "babel-eslint": "8.2.2",
     "concurrently": "3.5.1",
     "eslint": "4.18.2",
@@ -32,6 +33,17 @@
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
     "lodash.flatten": "4.4.0",
-    "lodash.omit": "4.5.0"
+    "lodash.omit": "4.5.0",
+    "connect-history-api-fallback": "1.5.0",
+    "file-loader": "1.1.11",
+    "koa-connect": "2.0.1",
+    "uglifyjs-webpack-plugin": "1.2.3",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.10",
+    "webpack-serve": "0.2.0",
+    "webpack-stats-plugin": "0.2.1",
+    "copy-webpack-plugin": "4.5.1",
+    "webpack-node-externals": "1.6.0",
+    "webpack-node-server-plugin": "0.2.1"
   }
 }

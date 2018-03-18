@@ -6,7 +6,6 @@
 
 * long-term caching
 * add gzip and serve with koa
-* move client and server configs out of folders and into top-level "webpack" folder
 
 ## Apollo
 
