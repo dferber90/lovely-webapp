@@ -17,7 +17,9 @@ export const Loading = props => {
 };
 
 Loading.propTypes = {
-  error: PropTypes.bool,
+  error: PropTypes.shape({
+    message: PropTypes.string.isRequired,
+  }),
   timedOut: PropTypes.bool,
   pastDelay: PropTypes.bool,
 };
