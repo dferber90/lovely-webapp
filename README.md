@@ -14,14 +14,20 @@ $ yarn config set workspaces-experimental true
 
 ### Start Development
 
-You can start the frontend and the backend individually.
+You can start the frontend and the backend simultaneously with
+
+```
+yarn start
+```
+
+You can also start the frontend and the backend individually.
 
 #### Client
 
 The frontend can be started with the following command:
 
 ```
-yarn client:start
+yarn start:client
 ```
 
 * runs on [localhost:8080](http://localhost:8080)
@@ -34,7 +40,7 @@ In production, the server does server-side rendering and serves the client bundl
 In development, the backend also does server-side rendering. However, it does not include the client-side bundle. That allows to experiment with the backend on its own.
 
 ```
-yarn server:start
+yarn start:server
 ```
 
 * runs on [localhost:3000](http://localhost:3000)

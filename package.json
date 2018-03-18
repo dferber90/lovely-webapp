@@ -5,6 +5,7 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "scripts": {
+    "start": "concurrently --names \"client,server\" --prefix-colors \"cyan,magenta\" \"yarn client:start\" \"yarn server:start\"",
     "client:build": "webpack --config packages/client/webpack.config.prod.js",
     "client:start": "webpack-serve --config packages/client/webpack.config.dev.js",
     "server:build": "webpack --config packages/server/webpack.config.prod.js",
@@ -21,6 +22,7 @@
   ],
   "devDependencies": {
     "babel-eslint": "8.2.2",
+    "concurrently": "3.5.1",
     "eslint": "4.18.2",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",
