@@ -3,6 +3,7 @@ import React from 'react';
 import { Application } from '@wa/components';
 import Koa from 'koa';
 import serve from 'koa-static';
+import Router from 'koa-router';
 import mount from 'koa-mount';
 import { ServerStyleSheet } from 'styled-components';
 import { StaticRouter } from 'react-router';
@@ -15,9 +16,18 @@ import pretty from 'pretty';
 import { createApolloClient } from './create-apollo-client';
 
 const app = new Koa();
+const router = new Router();
+
 app.use(mount('/assets', serve('assets')));
 
+router.get('/server-side', ctx => {
+  ctx.body = '<html>Hello World! <a href="/">Back</a></html>';
+});
+
 app.use(serve('static'));
+
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 const html = ({ title, body, styles, cachedData, loadableModules }) => {
   const appBundle = DEV

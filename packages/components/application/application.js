@@ -4,6 +4,7 @@ import {
   Container,
   Toolbar,
   NavItem,
+  NavLink,
   Flex,
   Box,
 } from '@wa/design-system';
@@ -46,6 +47,7 @@ export const Application = () => (
       <NavItem to="/data">Data</NavItem>
       <NavItem to="/something-that-does-not-exist">404</NavItem>
       <NavItem to="/redirect-to-home">Redirect</NavItem>
+      <NavLink href="/server-side">Server Side</NavLink>
     </Toolbar>
     <Flex>
       <Box px={2} my={2}>
