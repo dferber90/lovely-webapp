@@ -59,7 +59,7 @@ module.exports = {
     }),
     // Write out stats file to build directory.
     new StatsWriterPlugin({
-      filename: 'stats.json',
+      filename: '../stats.json',
     }),
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
@@ -72,7 +72,7 @@ module.exports = {
       },
     }),
     new ReactLoadablePlugin({
-      filename: path.join(outputPath, 'react-loadable.json'),
+      filename: path.join(outputPath, '..', 'react-loadable.json'),
     }),
   ],
 };

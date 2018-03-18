@@ -78,8 +78,8 @@ module.exports = {
       whitelist: isWorkspacePackage,
     }),
     {
-      './assets/stats.json': "require('./assets/stats.json')",
-      './assets/react-loadable.json': "require('./assets/react-loadable.json')",
+      './stats.json': "require('./stats.json')",
+      './react-loadable.json': "require('./react-loadable.json')",
     },
   ],
 };
