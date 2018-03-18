@@ -4,7 +4,7 @@ const config = require('../../config.json');
 const nodeExternals = require('webpack-node-externals');
 const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
 
-const outputPath = path.join(process.cwd(), 'dist-development');
+const outputPath = path.join(process.cwd(), 'dist-development', 'client');
 module.exports = {
   target: 'node',
   mode: 'development',
@@ -24,7 +24,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: outputPath,
-    filename: 'server.js',
+    filename: '../server.js',
   },
   module: {
     rules: [
