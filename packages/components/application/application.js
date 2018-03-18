@@ -8,6 +8,7 @@ import {
   Flex,
   Box,
 } from '@wa/design-system';
+import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 import Loadable from 'react-loadable';
@@ -38,6 +39,11 @@ const LoadableImagePage = Loadable({
 
 export const Application = () => (
   <Provider>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Webapp</title>
+      <link rel="shortcut icon" href="/favicon.png" />
+    </Helmet>
     <Toolbar>
       <NavItem to="/">PoC</NavItem>
       <NavItem ml="auto" to="/a">

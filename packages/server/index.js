@@ -13,6 +13,7 @@ import tinyHtml from 'tinyhtml';
 import uniq from 'lodash.uniq';
 import flatten from 'lodash.flatten';
 import pretty from 'pretty';
+import { Helmet } from 'react-helmet';
 import { createApolloClient } from './create-apollo-client';
 
 const app = new Koa();
@@ -29,7 +30,7 @@ app.use(serve('static'));
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const html = ({ title, body, styles, cachedData, loadableModules }) => {
+const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
   const appBundle = DEV
     ? '<!-- client-side app bundle omitted in server-development -->'
     : do {
@@ -70,14 +71,14 @@ const html = ({ title, body, styles, cachedData, loadableModules }) => {
 
   return `
     <!DOCTYPE html>
-    <html>
+    <html ${helmet.htmlAttributes.toString()}>
       <head>
-        <meta charset="utf-8">
-        <link rel="shortcut icon" href="/favicon.png">
-        <title>${title}</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+        ${helmet.link.toString()}
         ${styles}
       </head>
-      <body>
+      <body ${helmet.bodyAttributes.toString()}>
         <div id="app">${body}</div>
         ${dataScript}
         ${appBundle}
@@ -117,11 +118,11 @@ app.use(async context => {
       if (routingContext.status) context.status = routingContext.status;
       const styles = sheet.getStyleTags();
       const markup = html({
-        title: 'Webapp',
         body,
         styles,
         cachedData: apolloClient.cache.extract(),
         loadableModules: modules,
+        helmet: Helmet.renderStatic(),
       });
       context.body = DEV ? pretty(markup) : tinyHtml(markup);
     }

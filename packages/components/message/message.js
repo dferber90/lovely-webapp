@@ -2,11 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { Helmet } from 'react-helmet';
 
 const PlainMessage = ({ data: { hello, refetch } }) => (
   <div>
     <button onClick={() => refetch()}>Refresh</button>
-    <div>{hello ? hello.message : '...'}</div>
+    <div>
+      {hello ? (
+        <React.Fragment>
+          <Helmet>
+            <title>{`${hello.message} - Webapp`}</title>
+          </Helmet>
+          {hello.message}
+        </React.Fragment>
+      ) : (
+        '...'
+      )}
+    </div>
   </div>
 );
 
