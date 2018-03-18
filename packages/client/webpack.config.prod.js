@@ -5,7 +5,7 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const config = require('../../config.json');
 
-const outputPath = path.join(process.cwd(), 'dist-production', 'client');
+const outputPath = path.join(process.cwd(), 'dist-production', 'assets');
 module.exports = {
   mode: 'production',
   devtool: 'source-map',

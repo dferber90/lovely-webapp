@@ -4,7 +4,7 @@ const config = require('../../config.json');
 const nodeExternals = require('webpack-node-externals');
 const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
 
-const outputPath = path.join(process.cwd(), 'dist-development', 'client');
+const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
 module.exports = {
   target: 'node',
   mode: 'development',
