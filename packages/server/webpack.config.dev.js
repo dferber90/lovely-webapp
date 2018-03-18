@@ -1,8 +1,8 @@
-const NodemonPlugin = require('nodemon-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const config = require('../../config.json');
 const nodeExternals = require('webpack-node-externals');
+const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
 
 const outputPath = path.join(process.cwd(), 'dist-development');
 module.exports = {
@@ -46,6 +46,6 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
-    new NodemonPlugin(),
+    new WebpackNodeServerPlugin(),
   ],
 };

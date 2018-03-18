@@ -4,6 +4,7 @@
 
 * long-term caching
 * add gzip and serve with koa
+* move client and server configs out of folders and into top-level "webpack" folder
 
 ## Apollo
 
@@ -11,6 +12,10 @@
 * LATER: use persisted queries (https://github.com/apollographql/apollo-link-persisted-queries) (not yet supported by GraphCool)
 
 ## Server-Side Rendering
+
+* enable turning SSR on/off based on load
+* add images support
+* turn off 404 fallbak for static assets (either by putting public assets in a separate folder for which we disable SSR or by checking extension on URL)
 
 ## GraphCool
 
