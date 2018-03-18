@@ -44,6 +44,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
     new CopyWebpackPlugin([
       {
         from: path.join(process.cwd(), 'static'),
