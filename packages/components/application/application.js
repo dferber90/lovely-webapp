@@ -28,6 +28,13 @@ const LoadableToggle = Loadable({
   loading: Loading,
 });
 
+const LoadableImagePage = Loadable({
+  loader: () => import('../image-page'),
+  // eslint-disable-next-line react/prop-types
+  render: ({ ImagePage }, props) => <ImagePage {...props} />,
+  loading: Loading,
+});
+
 export const Application = () => (
   <Provider>
     <Toolbar>
@@ -35,7 +42,7 @@ export const Application = () => (
       <NavItem ml="auto" to="/a">
         A
       </NavItem>
-      <NavItem to="/b">B</NavItem>
+      <NavItem to="/image">Image</NavItem>
       <NavItem to="/data">Data</NavItem>
       <NavItem to="/something-that-does-not-exist">404</NavItem>
       <NavItem to="/redirect-to-home">Redirect</NavItem>
@@ -46,7 +53,7 @@ export const Application = () => (
           <Switch>
             <Route path="/" exact render={() => <LoadableToggle />} />
             <Route path="/a" render={() => 'a'} />
-            <Route path="/b" render={() => 'b'} />
+            <Route path="/image" render={() => <LoadableImagePage />} />
             <Route
               path="/data"
               render={() => (
