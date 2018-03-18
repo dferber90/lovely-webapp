@@ -3,6 +3,7 @@ import React from 'react';
 import { Application } from '@wa/components';
 import Koa from 'koa';
 import serve from 'koa-static';
+import mount from 'koa-mount';
 import { ServerStyleSheet } from 'styled-components';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider, renderToStringWithData } from 'react-apollo';
@@ -14,9 +15,9 @@ import pretty from 'pretty';
 import { createApolloClient } from './create-apollo-client';
 
 const app = new Koa();
+app.use(mount('/assets', serve('assets')));
 
 app.use(serve('static'));
-app.use(serve('assets'));
 
 const html = ({ title, body, styles, cachedData, loadableModules }) => {
   const appBundle = DEV
@@ -30,7 +31,7 @@ const html = ({ title, body, styles, cachedData, loadableModules }) => {
         const assets = flatten(Object.values(assetsByChunkName));
         assets
           .filter(asset => asset.endsWith('.js'))
-          .map(asset => `<script src="/${asset}"></script>`)
+          .map(asset => `<script src="/assets/${asset}"></script>`)
           .join('');
       };
 
@@ -53,7 +54,7 @@ const html = ({ title, body, styles, cachedData, loadableModules }) => {
         const bundles = getBundles(stats, loadableModules);
 
         uniq(bundles.filter(bundle => bundle.file.endsWith('.js')))
-          .map(bundle => `<script src="/${bundle.file}"></script>`)
+          .map(bundle => `<script src="/assets/${bundle.file}"></script>`)
           .join('\n');
       };
 

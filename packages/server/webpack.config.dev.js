@@ -4,6 +4,7 @@ const config = require('../../config.json');
 const nodeExternals = require('webpack-node-externals');
 const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
 
+const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
 module.exports = {
   target: 'node',
@@ -23,6 +24,7 @@ module.exports = {
   // entry: ['webpack/hot/signal', './index.js'],
   entry: './index.js',
   output: {
+    publicPath,
     path: outputPath,
     filename: '../server.js',
   },

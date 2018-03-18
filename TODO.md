@@ -1,5 +1,9 @@
 # TODO
 
+## Features
+
+* dynamic `<title />` generation
+
 ## Webpack
 
 * long-term caching

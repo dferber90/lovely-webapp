@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const config = require('../../config.json');
 
+const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-production');
 
 // We could also use a simple Regex (/^@wa\//) and rely on a convention
@@ -30,6 +31,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: outputPath,
+    publicPath,
     filename: 'server.js',
   },
   module: {

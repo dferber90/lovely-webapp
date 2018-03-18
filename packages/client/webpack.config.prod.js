@@ -5,6 +5,7 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const config = require('../../config.json');
 
+const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-production', 'assets');
 module.exports = {
   mode: 'production',
@@ -16,6 +17,7 @@ module.exports = {
   },
   output: {
     path: outputPath,
+    publicPath,
     filename: '[name].bundle.js',
     chunkFilename: '[chunkhash].chunk.js',
   },

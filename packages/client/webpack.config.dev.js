@@ -4,6 +4,7 @@ const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const config = require('../../config.json');
 
+const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
 module.exports = {
   mode: 'development',
@@ -13,6 +14,7 @@ module.exports = {
   entry: ['babel-polyfill', './index.js'],
   output: {
     path: outputPath,
+    publicPath,
     filename: 'bundle.js',
     pathinfo: true,
   },
@@ -49,7 +51,7 @@ module.exports = {
     content: ['static', path.join(__dirname, 'static')],
     hot: {},
     clipboard: false,
-    dev: { publicPath: '/' },
+    dev: { publicPath },
     add: app => {
       const historyOptions = {
         // ... see: https://github.com/bripkens/connect-history-api-fallback#options
