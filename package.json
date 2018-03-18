@@ -5,16 +5,16 @@
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --names \"client,server\" --prefix-colors \"cyan,magenta\" \"yarn client:start\" \"yarn server:start\"",
-    "client:build": "webpack --config packages/client/webpack.config.prod.js",
-    "client:start": "webpack-serve --config packages/client/webpack.config.dev.js",
-    "server:build": "webpack --config packages/server/webpack.config.prod.js",
-    "server:start": "webpack --watch --config packages/server/webpack.config.dev.js",
     "build": "rm -rf dist-production/*; NODE_ENV=production webpack --config webpack.config.prod.js",
-    "postbuild": "node scripts/create-package-json.js",
-    "postinstall": "node scripts/fix-node-server-plugin.js",
+    "build:client": "webpack --config packages/client/webpack.config.prod.js",
+    "build:server": "webpack --config packages/server/webpack.config.prod.js",
     "deploy": "now --public dist-production",
     "lint": "eslint packages",
+    "postbuild": "node scripts/create-package-json.js",
+    "postinstall": "node scripts/fix-node-server-plugin.js",
+    "start": "concurrently --names \"client,server\" --prefix-colors \"cyan,magenta\" \"yarn start:client\" \"yarn start:server\"",
+    "start:client": "webpack-serve --config packages/client/webpack.config.dev.js",
+    "start:server": "webpack --watch --config packages/server/webpack.config.dev.js",
     "test": "echo not implemented"
   },
   "workspaces": [
