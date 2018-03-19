@@ -9,7 +9,7 @@
 ## Webpack
 
 * long-term caching
-* add gzip and serve with koa
+* optimize images
 
 ## Apollo
 
@@ -19,7 +19,6 @@
 ## Server-Side Rendering
 
 * enable turning SSR on/off based on load
-* add images support
 * turn off 404 fallbak for static assets (either by putting public assets in a separate folder for which we disable SSR or by checking extension on URL)
 
 ## GraphCool

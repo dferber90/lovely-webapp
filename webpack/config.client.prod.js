@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const config = require('../config.json');
 
 const publicPath = '/assets/';
@@ -76,6 +77,9 @@ module.exports = {
     }),
     new ReactLoadablePlugin({
       filename: path.join(outputPath, '..', 'react-loadable.json'),
+    }),
+    new CompressionPlugin({
+      exclude: /stats\.json$/,
     }),
   ],
 };
