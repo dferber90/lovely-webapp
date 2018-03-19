@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const config = require('../config.json');
 const nodeExternals = require('webpack-node-externals');
@@ -50,6 +51,12 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(process.cwd(), 'static'),
+        to: path.join(process.cwd(), 'dist-development', 'static'),
+      },
+    ]),
     new webpack.DefinePlugin({
       SERVER: 'true',
       DEV: 'true',
