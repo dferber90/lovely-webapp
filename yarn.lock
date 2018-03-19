@@ -6706,9 +6706,9 @@ webpack-node-externals@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.6.0.tgz#232c62ec6092b100635a3d29d83c1747128df9bd"
 
-webpack-node-server-plugin@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/webpack-node-server-plugin/-/webpack-node-server-plugin-0.2.1.tgz#3f1708ba25f2d3658a5de8c6401a89f488c5fcaa"
+webpack-node-server-plugin@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-node-server-plugin/-/webpack-node-server-plugin-1.0.0.tgz#8e8c0b15b18e60a6cdd5bf0515e265af7a741e81"
   dependencies:
     "@reactivex/rxjs" "^5.0.0-rc.2"
 

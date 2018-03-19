@@ -11,7 +11,6 @@
     "deploy": "now --public dist-production",
     "lint": "eslint packages",
     "postbuild": "node scripts/create-package-json.js",
-    "postinstall": "node scripts/fix-node-server-plugin.js",
     "start": "concurrently --names \"client,server\" --prefix-colors \"cyan,magenta\" \"yarn start:client\" \"yarn start:server\"",
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
@@ -44,6 +43,6 @@
     "webpack-stats-plugin": "0.2.1",
     "copy-webpack-plugin": "4.5.1",
     "webpack-node-externals": "1.6.0",
-    "webpack-node-server-plugin": "0.2.1"
+    "webpack-node-server-plugin": "1.0.0"
   }
 }

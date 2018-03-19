@@ -2,6 +2,10 @@
 
 ## Features
 
+* auth
+* mail
+* file uploads
+
 ## Webpack
 
 * long-term caching

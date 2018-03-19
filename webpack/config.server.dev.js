@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const config = require('../config.json');
 const nodeExternals = require('webpack-node-externals');
-const WebpackNodeServerPlugin = require('webpack-node-server-plugin');
+const { NodeServerPlugin } = require('webpack-node-server-plugin');
 
 const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
@@ -57,6 +57,8 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
-    new WebpackNodeServerPlugin(),
+    new NodeServerPlugin({
+      spawnOptions: { stdio: 'inherit', cwd: 'dist-development' },
+    }),
   ],
 };
