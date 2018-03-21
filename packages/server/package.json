@@ -16,6 +16,7 @@
     "graphql-tag": "2.8.0",
     "html-minifier": "3.5.11",
     "koa": "2.5.0",
+    "koa-cookie": "1.0.0",
     "koa-mount": "3.0.0",
     "koa-router": "7.4.0",
     "koa-static": "4.0.2",

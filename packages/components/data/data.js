@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { FriendlyLoader } from '../friendly-loader';
 
-const PlainData = ({ data: { error, loading, allPosts, refetch } }) => {
+const PlainData = ({ data: { error, loading, feed, refetch } }) => {
   if (loading) return <FriendlyLoader />;
   if (error) return <FriendlyLoader error={error} />;
 
@@ -12,7 +12,7 @@ const PlainData = ({ data: { error, loading, allPosts, refetch } }) => {
     <div>
       <button onClick={() => refetch()}>Refresh</button>
       <ul>
-        {allPosts && allPosts.map(post => <li key={post.id}>{post.title}</li>)}
+        {feed && feed.map(post => <li key={post.id}>{post.description}</li>)}
       </ul>
     </div>
   );
@@ -24,16 +24,16 @@ PlainData.propTypes = {
       message: PropTypes.string.isRequired,
     }),
     loading: PropTypes.bool,
-    allPosts: PropTypes.array,
+    feed: PropTypes.array,
     refetch: PropTypes.func,
   }).isRequired,
 };
 
 export const Data = graphql(gql`
-  query allPosts {
-    allPosts {
+  query feedQuery {
+    feed {
       id
-      title
+      description
     }
   }
 `)(PlainData);

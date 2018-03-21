@@ -12,6 +12,7 @@
 * optimize images
 * fix sourcemaps
 * figure out how to configure babel-preset-env, so that we can remove babel-polyfill from entry ponit for servers, while still keeping async/await working (e.g. render a component on server which has async-await syntax)
+* compile api (graphql)
 
 ## Apollo
 

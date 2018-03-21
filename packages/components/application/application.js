@@ -12,9 +12,10 @@ import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 import Loadable from 'react-loadable';
-import { Message } from '../message';
 import { Data } from '../data';
+import { LoginForm } from '../login-form';
 import { Loading } from '../loading';
+import { UserPage } from '../user-page';
 import { RedirectWithStatus, NotFound } from '../route-helpers';
 
 // eslint-disable-next-line no-unused-expressions
@@ -49,6 +50,7 @@ export const Application = () => (
       <NavItem ml="auto" to="/a">
         A
       </NavItem>
+      <NavItem to="/user">User</NavItem>
       <NavItem to="/image">Image</NavItem>
       <NavItem to="/data">Data</NavItem>
       <NavItem to="/something-that-does-not-exist">404</NavItem>
@@ -60,6 +62,8 @@ export const Application = () => (
         <Container>
           <Switch>
             <Route path="/" exact render={() => <LoadableToggle />} />
+            <Route path="/user" exact render={() => <UserPage />} />
+            <Route path="/login" exact render={() => <LoginForm />} />
             <Route path="/a" render={() => 'a'} />
             <Route path="/image" render={() => <LoadableImagePage />} />
             <Route
@@ -67,7 +71,6 @@ export const Application = () => (
               render={() => (
                 <React.Fragment>
                   <Data />
-                  <Message />
                 </React.Fragment>
               )}
             />

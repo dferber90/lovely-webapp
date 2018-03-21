@@ -7,9 +7,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'rebass';
 import { Link } from 'react-router-dom';
+import sys from 'system-components';
 
 export * from 'rebass';
 
 // Implementation from https://github.com/jxnblk/rebass/issues/36
 export const NavItem = props => <NavLink {...props} is={Link} />;
 NavItem.propTypes = { to: PropTypes.string };
+
+// implement from https://github.com/jxnblk/rebass/blob/master/src/Link.js
+export const LocalLink = sys(
+  {
+    is: Link,
+    color: 'blue',
+  },
+  'space'
+);
+
+LocalLink.displayName = 'LocalLink';

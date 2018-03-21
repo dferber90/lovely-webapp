@@ -1,0 +1,25 @@
+# import Link, Vote from "./generated/prisma.graphql"
+
+type Query {
+  me: User
+  feed(filter: String, skip: Int, first: Int): [Link!]!
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  post(url: String!, description: String!): Link!
+  vote(linkId: ID!): Vote
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+# Redefined instead of imported to avoid exposing the "password" field
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}

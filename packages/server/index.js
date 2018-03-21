@@ -4,6 +4,7 @@ import { Application } from '@wa/components';
 import Koa from 'koa';
 import serve from 'koa-static';
 import Router from 'koa-router';
+import cookie from 'koa-cookie';
 import mount from 'koa-mount';
 import { ServerStyleSheet } from 'styled-components';
 import { StaticRouter } from 'react-router';
@@ -26,6 +27,8 @@ router.get('/server-side', ctx => {
 });
 
 app.use(serve('static'));
+
+app.use(cookie());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
@@ -89,7 +92,8 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
 };
 
 app.use(async context => {
-  const apolloClient = createApolloClient();
+  const authToken = context.cookie ? context.cookie.authToken : null;
+  const apolloClient = createApolloClient(authToken);
   const sheet = new ServerStyleSheet();
   const routingContext = {};
   const modules = [];

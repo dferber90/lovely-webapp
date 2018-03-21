@@ -1,4 +1,3 @@
 {
-  "GRAPHQL_ENDPOINT":
-    "https://api.graph.cool/simple/v1/cjengj9pp4c1n0138hf8nw961"
+  "GRAPHQL_ENDPOINT": "http://localhost:4000"
 }
