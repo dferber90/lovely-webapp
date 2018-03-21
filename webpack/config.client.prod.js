@@ -13,7 +13,7 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   context: path.resolve(process.cwd(), 'packages', 'client'),
-  entry: './index.js',
+  entry: ['babel-polyfill', './index.js'],
   performance: {
     maxAssetSize: 260000,
   },
@@ -43,6 +43,23 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                'env',
+                { targets: { browsers: ['last 2 versions', 'safari >= 7'] } },
+              ],
+            ],
+            plugins: [
+              'transform-react-jsx',
+              'transform-class-properties',
+              'graphql-tag',
+              ['styled-components', { ssr: true }],
+              'syntax-dynamic-import',
+              'react-loadable/babel',
+              'transform-react-remove-prop-types',
+            ],
+          },
         },
       },
       {

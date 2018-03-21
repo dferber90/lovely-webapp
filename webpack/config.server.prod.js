@@ -28,7 +28,7 @@ module.exports = {
   target: 'node',
   mode: 'production',
   context: path.resolve(process.cwd(), 'packages', 'server'),
-  entry: './index.js',
+  entry: ['babel-polyfill', './index.js'],
   output: {
     path: outputPath,
     publicPath,
@@ -41,6 +41,18 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [['env', { targets: { node: 8 }, useBuiltIns: true }]],
+            plugins: [
+              'transform-react-jsx',
+              'transform-class-properties',
+              'transform-async-to-generator',
+              'transform-object-rest-spread',
+              'transform-do-expressions',
+              'syntax-dynamic-import',
+              'react-loadable/babel',
+            ],
+          },
         },
       },
       {

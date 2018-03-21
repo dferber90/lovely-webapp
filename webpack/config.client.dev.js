@@ -28,6 +28,22 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                'env',
+                { targets: { browsers: ['last 2 versions', 'safari >= 7'] } },
+              ],
+            ],
+            plugins: [
+              'transform-react-jsx',
+              'transform-class-properties',
+              'graphql-tag',
+              ['styled-components', { ssr: true }],
+              'syntax-dynamic-import',
+              'react-loadable/babel',
+            ],
+          },
         },
       },
       {
