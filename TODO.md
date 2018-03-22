@@ -6,6 +6,10 @@
 * mail
 * file uploads
 
+## Auth
+
+* move auth to http-only cookie (graphql-yoga server would need to set cookie on login, and unset it on logout mutation). Then we don't to worry about CSRF, not XSS.
+
 ## Webpack
 
 * long-term caching

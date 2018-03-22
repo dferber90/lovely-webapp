@@ -7,8 +7,10 @@
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
     "react/require-default-props": 0,
+    "react/prefer-stateless-function": 0,
     "jsx-a11y/anchor-is-valid": 0,
-    "react/forbid-foreign-prop-types": 2
+    "react/forbid-foreign-prop-types": 2,
+    "arrow-body-style": 0
   },
   "globals": {
     "DEV": false,

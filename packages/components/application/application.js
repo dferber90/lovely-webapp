@@ -17,6 +17,8 @@ import { LoginForm } from '../login-form';
 import { Loading } from '../loading';
 import { UserPage } from '../user-page';
 import { RedirectWithStatus, NotFound } from '../route-helpers';
+import { FriendlyLoader } from '../friendly-loader';
+import { Me } from '../me';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -51,6 +53,7 @@ export const Application = () => (
         A
       </NavItem>
       <NavItem to="/user">User</NavItem>
+      <NavItem to="/protected">Protected</NavItem>
       <NavItem to="/image">Image</NavItem>
       <NavItem to="/data">Data</NavItem>
       <NavItem to="/something-that-does-not-exist">404</NavItem>
@@ -72,6 +75,19 @@ export const Application = () => (
                 <React.Fragment>
                   <Data />
                 </React.Fragment>
+              )}
+            />
+            <Route
+              path="/protected"
+              render={() => (
+                <Me>
+                  {({ loading, error, me }) => {
+                    if (error || loading)
+                      return <FriendlyLoader error={error} />;
+                    if (!me) return 'No Access';
+                    return 'Welcome to protected route';
+                  }}
+                </Me>
               )}
             />
             <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
