@@ -31,10 +31,11 @@ const { workspaces } = require('../package.json');
 const packageLists = workspaces.map(workspace => glob.sync(workspace));
 const pkgPaths = flatten(packageLists);
 
-const pkgs = pkgPaths.map(pkgPath => {
-  const pkg = require(`../${pkgPath}/package.json`);
-  return pkg;
-}, {});
+const pkgs = pkgPaths
+  .map(pkgPath => require(`../${pkgPath}/package.json`), {})
+  // Allows packages to be excluded from this dependency gathering
+  // At the moment only the api uses this, as it ends up as its own bundle
+  .filter(pkg => !pkg.excludeFromWorkspaceFlattening);
 
 const allDeps = pkgs.reduce((acc, pkg) => {
   if (!pkg.dependencies) return acc;

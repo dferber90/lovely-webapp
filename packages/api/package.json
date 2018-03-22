@@ -1,5 +1,6 @@
 {
   "name": "@wa/api",
+  "excludeFromWorkspaceFlattening": true,
   "private": true,
   "version": "1.0.0",
   "description": "My Graphcool Service",
