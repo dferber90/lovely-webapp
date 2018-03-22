@@ -7,7 +7,12 @@ const nodeExternals = require('webpack-node-externals');
 const { NodeServerPlugin } = require('webpack-node-server-plugin');
 
 const publicPath = '/assets/';
-const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
+const outputPath = path.join(
+  process.cwd(),
+  'dist-development',
+  'frontend',
+  'assets'
+);
 module.exports = {
   target: 'node',
   mode: 'development',
@@ -68,7 +73,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: path.join(process.cwd(), 'static'),
-        to: path.join(process.cwd(), 'dist-development', 'static'),
+        to: path.join(process.cwd(), 'dist-development', 'frontend', 'static'),
       },
     ]),
     new webpack.DefinePlugin({
@@ -79,7 +84,7 @@ module.exports = {
       GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
     new NodeServerPlugin({
-      spawnOptions: { stdio: 'inherit', cwd: 'dist-development' },
+      spawnOptions: { stdio: 'inherit', cwd: 'dist-development/frontend' },
     }),
   ],
 };

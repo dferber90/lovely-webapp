@@ -8,7 +8,12 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const config = require('../config.json');
 
 const publicPath = '/assets/';
-const outputPath = path.join(process.cwd(), 'dist-production', 'assets');
+const outputPath = path.join(
+  process.cwd(),
+  'dist-production',
+  'frontend',
+  'assets'
+);
 module.exports = {
   mode: 'production',
   devtool: 'source-map',

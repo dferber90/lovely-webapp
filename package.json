@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack/config.prod.js",
-    "build-and-run": "yarn build; yarn start:build",
+    "build-and-run": "yarn build && yarn start:build",
     "build:client": "webpack --config webpack/config.client.prod.js",
     "build:server": "webpack --config webpack/config.server.prod.js",
     "build:api": "webpack --config webpack/config.api.prod.js",
@@ -16,11 +16,11 @@
     "prebuild": "rm -rf dist-production/*; node scripts/create-package-json.js",
     "prestart:client": "rm -rf dist-development/*",
     "prisma": "prisma",
-    "start": "concurrently --names \"client,server,api\" --prefix-colors \"cyan,magenta\" \"yarn start:client\" \"yarn start:server\" \"yarn start:api\"",
+    "start": "concurrently --names \"client,server,api\" --prefix-colors \"cyan,magenta,yellow\" \"yarn start:client\" \"yarn start:server\" \"yarn start:api\"",
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
-    "start:build": "pushd dist-production; yarn start",
+    "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start\" \"pushd dist-production/frontend; yarn start\"",
     "test": "echo not implemented"
   },
   "workspaces": [

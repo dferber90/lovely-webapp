@@ -6,7 +6,7 @@ const nodeExternals = require('webpack-node-externals');
 const config = require('../config.json');
 
 const publicPath = '/assets/';
-const outputPath = path.join(process.cwd(), 'dist-production');
+const outputPath = path.join(process.cwd(), 'dist-production', 'frontend');
 
 // We could also use a simple Regex (/^@wa\//) and rely on a convention
 // of workspace packages starting with the same prefix

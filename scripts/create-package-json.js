@@ -62,9 +62,9 @@ const pkg = {
   dependencies: omit(allDeps, excludedPkgs),
 };
 
-fs.writeFileSync(
-  './dist-production/package.json',
+fs.outputFileSync(
+  './dist-production/frontend/package.json',
   JSON.stringify(pkg, null, 2)
 );
 
-fs.copySync('./yarn.lock', './dist-production/yarn.lock');
+fs.copySync('./yarn.lock', './dist-production/frontend/yarn.lock');

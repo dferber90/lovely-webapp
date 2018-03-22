@@ -6,9 +6,13 @@ const convert = require('koa-connect');
 const config = require('../config.json');
 
 const publicPath = '/assets/';
-const outputPath = path.join(process.cwd(), 'dist-development', 'assets');
+const outputPath = path.join(
+  process.cwd(),
+  'dist-development',
+  'frontend',
+  'assets'
+);
 
-console.log(path.resolve(process.cwd(), 'packages', 'client'));
 module.exports = {
   mode: 'development',
   stats: 'minimal',
