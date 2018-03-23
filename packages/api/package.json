@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
+    "body-parser": "1.18.2",
+    "cookie-parser": "1.4.3",
     "global": "4.3.2",
     "graphql-cli": "2.15.8",
     "graphql-yoga": "1.6.1",

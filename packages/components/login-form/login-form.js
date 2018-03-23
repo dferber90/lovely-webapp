@@ -3,12 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import Cookies from 'cookies-js';
 import gql from 'graphql-tag';
 
 class CreateLoginForm extends React.Component {
   static propTypes = {
-    authenticateUserMutation: PropTypes.func.isRequired,
     loggedInUserQuery: PropTypes.shape({
       loading: PropTypes.bool.isRequired,
       me: PropTypes.shape({
@@ -23,21 +21,30 @@ class CreateLoginForm extends React.Component {
   };
 
   authenticateUser = async () => {
-    const { email, password } = this.state;
-
     try {
-      const response = await this.props.authenticateUserMutation({
-        variables: { email, password },
-      });
-      Cookies.set('authToken', response.data.login.token);
-      // hard refresh so that user is taken into account everywhere
-      window.location.href = '/';
-    } catch (error) {
-      if (error.networkError) {
-        console.log('Network flaky');
-      } else if (error.graphQLErrors) {
-        console.log(error.graphQLErrors);
+      const response = await fetch(`${process.env.GRAPHQL_ENDPOINT}/login`, {
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+        // Sends and accepts cookies
+        // They won't be sent at all if this is not set
+        // It would be better to set this to 'same-origin'
+        credentials: 'include',
+      }).then(res => res.json());
+
+      if (response.user) {
+        // hard refresh so that user is taken into account everywhere
+        window.location.href = '/';
+      } else {
+        // eslint-disable-next-line no-alert
+        alert('Failed login:', response.error);
       }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
     }
   };
 
@@ -88,17 +95,6 @@ class CreateLoginForm extends React.Component {
   }
 }
 
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
-      }
-    }
-  }
-`;
-
 const LOGGED_IN_USER_QUERY = gql`
   query LoggedInUserQuery {
     me {
@@ -107,7 +103,6 @@ const LOGGED_IN_USER_QUERY = gql`
   }
 `;
 export const LoginForm = compose(
-  graphql(AUTHENTICATE_USER_MUTATION, { name: 'authenticateUserMutation' }),
   graphql(LOGGED_IN_USER_QUERY, {
     name: 'loggedInUserQuery',
     options: { fetchPolicy: 'network-only' },

@@ -13,7 +13,6 @@
     "apollo-link-error": "1.0.7",
     "apollo-link-http": "1.5.3",
     "babel-polyfill": "6.26.0",
-    "cookies-js": "1.2.3",
     "graphql": "0.13.1",
     "graphql-tag": "2.8.0",
     "react": "16.2.0",

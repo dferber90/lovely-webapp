@@ -7,7 +7,6 @@
   "license": "MIT",
   "dependencies": {
     "@wa/design-system": "*",
-    "cookies-js": "1.2.3",
     "graphql-tag": "2.8.0",
     "prop-types": "15.6.1",
     "react": "16.2.0",

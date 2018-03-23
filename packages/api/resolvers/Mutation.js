@@ -1,12 +1,13 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const { APP_SECRET } = require('../app-secret');
-const { getUserId } = require('../utils');
-
-const createToken = (userId, appSecret) => jwt.sign({ userId }, appSecret);
+const {
+  getUserId,
+  createToken,
+  comparePasswords,
+  hashPassword,
+} = require('../utils');
 
 async function signup(parent, args, context) {
-  const password = await bcrypt.hash(args.password, 10);
+  const password = await hashPassword(args.password);
   const user = await context.db.mutation.createUser({
     data: { ...args, password },
   });
@@ -25,7 +26,7 @@ async function login(parent, args, context) {
     throw new Error(`Could not find user with email: ${args.email}`);
   }
 
-  const valid = await bcrypt.compare(args.password, user.password);
+  const valid = await comparePasswords(args.password, user.password);
   if (!valid) {
     throw new Error('Invalid password');
   }
