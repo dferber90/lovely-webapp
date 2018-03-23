@@ -14,6 +14,7 @@ import { injectGlobal } from 'styled-components';
 import Loadable from 'react-loadable';
 import { Data } from '../data';
 import { LoginForm } from '../login-form';
+import { SignupForm } from '../signup-form';
 import { Loading } from '../loading';
 import { UserPage } from '../user-page';
 import { RedirectWithStatus, NotFound } from '../route-helpers';
@@ -67,6 +68,7 @@ export const Application = () => (
             <Route path="/" exact render={() => <LoadableToggle />} />
             <Route path="/user" exact render={() => <UserPage />} />
             <Route path="/login" exact render={() => <LoginForm />} />
+            <Route path="/signup" exact render={() => <SignupForm />} />
             <Route path="/a" render={() => 'a'} />
             <Route path="/image" render={() => <LoadableImagePage />} />
             <Route
