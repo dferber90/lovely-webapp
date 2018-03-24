@@ -6,7 +6,6 @@
 * mail
 * file uploads
 * checker for new release (check git version of server every x secs)
-* Use declarative Apollo components
 
 ## Auth
 

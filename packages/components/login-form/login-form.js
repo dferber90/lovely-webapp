@@ -1,20 +1,9 @@
 /* eslint-env browser */
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withRouter, Redirect } from 'react-router-dom';
-import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
+import { Me } from '../me';
 
-class CreateLoginForm extends React.Component {
-  static propTypes = {
-    loggedInUserQuery: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      me: PropTypes.shape({
-        id: PropTypes.string,
-      }),
-    }),
-  };
-
+export class LoginForm extends React.Component {
   state = {
     email: 'johndoe@graph.cool',
     password: 'graphql',
@@ -37,7 +26,7 @@ class CreateLoginForm extends React.Component {
 
       if (response.user) {
         // hard refresh so that user is taken into account everywhere
-        window.location.href = '/';
+        window.location.href = '/user';
       } else {
         // eslint-disable-next-line no-alert
         alert('Failed login:', response.error);
@@ -49,62 +38,58 @@ class CreateLoginForm extends React.Component {
   };
 
   render() {
-    if (this.props.loggedInUserQuery.loading) {
-      return (
-        <div className="w-100 pa4 flex justify-center">
-          <div>Loading</div>
-        </div>
-      );
-    }
-
-    // redirect if user is logged in
-    if (this.props.loggedInUserQuery.me && this.props.loggedInUserQuery.me.id) {
-      console.warn('already logged in');
-      return <Redirect to="/" />;
-    }
-
     return (
-      <div className="w-100 pa4 flex justify-center">
-        <div style={{ maxWidth: 400 }} className="">
-          <input
-            className="w-100 pa3 mv2"
-            value={this.state.email}
-            placeholder="Email"
-            onChange={e => this.setState({ email: e.target.value })}
-          />
-          <input
-            className="w-100 pa3 mv2"
-            type="password"
-            value={this.state.password}
-            placeholder="Password"
-            onChange={e => this.setState({ password: e.target.value })}
-          />
+      <Me>
+        {({ error, loading, me }) => {
+          if (loading) {
+            return (
+              <div className="w-100 pa4 flex justify-center">
+                <div>Loading</div>
+              </div>
+            );
+          }
+          if (error) {
+            return (
+              <div className="w-100 pa4 flex justify-center">
+                <div>Error</div>
+              </div>
+            );
+          }
 
-          {this.state.email &&
-            this.state.password && (
-              <button
-                className="pa3 bg-black-10 bn dim ttu pointer"
-                onClick={this.authenticateUser}
-              >
-                Log in
-              </button>
-            )}
-        </div>
-      </div>
+          // redirect if user is logged in
+          if (me && me.id) return <Redirect to="/" />;
+
+          return (
+            <div className="w-100 pa4 flex justify-center">
+              <div style={{ maxWidth: 400 }} className="">
+                <input
+                  className="w-100 pa3 mv2"
+                  value={this.state.email}
+                  placeholder="Email"
+                  onChange={e => this.setState({ email: e.target.value })}
+                />
+                <input
+                  className="w-100 pa3 mv2"
+                  type="password"
+                  value={this.state.password}
+                  placeholder="Password"
+                  onChange={e => this.setState({ password: e.target.value })}
+                />
+
+                {this.state.email &&
+                  this.state.password && (
+                    <button
+                      className="pa3 bg-black-10 bn dim ttu pointer"
+                      onClick={this.authenticateUser}
+                    >
+                      Log in
+                    </button>
+                  )}
+              </div>
+            </div>
+          );
+        }}
+      </Me>
     );
   }
 }
-
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    me {
-      id
-    }
-  }
-`;
-export const LoginForm = compose(
-  graphql(LOGGED_IN_USER_QUERY, {
-    name: 'loggedInUserQuery',
-    options: { fetchPolicy: 'network-only' },
-  })
-)(withRouter(CreateLoginForm));
