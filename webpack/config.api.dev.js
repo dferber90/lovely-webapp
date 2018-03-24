@@ -5,6 +5,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { NodeServerPlugin } = require('webpack-node-server-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const outputPath = path.join(process.cwd(), 'dist-development', 'api');
 module.exports = {
@@ -48,6 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(['dist-development/api/*']),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
     new CopyWebpackPlugin([
       {

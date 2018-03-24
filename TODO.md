@@ -13,12 +13,10 @@
 
 ## Webpack
 
-* CleanWebpackPlugin
 * long-term caching
 * optimize images
 * fix sourcemaps
 * figure out how to configure babel-preset-env, so that we can remove babel-polyfill from entry ponit for servers, while still keeping async/await working (e.g. render a component on server which has async-await syntax)
-* compile api (graphql)
 
 ## Apollo
 
@@ -28,7 +26,7 @@
 ## Server-Side Rendering
 
 * enable turning SSR on/off based on load
-* turn off 404 fallbak for static assets (either by putting public assets in a separate folder for which we disable SSR or by checking extension on URL)
+* turn off 404 fallback for static assets (either by putting public assets in a separate folder for which we disable SSR or by checking extension on URL)
 * serialize-javascript package?
 
 ## GraphCool

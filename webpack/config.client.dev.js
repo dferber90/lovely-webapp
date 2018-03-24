@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const publicPath = '/assets/';
 const outputPath = path.join(
@@ -62,6 +63,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(['dist-development/frontend/*']),
     new webpack.DefinePlugin({
       SERVER: 'false',
       DEV: 'true',

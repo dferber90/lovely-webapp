@@ -5,6 +5,7 @@ const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const publicPath = '/assets/';
 const outputPath = path.join(
@@ -78,6 +79,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(['dist-production/frontend/*']),
     new webpack.DefinePlugin({
       SERVER: 'false',
       DEV: 'false',
