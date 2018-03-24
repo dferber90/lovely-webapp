@@ -1,13 +1,12 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { APP_SECRET } = require('./app-secret');
 
 function getUserId(context) {
   const Authorization =
     context.request.get('Authorization') || context.request.cookies.authToken;
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
-    const { userId } = jwt.verify(token, APP_SECRET);
+    const { userId } = jwt.verify(token, process.env.APP_SECRET);
     return userId;
   }
 
@@ -23,9 +22,9 @@ const prismaOptions = {
   // the generated Prisma DB schema
   typeDefs: './generated/prisma.graphql',
   // the endpoint of the Prisma DB service
-  endpoint: 'https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev',
+  endpoint: process.env.PRISMA_ENDPOINT,
   // specified in database/prisma.yml
-  secret: 'mysecret123',
+  secret: process.env.PRISMA_SECRET,
   // log all GraphQL queries & mutations
   debug: true,
 };

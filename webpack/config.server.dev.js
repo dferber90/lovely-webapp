@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-const config = require('../config.json');
 const nodeExternals = require('webpack-node-externals');
 const { NodeServerPlugin } = require('webpack-node-server-plugin');
 
@@ -80,9 +80,7 @@ module.exports = {
       SERVER: 'true',
       DEV: 'true',
     }),
-    new webpack.EnvironmentPlugin({
-      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
-    }),
+    new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
     new NodeServerPlugin({
       spawnOptions: { stdio: 'inherit', cwd: 'dist-development/frontend' },
     }),

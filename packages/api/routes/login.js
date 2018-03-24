@@ -1,6 +1,5 @@
 const { Prisma } = require('prisma-binding');
 const bodyParser = require('body-parser');
-const { APP_SECRET } = require('../app-secret');
 const { createToken, comparePasswords, prismaOptions } = require('../utils');
 
 const login = [
@@ -30,7 +29,7 @@ const login = [
       return next();
     }
 
-    const token = createToken(user.id, APP_SECRET);
+    const token = createToken(user.id, process.env.APP_SECRET);
 
     res.cookie('authToken', token, {
       maxAge: 1000 * 60 * 15, // expire after 15 minutes

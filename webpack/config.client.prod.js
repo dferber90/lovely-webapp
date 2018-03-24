@@ -5,7 +5,6 @@ const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(
@@ -87,9 +86,7 @@ module.exports = {
     new StatsWriterPlugin({
       filename: '../stats.json',
     }),
-    new webpack.EnvironmentPlugin({
-      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
-    }),
+    new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
     new UglifyJSPlugin({
       sourceMap: true,
       parallel: true,

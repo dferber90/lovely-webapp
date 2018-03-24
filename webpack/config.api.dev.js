@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
-const config = require('../config.json');
 const nodeExternals = require('webpack-node-externals');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { NodeServerPlugin } = require('webpack-node-server-plugin');
@@ -63,16 +63,21 @@ module.exports = {
         from: path.join(process.cwd(), 'packages', 'api', 'generated'),
         to: path.join(process.cwd(), 'dist-development', 'api', 'generated'),
       },
+      {
+        from: path.join(process.cwd(), '.env'),
+        to: path.join(process.cwd(), 'dist-development', 'api'),
+      },
     ]),
     new webpack.DefinePlugin({
       SERVER: 'true',
       DEV: 'true',
     }),
-    new webpack.EnvironmentPlugin({
-      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
-    }),
+    new webpack.EnvironmentPlugin(['APP_SECRET', 'PRISMA_SECRET']),
     new NodeServerPlugin({
-      spawnOptions: { stdio: 'inherit', cwd: 'dist-development/api' },
+      spawnOptions: {
+        stdio: 'inherit',
+        cwd: 'dist-development/api',
+      },
     }),
   ],
 };

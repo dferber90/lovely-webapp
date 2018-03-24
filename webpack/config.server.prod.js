@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(process.cwd(), 'dist-production', 'frontend');
@@ -75,13 +74,14 @@ module.exports = {
         from: path.join(process.cwd(), 'static'),
         to: path.join(outputPath, 'static'),
       },
+      {
+        from: path.join(process.cwd(), '.env'),
+        to: outputPath,
+      },
     ]),
     new webpack.DefinePlugin({
       SERVER: 'true',
       DEV: 'false',
-    }),
-    new webpack.EnvironmentPlugin({
-      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
     }),
   ],
   externals: [

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
-const config = require('../config.json');
 
 const publicPath = '/assets/';
 const outputPath = path.join(
@@ -66,9 +66,7 @@ module.exports = {
       SERVER: 'false',
       DEV: 'true',
     }),
-    new webpack.EnvironmentPlugin({
-      GRAPHQL_ENDPOINT: config.GRAPHQL_ENDPOINT,
-    }),
+    new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
   ],
   serve: {
     content: [

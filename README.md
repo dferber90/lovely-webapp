@@ -12,6 +12,16 @@ $ yarn config set workspaces-experimental true
 
 [Blog post](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
 
+### Create environment file
+
+Create a `.env` file to root directory of this project with the following content:
+
+```
+GRAPHQL_ENDPOINT=http://localhost:4000
+APP_SECRET=foo
+PRISMA_SECRET=bar
+```
+
 ### Start Development
 
 You can start the frontend and the backend simultaneously with
@@ -95,3 +105,18 @@ https://console.graph.cool/wa/playground
 
 The app uses a design-system. It lives in `packages/design-system` and is
 based on [rebass](http://jxnblk.com/rebass/) which is in turn built with [styled-components](https://github.com/styled-components/styled-components), [styled-system](https://github.com/jxnblk/styled-system) and [grid-styled](https://github.com/jxnblk/grid-styled).
+
+## Environments
+
+### API
+
+* `process.env.APP_SECRET`
+* `process.env.PRISMA_SECRET`
+
+### Client
+
+* `process.env.GRAPHQL_ENDPOINT`
+
+### Server
+
+* `process.env.GRAPHQL_ENDPOINT`

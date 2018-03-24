@@ -5,6 +5,8 @@
 * auth
 * mail
 * file uploads
+* checker for new release (check git version of server every x secs)
+* Use declarative Apollo components
 
 ## Auth
 
@@ -12,6 +14,7 @@
 
 ## Webpack
 
+* CleanWebpackPlugin
 * long-term caching
 * optimize images
 * fix sourcemaps
@@ -27,6 +30,7 @@
 
 * enable turning SSR on/off based on load
 * turn off 404 fallbak for static assets (either by putting public assets in a separate folder for which we disable SSR or by checking extension on URL)
+* serialize-javascript package?
 
 ## GraphCool
 

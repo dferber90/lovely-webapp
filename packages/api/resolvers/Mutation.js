@@ -1,4 +1,3 @@
-const { APP_SECRET } = require('../app-secret');
 const {
   getUserId,
   createToken,
@@ -12,7 +11,7 @@ async function signup(parent, args, context) {
     data: { ...args, password },
   });
 
-  const token = createToken(user.id, APP_SECRET);
+  const token = createToken(user.id, process.env.APP_SECRET);
 
   return {
     token,
@@ -31,7 +30,7 @@ async function login(parent, args, context) {
     throw new Error('Invalid password');
   }
 
-  const token = createToken(user.id, APP_SECRET);
+  const token = createToken(user.id, process.env.APP_SECRET);
 
   return {
     token,
