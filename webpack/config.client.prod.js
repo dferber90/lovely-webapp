@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
@@ -25,7 +26,7 @@ module.exports = {
   output: {
     path: outputPath,
     publicPath,
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].bundle.js',
     chunkFilename: '[chunkhash].chunk.js',
   },
   optimization: {
