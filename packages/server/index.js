@@ -21,6 +21,12 @@ const app = new Koa();
 const router = new Router();
 
 app.use(mount('/assets', serve('assets')));
+// serve 404 with no content for assets (instead of falling back to ssr)
+app.use(
+  mount('/assets', ctx => {
+    ctx.status = 404;
+  })
+);
 
 router.get('/server-side', ctx => {
   ctx.body = '<html>Hello World! <a href="/">Back</a></html>';
