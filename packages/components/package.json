@@ -13,6 +13,7 @@
     "@wa/design-system": "*",
     "enzyme-matchers": "6.0.0",
     "enzyme-to-json": "3.3.3",
+    "formik": "0.11.11",
     "graphql": "0.13.2",
     "graphql-tag": "2.8.0",
     "prop-types": "15.6.1",
@@ -21,7 +22,8 @@
     "react-helmet": "5.2.0",
     "react-loadable": "5.3.1",
     "react-router-dom": "4.2.2",
-    "styled-components": "3.2.3"
+    "styled-components": "3.2.3",
+    "url-regex": "4.1.1"
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "1.5.0",
