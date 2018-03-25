@@ -5,8 +5,14 @@
   "main": "index.js",
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
   "dependencies": {
     "@wa/design-system": "*",
+    "enzyme-matchers": "6.0.0",
+    "enzyme-to-json": "3.3.3",
     "graphql": "0.13.2",
     "graphql-tag": "2.8.0",
     "prop-types": "15.6.1",
@@ -22,6 +28,9 @@
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-react-remove-prop-types": "0.4.13"
+    "babel-plugin-transform-react-remove-prop-types": "0.4.13",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "jest": "22.4.3"
   }
 }

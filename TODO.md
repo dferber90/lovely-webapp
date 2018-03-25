@@ -30,11 +30,6 @@
 * add permissions / restricted views
 * add subscriptions (https://www.howtographql.com/graphql-js/6-subscriptions/)
 
-## Dev Exp
-
-* add Jest
-* add Enzyme
-
 ## CI / CD
 
 * setup CircleCI
@@ -46,3 +41,4 @@
   * We copy the yarn file as well so that the dependency versions are locked
   * All packages need to have `dependencies` of the same versions. We ensure this through the script generating the `package.json` file.
   * Once `now` supports workspaces we can copy the workspaces declaration from the main `package.json` file and copy each workspace-package's `package.json` file. We can then remove the workaround we have for now.
+* Use `yarn workspaces run` command instead of concurrently to run tests

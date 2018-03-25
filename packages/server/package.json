@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
   "dependencies": {
     "@wa/components": "*",
     "apollo-cache-inmemory": "1.1.11",
@@ -41,6 +45,7 @@
     "babel-plugin-transform-do-expressions": "6.22.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
-    "babel-preset-env": "1.6.1"
+    "babel-preset-env": "1.6.1",
+    "jest": "22.4.3"
   }
 }

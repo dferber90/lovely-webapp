@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Dominik Ferber <dominik.ferber+npm@gmail.com> (http://dferber.de/)",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
   "dependencies": {
     "prop-types": "15.6.1",
     "react": "16.2.0",
@@ -16,6 +20,9 @@
   "devDependencies": {
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-react-remove-prop-types": "0.4.13"
+    "babel-plugin-transform-react-remove-prop-types": "0.4.13",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "jest": "22.4.3"
   }
 }
