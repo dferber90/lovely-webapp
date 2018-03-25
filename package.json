@@ -20,7 +20,8 @@
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start\" \"pushd dist-production/frontend; yarn start\"",
-    "test": "echo not implemented"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "workspaces": [
     "packages/*"
@@ -28,6 +29,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.2.2",
+    "babel-jest": "22.4.3",
     "babel-loader": "7.1.4",
     "clean-webpack-plugin": "0.1.19",
     "compression-webpack-plugin": "1.1.11",
@@ -44,6 +46,7 @@
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
     "graphql-cli": "2.15.8",
+    "jest": "22.4.3",
     "koa-connect": "2.0.1",
     "lodash.flatten": "4.4.0",
     "lodash.omit": "4.5.0",

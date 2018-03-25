@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 function getUserId(context) {
-  const Authorization =
+  const authorization =
     context.request.get('Authorization') || context.request.cookies.authToken;
-  if (Authorization) {
-    const token = Authorization.replace('Bearer ', '');
+  if (authorization) {
+    const token = authorization.replace('Bearer ', '');
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
     return userId;
   }
@@ -26,7 +26,7 @@ const prismaOptions = {
   // specified in database/prisma.yml
   secret: process.env.PRISMA_SECRET,
   // log all GraphQL queries & mutations
-  debug: DEV,
+  debug: true,
 };
 
 module.exports = {
