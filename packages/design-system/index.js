@@ -5,7 +5,7 @@
 // However we need to reconfigure rebass to make it work with react-router
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider, NavLink } from 'rebass';
+import { Provider, NavLink, Flex, Box, Text } from 'rebass';
 import { Link } from 'react-router-dom';
 import sys from 'system-components';
 
@@ -19,10 +19,33 @@ NavItem.propTypes = { to: PropTypes.string };
 export const LocalLink = sys(
   {
     is: Link,
-    color: 'blue',
+    color: 'fuschia',
   },
   'space'
 );
+
+export const Breadcrumbs = ({ children }) => (
+  <Flex fontSize={12}>
+    {React.Children.map(children, (child, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <React.Fragment key={index}>
+        {index !== 0 && (
+          <Box mx={1}>
+            <Text color="grey">/</Text>
+          </Box>
+        )}
+        <Box>{child}</Box>
+      </React.Fragment>
+    ))}
+  </Flex>
+);
+Breadcrumbs.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export const BreadcrumbLink = LocalLink.extend`
+  text-decoration: none;
+`;
 
 export const ThemeProvider = props => (
   <Provider
@@ -30,6 +53,7 @@ export const ThemeProvider = props => (
     theme={{
       fonts: {
         sans: '"Avenir Next", Helvetica, sans-serif',
+        mono: 'Menlo, monospace',
       },
     }}
   />

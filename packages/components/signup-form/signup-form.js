@@ -3,7 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
+import { Input, Button, Measure, Label, Text } from '@wa/design-system';
 import gql from 'graphql-tag';
+import { FriendlyLoader } from '../friendly-loader';
 import { Me } from '../me';
 
 const CREATE_USER_MUTATION = gql`
@@ -27,13 +29,15 @@ class CreateSignupForm extends React.Component {
   };
 
   state = {
-    name: 'John',
+    name: '',
     email: '',
-    password: 'graphql',
+    password: '',
     loading: false,
   };
 
   authenticateUser = async () => {
+    // TODO use proper form validation with formik
+    if (!this.state.name || !this.state.email || !this.state.password) return;
     this.setState({ loading: true });
     try {
       await this.props.createUserMutation({
@@ -45,7 +49,6 @@ class CreateSignupForm extends React.Component {
       });
     } catch (error) {
       this.setState({ loading: false });
-      console.log(error);
       return;
     }
 
@@ -81,55 +84,48 @@ class CreateSignupForm extends React.Component {
     return (
       <Me>
         {({ error, loading, me }) => {
-          if (loading) {
-            return (
-              <div className="w-100 pa4 flex justify-center">
-                <div>Loading</div>
-              </div>
-            );
-          }
+          if (loading) return <FriendlyLoader />;
 
-          if (error)
-            return <div className="w-100 pa4 flex justify-center">Error</div>;
+          if (error) return <Text>Error</Text>;
 
           // redirect if user is logged in
           if (me && me.id) return <Redirect to="/" />;
 
           return (
-            <div className="w-100 pa4 flex justify-center">
-              <div style={{ maxWidth: 400 }} className="">
-                <input
-                  className="w-100 pa3 mv2"
-                  value={this.state.name}
-                  placeholder="Name"
-                  onChange={e => this.setState({ name: e.target.value })}
-                />
-                <input
-                  className="w-100 pa3 mv2"
-                  value={this.state.email}
-                  placeholder="Email"
-                  onChange={e => this.setState({ email: e.target.value })}
-                />
-                <input
-                  className="w-100 pa3 mv2"
-                  type="password"
-                  value={this.state.password}
-                  placeholder="Password"
-                  onChange={e => this.setState({ password: e.target.value })}
-                />
+            <Measure>
+              <Label htmlFor="signup-name">Name</Label>
+              <Input
+                id="signup-name"
+                value={this.state.name}
+                onChange={e => this.setState({ name: e.target.value })}
+              />
+              <Label htmlFor="signup-email" mt={2}>
+                Email
+              </Label>
+              <Input
+                id="signup-email"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+              <Label htmlFor="signup-password" mt={2}>
+                Password
+              </Label>
+              <Input
+                id="signup-password"
+                type="password"
+                value={this.state.password}
+                onChange={e => this.setState({ password: e.target.value })}
+              />
 
-                {this.state.email &&
-                  this.state.password && (
-                    <button
-                      className="pa3 bg-black-10 bn dim ttu pointer"
-                      onClick={this.authenticateUser}
-                      disabled={this.state.loading}
-                    >
-                      Sign up
-                    </button>
-                  )}
-              </div>
-            </div>
+              <Button
+                onClick={this.authenticateUser}
+                disabled={this.state.loading}
+                bg="fuschia"
+                mt={2}
+              >
+                Create account
+              </Button>
+            </Measure>
           );
         }}
       </Me>

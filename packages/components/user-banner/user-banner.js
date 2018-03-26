@@ -4,36 +4,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LocalLink } from '@wa/design-system';
 import { FriendlyLoader } from '../friendly-loader';
+import { Logout } from '../logout';
 
 class LogoutButton extends React.Component {
   static displayName = 'LogoutButton';
-  state = {
-    loading: false,
-  };
-  // remove cookie and reload page to reset apollo client
-  logout = async () => {
-    this.setState({ loading: true });
-    await fetch(`${process.env.GRAPHQL_ENDPOINT}/logout`, {
-      body: '{}',
-      headers: { 'content-type': 'application/json' },
-      method: 'POST',
-      // Sends and accepts cookies
-      // They won't be sent at all if this is not set
-      // It would be better to set this to 'same-origin'
-      credentials: 'include',
-    }).then(res => res.json());
-    this.setState({ loading: false });
-    window.location.reload();
-  };
   render() {
     return (
-      <button
-        className="dib bg-red white pa3 pointer dim"
-        disabled={this.state.loading}
-        onClick={this.logout}
-      >
-        Logout
-      </button>
+      <Logout to="/">
+        {({ loading, logout }) => (
+          <button
+            className="dib bg-red white pa3 pointer dim"
+            disabled={loading}
+            onClick={() => logout().then(() => {})}
+          >
+            Logout
+          </button>
+        )}
+      </Logout>
     );
   }
 }

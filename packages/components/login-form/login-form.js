@@ -1,9 +1,14 @@
 /* eslint-env browser */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Input, Button, Measure, Label } from '@wa/design-system';
 import { Me } from '../me';
 
 export class LoginForm extends React.Component {
+  static propTypes = {
+    to: PropTypes.string,
+  };
   state = {
     email: 'johndoe@graph.cool',
     password: 'graphql',
@@ -26,7 +31,11 @@ export class LoginForm extends React.Component {
 
       if (response.user) {
         // hard refresh so that user is taken into account everywhere
-        window.location.href = '/user';
+        if (this.props.to) {
+          window.location.href = this.props.to;
+        } else {
+          window.location.reload();
+        }
       } else {
         // eslint-disable-next-line no-alert
         alert('Failed login:', response.error);
@@ -60,33 +69,31 @@ export class LoginForm extends React.Component {
           if (me && me.id) return <Redirect to="/" />;
 
           return (
-            <div className="w-100 pa4 flex justify-center">
-              <div style={{ maxWidth: 400 }} className="">
-                <input
-                  className="w-100 pa3 mv2"
-                  value={this.state.email}
-                  placeholder="Email"
-                  onChange={e => this.setState({ email: e.target.value })}
-                />
-                <input
-                  className="w-100 pa3 mv2"
-                  type="password"
-                  value={this.state.password}
-                  placeholder="Password"
-                  onChange={e => this.setState({ password: e.target.value })}
-                />
-
-                {this.state.email &&
-                  this.state.password && (
-                    <button
-                      className="pa3 bg-black-10 bn dim ttu pointer"
-                      onClick={this.authenticateUser}
-                    >
-                      Log in
-                    </button>
-                  )}
-              </div>
-            </div>
+            <Measure>
+              <Label htmlFor="login-email">Email</Label>
+              <Input
+                id="login-email"
+                value={this.state.email}
+                placeholder="Email"
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+              <Label htmlFor="login-password" mt={2}>
+                Password
+              </Label>
+              <Input
+                id="login-password"
+                type="password"
+                value={this.state.password}
+                placeholder="Password"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+              {this.state.email &&
+                this.state.password && (
+                  <Button onClick={this.authenticateUser} bg="fuschia" mt={2}>
+                    Log in
+                  </Button>
+                )}
+            </Measure>
           );
         }}
       </Me>

@@ -5,8 +5,9 @@ import {
   Toolbar,
   NavItem,
   NavLink,
-  Flex,
-  Box,
+  Link,
+  Divider,
+  Text,
 } from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
@@ -55,7 +56,7 @@ export const Application = () => (
       <title>Webapp</title>
       <link rel="shortcut icon" href="/favicon.png" />
     </Helmet>
-    <Toolbar>
+    <Toolbar bg="fuschia" mb={2}>
       <NavItem to="/">PoC</NavItem>
       <NavItem ml="auto" to="/a">
         A
@@ -69,43 +70,46 @@ export const Application = () => (
       <NavItem to="/redirect-to-home">Redirect</NavItem>
       <NavLink href="/server-side">Server Side</NavLink>
     </Toolbar>
-    <Flex>
-      <Box px={2} my={2}>
-        <Container>
-          <Switch>
-            <Route path="/" exact render={() => <LoadableToggle />} />
-            <Route path="/tour" exact render={() => <LoadableTour />} />
-            <Route path="/user" exact render={() => <UserPage />} />
-            <Route path="/login" exact render={() => <LoginForm />} />
-            <Route path="/signup" exact render={() => <SignupForm />} />
-            <Route path="/a" render={() => 'a'} />
-            <Route path="/image" render={() => <LoadableImagePage />} />
-            <Route
-              path="/data"
-              render={() => (
-                <React.Fragment>
-                  <Data />
-                </React.Fragment>
-              )}
-            />
-            <Route
-              path="/protected"
-              render={() => (
-                <Me>
-                  {({ loading, error, me }) => {
-                    if (error || loading)
-                      return <FriendlyLoader error={error} />;
-                    if (!me) return 'No Access';
-                    return 'Welcome to protected route';
-                  }}
-                </Me>
-              )}
-            />
-            <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
-            <Route component={NotFound} />
-          </Switch>
-        </Container>
-      </Box>
-    </Flex>
+    <Container>
+      <Switch>
+        <Route path="/" exact render={() => <LoadableToggle />} />
+        <Route path="/tour" render={() => <LoadableTour />} />
+        <Route path="/user" exact render={() => <UserPage />} />
+        <Route path="/login" exact render={() => <LoginForm to="/" />} />
+        <Route path="/signup" exact render={() => <SignupForm />} />
+        <Route path="/a" render={() => 'a'} />
+        <Route path="/image" render={() => <LoadableImagePage />} />
+        <Route
+          path="/data"
+          render={() => (
+            <React.Fragment>
+              <Data />
+            </React.Fragment>
+          )}
+        />
+        <Route
+          path="/protected"
+          render={() => (
+            <Me>
+              {({ loading, error, me }) => {
+                if (error || loading) return <FriendlyLoader error={error} />;
+                if (!me) return 'No Access';
+                return 'Welcome to protected route';
+              }}
+            </Me>
+          )}
+        />
+        <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
+        <Route component={NotFound} />
+      </Switch>
+    </Container>
+    <Container>
+      <Divider />
+      <Text fontSize={12} pt={2} mb={4} align="center">
+        <Link href="https://www.dferber.de" target="_blank">
+          dferber.de
+        </Link>
+      </Text>
+    </Container>
   </ThemeProvider>
 );
