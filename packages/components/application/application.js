@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Provider,
+  ThemeProvider,
   Container,
   Toolbar,
   NavItem,
@@ -27,6 +27,13 @@ injectGlobal`
   body { margin: 0; padding: 0; }
 `;
 
+const LoadableTour = Loadable({
+  loader: () => import('../tour'),
+  // eslint-disable-next-line react/prop-types
+  render: ({ Tour }, props) => <Tour {...props} />,
+  loading: Loading,
+});
+
 const LoadableToggle = Loadable({
   loader: () => import('../toggle'),
   // eslint-disable-next-line react/prop-types
@@ -42,7 +49,7 @@ const LoadableImagePage = Loadable({
 });
 
 export const Application = () => (
-  <Provider>
+  <ThemeProvider>
     <Helmet>
       <meta charSet="utf-8" />
       <title>Webapp</title>
@@ -53,6 +60,7 @@ export const Application = () => (
       <NavItem ml="auto" to="/a">
         A
       </NavItem>
+      <NavItem to="/tour">Tour</NavItem>
       <NavItem to="/user">User</NavItem>
       <NavItem to="/protected">Protected</NavItem>
       <NavItem to="/image">Image</NavItem>
@@ -66,6 +74,7 @@ export const Application = () => (
         <Container>
           <Switch>
             <Route path="/" exact render={() => <LoadableToggle />} />
+            <Route path="/tour" exact render={() => <LoadableTour />} />
             <Route path="/user" exact render={() => <UserPage />} />
             <Route path="/login" exact render={() => <LoginForm />} />
             <Route path="/signup" exact render={() => <SignupForm />} />
@@ -98,5 +107,5 @@ export const Application = () => (
         </Container>
       </Box>
     </Flex>
-  </Provider>
+  </ThemeProvider>
 );

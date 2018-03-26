@@ -5,7 +5,7 @@
 // However we need to reconfigure rebass to make it work with react-router
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'rebass';
+import { Provider, NavLink } from 'rebass';
 import { Link } from 'react-router-dom';
 import sys from 'system-components';
 
@@ -22,6 +22,17 @@ export const LocalLink = sys(
     color: 'blue',
   },
   'space'
+);
+
+export const ThemeProvider = props => (
+  <Provider
+    {...props}
+    theme={{
+      fonts: {
+        sans: '"Avenir Next", Helvetica, sans-serif',
+      },
+    }}
+  />
 );
 
 LocalLink.displayName = 'LocalLink';
