@@ -20,7 +20,7 @@
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start\" \"pushd dist-production/frontend; yarn start\"",
-    "test": "concurrently --names \"api,client,components,design-system,server\" \"pushd packages/api; yarn test\" \"pushd packages/client; yarn test\" \"pushd packages/components; yarn test\" \"pushd packages/design-system; yarn test\" \"pushd packages/server; yarn test\""
+    "test": "wsrun test"
   },
   "workspaces": [
     "packages/*"
@@ -55,6 +55,7 @@
     "webpack-node-externals": "1.6.0",
     "webpack-node-server-plugin": "1.0.0",
     "webpack-serve": "0.2.0",
-    "webpack-stats-plugin": "0.2.1"
+    "webpack-stats-plugin": "0.2.1",
+    "wsrun": "2.0.0"
   }
 }
