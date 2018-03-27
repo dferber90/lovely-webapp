@@ -70,8 +70,8 @@ module.exports = {
         to: path.join(process.cwd(), 'dist-production', 'api', 'package.json'),
       },
       {
-        from: path.join(process.cwd(), '.env'),
-        to: path.join(process.cwd(), 'dist-production', 'api'),
+        from: path.join(process.cwd(), 'now', 'api.now.json'),
+        to: path.join(process.cwd(), 'dist-production', 'api', 'now.json'),
       },
     ]),
     new webpack.DefinePlugin({

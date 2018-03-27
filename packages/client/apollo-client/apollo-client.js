@@ -43,7 +43,7 @@ export const apolloClient = new ApolloClient({
     errorLink,
     authLink,
     new HttpLink({
-      uri: process.env.GRAPHQL_ENDPOINT,
+      uri: window.CONFIG.GRAPHQL_ENDPOINT,
       credentials: 'include',
     }),
   ]),

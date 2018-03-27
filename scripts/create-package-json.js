@@ -60,8 +60,14 @@ const pkg = {
   private: true,
   scripts: {
     start: 'NODE_ENV=production node --require dotenv/config server.js',
+    deploy:
+      'now -e NODE_ENV=production -e GRAPHQL_ENDPOINT --token $NOW_TOKEN --npm',
+    alias: 'now alias --token=$NOW_TOKEN',
   },
-  dependencies: omit(allDeps, excludedPkgs),
+  dependencies: {
+    dotenv: '5.0.1',
+    ...omit(allDeps, excludedPkgs),
+  },
 };
 
 fs.outputFileSync(

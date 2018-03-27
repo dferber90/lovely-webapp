@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node --require dotenv/config index.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "deploy": "now -e NODE_ENV=production -e APP_SECRET -e PRISMA_SECRET --token $NOW_TOKEN --npm",
+    "alias": "now alias --token=$NOW_TOKEN"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",

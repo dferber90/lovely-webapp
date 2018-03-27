@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack/config.prod.js",
+    "postbuild": "rm dist-production/frontend/assets/*.map",
     "build-and-run": "yarn build && yarn start:build",
     "build:client": "webpack --config webpack/config.client.prod.js",
     "build:server": "webpack --config webpack/config.server.prod.js",

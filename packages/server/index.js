@@ -78,6 +78,10 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
           .join('\n');
       };
 
+  const config = {
+    GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+  };
+
   return `
     <!DOCTYPE html>
     <html ${helmet.htmlAttributes.toString()}>
@@ -89,6 +93,7 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
       </head>
       <body ${helmet.bodyAttributes.toString()}>
         <div id="app">${body}</div>
+        <script>window.CONFIG=${JSON.stringify(config)};</script>
         ${dataScript}
         ${appBundle}
         ${loadableBundles}

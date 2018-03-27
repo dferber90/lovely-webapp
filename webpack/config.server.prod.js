@@ -75,8 +75,8 @@ module.exports = {
         to: path.join(outputPath, 'static'),
       },
       {
-        from: path.join(process.cwd(), '.env'),
-        to: outputPath,
+        from: path.join(process.cwd(), 'now', 'frontend.now.json'),
+        to: path.join(outputPath, 'now.json'),
       },
     ]),
     new webpack.DefinePlugin({
