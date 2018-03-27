@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo $(pwd)
-
-yarn build
-
 pushd dist-production/api
 yarn run deploy
 yarn run alias
