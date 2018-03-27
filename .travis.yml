@@ -7,11 +7,11 @@ before_script:
 script:
 - yarn lint
 - yarn test
-- yarn build
 deploy:
   skip_cleanup: true
   provider: script
   script:
+  - yarn build
   - bash scripts/deploy.sh
   on:
     branch: master
