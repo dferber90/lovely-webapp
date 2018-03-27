@@ -12,8 +12,6 @@
   "dependencies": {
     "@wa/design-system": "*",
     "cookies-js": "1.2.3",
-    "enzyme-matchers": "6.0.0",
-    "enzyme-to-json": "3.3.3",
     "formik": "0.11.11",
     "graphql": "0.13.2",
     "graphql-tag": "2.8.0",
@@ -34,6 +32,8 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.13",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-matchers": "6.0.0",
+    "enzyme-to-json": "3.3.3",
     "jest": "22.4.3"
   }
 }

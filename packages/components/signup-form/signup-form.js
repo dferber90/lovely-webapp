@@ -1,8 +1,6 @@
 /* eslint-env browser */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
-import { graphql, compose } from 'react-apollo';
 import { Input, PrimaryButton, Measure, Label, Text } from '@wa/design-system';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
@@ -26,10 +24,6 @@ const CREATE_USER_MUTATION = gql`
 `;
 
 class CreateSignupForm extends React.Component {
-  static propTypes = {
-    createUserMutation: PropTypes.func.isRequired,
-  };
-
   state = {
     name: '',
     email: '',
@@ -37,11 +31,11 @@ class CreateSignupForm extends React.Component {
     loading: false,
   };
 
-  authenticateUser = async (createAccount) => {
+  authenticateUser = async createAccount => {
     // TODO use proper form validation with formik
     if (!this.state.name || !this.state.email || !this.state.password) return;
     this.setState({ loading: true });
-    let response
+    let response;
     try {
       response = await createAccount({
         variables: {

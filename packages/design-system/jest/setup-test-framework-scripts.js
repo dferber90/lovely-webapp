@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint-disable import/no-extraneous-dependencies */
 import enzymeMatchers from 'enzyme-matchers';
 import serializer from 'enzyme-to-json/serializer';
 
