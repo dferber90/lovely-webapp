@@ -4,12 +4,16 @@ node_js:
 cache: yarn
 before_script:
 - yarn global add now
+script:
 - yarn lint
 - yarn test
-script:
+after_success:
 - yarn build
-- pushd dist-production/api; yarn run deploy; yarn run alias
-- pushd dist-production/frontend; yarn run deploy; yarn run alias
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
 env:
   global:
     secure: YfP3aw0rkk1d4TZxLW04lrw4ySQktg4PfCOFD9L3In3Aaxb9RtVqSUY/KbfvpveHtLPYyexLJqDFYilGNRz9eGA9/2K61uFln+JOPDm5He7vrs3Dih0rcuWqaYpt1RZzQfCSh16D9WA54fxNKWnxQAlpS7+cSRGyNYQVA1EoAymln4R8c83Q9+iEFCcCcuPUWFF9LVjb5e0dSD5HFIsBRzG/VSBy6819SCmDl94LhaQngyeiAgswkBy94hp999Ccir7kWShL7TZ/yC4K6qtaHd5oUl6FPBVqTNxIWQtbKhSmt1qyjFhVtIcfRaEQKiT4pT4ztm3yBk5TzR7Z6T/x3EJKRStyivKY4CKJfnAI501mD+90H/M2g6FfQhHBUXSXRhXoHCxw4ZNNeSs84Bdjeu2evQx62VytHR5Wh7aAqZpGWEuBiWWuzyykkT/DBaG4heS9F2maYjNwuErtAdwKQS0vhmPqLVOS+/BWHK52yDsp1VJHkB9nFyza2cF8wPs1PCqeamIc2R5jWQAFxq4LSzHyTHGA0Mnqjvuha20bAZlXfis0oh7JINN6cRu0beOj2tx1/VGt2UoHwLQ7hGythHsl33NKEezGsLR/bc8ujqDy7/ds9gtkeaA0AswtOckzGP9PqmHyVJW2abMw5Trvo1IPVblrnhCBgTA0RgfwiUM=
