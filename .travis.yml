@@ -6,7 +6,7 @@ before_script:
 - yarn global add now
 script:
 - yarn lint
-# - yarn test
+- yarn test
 - yarn build
 deploy:
   skip_cleanup: true
