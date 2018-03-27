@@ -1,6 +1,7 @@
 /* eslint-env browser */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Cookies from 'cookies-js';
 
 export class Logout extends React.Component {
   static displayName = 'Logout';
@@ -10,18 +11,9 @@ export class Logout extends React.Component {
   };
   state = { loading: false };
   // remove cookie and reload page to reset apollo client
-  logout = async () => {
-    this.setState({ loading: true });
-    await fetch(`${process.env.GRAPHQL_ENDPOINT}/logout`, {
-      body: '{}',
-      headers: { 'content-type': 'application/json' },
-      method: 'POST',
-      // Sends and accepts cookies
-      // They won't be sent at all if this is not set
-      // It would be better to set this to 'same-origin'
-      credentials: 'include',
-    }).then(res => res.json());
-    this.setState({ loading: false });
+  logout = () => {
+    // remove cookie and reload page to reset apollo client
+    Cookies.expire('authToken');
     if (this.props.to) {
       window.location.replace(this.props.to);
     } else {

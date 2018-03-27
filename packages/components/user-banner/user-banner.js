@@ -15,7 +15,7 @@ class LogoutButton extends React.Component {
           <button
             className="dib bg-red white pa3 pointer dim"
             disabled={loading}
-            onClick={() => logout().then(() => {})}
+            onClick={logout}
           >
             Logout
           </button>

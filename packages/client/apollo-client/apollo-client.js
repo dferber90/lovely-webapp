@@ -3,6 +3,7 @@ import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
+import Cookies from 'cookies-js';
 
 // taken from
 // - https://github.com/apollographql/GitHunt-React/blob/master/src/links.js
@@ -24,9 +25,23 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+const authLink = new ApolloLink((operation, forward) => {
+  const token = Cookies.get('authToken');
+  if (token) {
+    const authorizationHeader = `Bearer ${token}`;
+    operation.setContext({
+      headers: {
+        authorization: authorizationHeader,
+      },
+    });
+  }
+  return forward(operation);
+});
+
 export const apolloClient = new ApolloClient({
   link: ApolloLink.from([
     errorLink,
+    authLink,
     new HttpLink({
       uri: process.env.GRAPHQL_ENDPOINT,
       credentials: 'include',

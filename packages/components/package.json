@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@wa/design-system": "*",
+    "cookies-js": "1.2.3",
     "enzyme-matchers": "6.0.0",
     "enzyme-to-json": "3.3.3",
     "formik": "0.11.11",

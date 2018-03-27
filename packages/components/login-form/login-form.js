@@ -2,8 +2,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import Cookies from 'cookies-js';
 import { Input, PrimaryButton, Measure, Label } from '@wa/design-system';
 import { Me } from '../me';
+
+const AUTHENTICATE_USER_MUTATION = gql`
+  mutation AuthenticateUserMutation($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        id
+      }
+    }
+  }
+`;
 
 export class LoginForm extends React.Component {
   static propTypes = {
@@ -14,35 +28,27 @@ export class LoginForm extends React.Component {
     password: 'graphql',
   };
 
-  authenticateUser = async () => {
+  authenticateUser = async login => {
+    let response;
     try {
-      const response = await fetch(`${process.env.GRAPHQL_ENDPOINT}/login`, {
-        body: JSON.stringify({
+      response = await login({
+        variables: {
           email: this.state.email,
           password: this.state.password,
-        }),
-        headers: { 'content-type': 'application/json' },
-        method: 'POST',
-        // Sends and accepts cookies
-        // They won't be sent at all if this is not set
-        // It would be better to set this to 'same-origin'
-        credentials: 'include',
-      }).then(res => res.json());
+        },
+      });
+    } catch (e) {
+      // eslint-disable-next-line no-alert
+      alert('Invalid credentials');
+      return;
+    }
 
-      if (response.user) {
-        // hard refresh so that user is taken into account everywhere
-        if (this.props.to) {
-          window.location.href = this.props.to;
-        } else {
-          window.location.reload();
-        }
-      } else {
-        // eslint-disable-next-line no-alert
-        alert('Failed login:', response.error);
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
+    Cookies.set('authToken', response.data.login.token);
+
+    if (this.props.to) {
+      window.location.href = this.props.to;
+    } else {
+      window.location.reload();
     }
   };
 
@@ -89,9 +95,16 @@ export class LoginForm extends React.Component {
               />
               {this.state.email &&
                 this.state.password && (
-                  <PrimaryButton onClick={this.authenticateUser} mt={2}>
-                    Log in
-                  </PrimaryButton>
+                  <Mutation mutation={AUTHENTICATE_USER_MUTATION}>
+                    {login => (
+                      <PrimaryButton
+                        onClick={() => this.authenticateUser(login)}
+                        mt={2}
+                      >
+                        Log in
+                      </PrimaryButton>
+                    )}
+                  </Mutation>
                 )}
             </Measure>
           );

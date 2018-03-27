@@ -6,7 +6,6 @@ import {
   Text,
   Subhead,
   Card,
-  Link,
   Measure,
   PrimaryButton,
 } from '@wa/design-system';
@@ -112,16 +111,6 @@ export class TourAuth extends React.Component {
             </Me>
           </Card>
         </Measure>
-        <Subhead pt={4}>HTTP Cookie</Subhead>
-        <Text py={1}>
-          The client-side code can never access the cookie containing the
-          authentication token since the cookie is set using an HTTP-only flag.
-          This prevents{' '}
-          <Link href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">
-            XSS
-          </Link>{' '}
-          attacks.
-        </Text>
       </Page>
     );
   }
