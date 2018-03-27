@@ -69,16 +69,22 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(process.cwd(), 'static'),
-        to: path.join(outputPath, 'static'),
-      },
-      {
-        from: path.join(process.cwd(), 'now', 'frontend.now.json'),
-        to: path.join(outputPath, 'now.json'),
-      },
-    ]),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: path.join(process.cwd(), 'static'),
+          to: path.join(outputPath, 'static'),
+        },
+        {
+          from: path.join(process.cwd(), 'now', 'frontend.now.json'),
+          to: path.join(outputPath, 'now.json'),
+        },
+        !process.env.CI && {
+          from: path.join(process.cwd(), '.env'),
+          to: outputPath,
+        },
+      ].filter(Boolean)
+    ),
     new webpack.DefinePlugin({
       SERVER: 'true',
       DEV: 'false',

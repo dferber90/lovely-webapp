@@ -51,29 +51,40 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist-production/api/*']),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(process.cwd(), 'packages', 'api', 'schema.graphql'),
-        to: path.join(
-          process.cwd(),
-          'dist-production',
-          'api',
-          'schema.graphql'
-        ),
-      },
-      {
-        from: path.join(process.cwd(), 'packages', 'api', 'generated'),
-        to: path.join(process.cwd(), 'dist-production', 'api', 'generated'),
-      },
-      {
-        from: path.join(process.cwd(), 'packages', 'api', 'package.json'),
-        to: path.join(process.cwd(), 'dist-production', 'api', 'package.json'),
-      },
-      {
-        from: path.join(process.cwd(), 'now', 'api.now.json'),
-        to: path.join(process.cwd(), 'dist-production', 'api', 'now.json'),
-      },
-    ]),
+    new CopyWebpackPlugin(
+      [
+        {
+          from: path.join(process.cwd(), 'packages', 'api', 'schema.graphql'),
+          to: path.join(
+            process.cwd(),
+            'dist-production',
+            'api',
+            'schema.graphql'
+          ),
+        },
+        {
+          from: path.join(process.cwd(), 'packages', 'api', 'generated'),
+          to: path.join(process.cwd(), 'dist-production', 'api', 'generated'),
+        },
+        {
+          from: path.join(process.cwd(), 'packages', 'api', 'package.json'),
+          to: path.join(
+            process.cwd(),
+            'dist-production',
+            'api',
+            'package.json'
+          ),
+        },
+        {
+          from: path.join(process.cwd(), 'now', 'api.now.json'),
+          to: path.join(process.cwd(), 'dist-production', 'api', 'now.json'),
+        },
+        !process.env.CI && {
+          from: path.join(process.cwd(), '.env'),
+          to: path.join(process.cwd(), 'dist-production', 'api'),
+        },
+      ].filter(Boolean)
+    ),
     new webpack.DefinePlugin({
       SERVER: 'true',
       DEV: 'false',

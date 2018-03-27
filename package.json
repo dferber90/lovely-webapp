@@ -19,7 +19,7 @@
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
-    "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start\" \"pushd dist-production/frontend; yarn start\"",
+    "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start:local\" \"pushd dist-production/frontend; yarn start:local\"",
     "test": "wsrun test"
   },
   "workspaces": [
