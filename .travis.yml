@@ -3,10 +3,11 @@ node_js:
 - "node"
 cache: yarn
 before_script:
+- yarn global add now
 - yarn lint
 - yarn test
-script: yarn build
-after_script:
+script:
+- yarn build
 - pushd dist-production/api; yarn run deploy; yarn run alias
 - pushd dist-production/frontend; yarn run deploy; yarn run alias
 env:

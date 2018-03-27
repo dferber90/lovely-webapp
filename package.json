@@ -11,7 +11,6 @@
     "build:client": "webpack --config webpack/config.client.prod.js",
     "build:server": "webpack --config webpack/config.server.prod.js",
     "build:api": "webpack --config webpack/config.api.prod.js",
-    "deploy": "now --public dist-production",
     "lint": "eslint packages",
     "playground": "graphql playground",
     "prebuild": "node scripts/create-package-json.js",
