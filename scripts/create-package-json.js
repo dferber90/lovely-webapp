@@ -62,7 +62,7 @@ const pkg = {
     start: 'node server.js',
     'start:local': 'NODE_ENV=production node --require dotenv/config server.js',
     deploy:
-      'now -e NODE_ENV=production -e GRAPHQL_ENDPOINT --token $NOW_TOKEN --npm',
+      'now -e NODE_ENV=production -e GRAPHQL_ENDPOINT --token $NOW_TOKEN --npm  --public',
     alias: 'now alias --token=$NOW_TOKEN',
   },
   dependencies: omit(allDeps, excludedPkgs),

@@ -9,7 +9,7 @@
     "start:local": "NODE_ENV=production node --require dotenv/config index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "deploy": "now -e NODE_ENV=production -e APP_SECRET -e PRISMA_SECRET --token $NOW_TOKEN --npm",
+    "deploy": "now -e NODE_ENV=production -e APP_SECRET -e PRISMA_SECRET --token $NOW_TOKEN --npm --public",
     "alias": "now alias --token=$NOW_TOKEN"
   },
   "dependencies": {
