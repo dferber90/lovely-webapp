@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import { Input, Button, Measure, Label, Text } from '@wa/design-system';
+import { Input, PrimaryButton, Measure, Label, Text } from '@wa/design-system';
 import gql from 'graphql-tag';
 import { FriendlyLoader } from '../friendly-loader';
 import { Me } from '../me';
@@ -117,14 +117,13 @@ class CreateSignupForm extends React.Component {
                 onChange={e => this.setState({ password: e.target.value })}
               />
 
-              <Button
+              <PrimaryButton
                 onClick={this.authenticateUser}
                 disabled={this.state.loading}
-                bg="fuschia"
                 mt={2}
               >
                 Create account
-              </Button>
+              </PrimaryButton>
             </Measure>
           );
         }}

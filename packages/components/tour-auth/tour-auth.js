@@ -8,7 +8,7 @@ import {
   Card,
   Link,
   Measure,
-  Button,
+  PrimaryButton,
 } from '@wa/design-system';
 import { Page } from '../page';
 import { LoginForm } from '../login-form';
@@ -99,13 +99,12 @@ export class TourAuth extends React.Component {
                 return (
                   <Logout>
                     {logoutBag => (
-                      <Button
+                      <PrimaryButton
                         disabled={logoutBag.loading}
                         onClick={logoutBag.logout}
-                        bg="fuschia"
                       >
                         Logout
-                      </Button>
+                      </PrimaryButton>
                     )}
                   </Logout>
                 );

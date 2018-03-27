@@ -4,6 +4,14 @@ import { Formik } from 'formik';
 import urlRegex from 'url-regex';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
+import {
+  Input,
+  PrimaryButton,
+  Measure,
+  Label,
+  ErrorMessage,
+  Card,
+} from '@wa/design-system';
 
 const ADD_POST = gql`
   mutation addPost($url: String!, $description: String!) {
@@ -50,41 +58,52 @@ export const AddPostForm = props => (
           })
         }
         render={formikBag => (
-          <form onSubmit={formikBag.handleSubmit}>
-            <label htmlFor="url">
-              <p>Url</p>
-              <input
-                type="text"
-                id="url"
-                name="url"
-                value={formikBag.values.url}
-                onChange={formikBag.handleChange}
-                onBlur={formikBag.handleBlur}
-              />
-              {formikBag.touched.url &&
-                formikBag.errors.url === 'missing' && <div>Missing value</div>}
-              {formikBag.touched.url &&
-                formikBag.errors.url === 'invalid' && <div>Invalid value</div>}
-            </label>
-            <label htmlFor="description">
-              <p>Description</p>
-              <input
-                type="text"
-                id="description"
-                name="description"
-                value={formikBag.values.description}
-                onChange={formikBag.handleChange}
-                onBlur={formikBag.handleBlur}
-              />
-              {formikBag.touched.description &&
-                formikBag.errors.description === 'missing' && (
-                  <div>Missing value</div>
-                )}
-              <div>
-                <input type="submit" disabled={formikBag.isSubmitting} />
-              </div>
-            </label>
-          </form>
+          <Measure>
+            <Card p={3}>
+              <form onSubmit={formikBag.handleSubmit}>
+                <Label htmlFor="url">Url</Label>
+                <Input
+                  type="text"
+                  id="url"
+                  name="url"
+                  value={formikBag.values.url}
+                  onChange={formikBag.handleChange}
+                  onBlur={formikBag.handleBlur}
+                />
+                {formikBag.touched.url &&
+                  formikBag.errors.url === 'missing' && (
+                    <ErrorMessage>Missing value</ErrorMessage>
+                  )}
+                {formikBag.touched.url &&
+                  formikBag.errors.url === 'invalid' && (
+                    <ErrorMessage>Invalid value</ErrorMessage>
+                  )}
+
+                <Label htmlFor="description" mt={2}>
+                  Description
+                </Label>
+                <Input
+                  type="text"
+                  id="description"
+                  name="description"
+                  value={formikBag.values.description}
+                  onChange={formikBag.handleChange}
+                  onBlur={formikBag.handleBlur}
+                />
+                {formikBag.touched.description &&
+                  formikBag.errors.description === 'missing' && (
+                    <ErrorMessage>Missing value</ErrorMessage>
+                  )}
+                <PrimaryButton
+                  type="submit"
+                  disabled={formikBag.isSubmitting}
+                  mt={2}
+                >
+                  Add Post
+                </PrimaryButton>
+              </form>
+            </Card>
+          </Measure>
         )}
       />
     )}

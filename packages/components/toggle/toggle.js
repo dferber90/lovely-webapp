@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@wa/design-system';
+import { PrimaryButton } from '@wa/design-system';
 
 export class Toggle extends React.Component {
   constructor(...args) {
@@ -8,13 +8,13 @@ export class Toggle extends React.Component {
   }
   render() {
     return (
-      <Button
+      <PrimaryButton
         onClick={() => {
           this.setState(prevState => ({ on: !prevState.on }));
         }}
       >
         {this.state.on ? 'on' : 'off'}
-      </Button>
+      </PrimaryButton>
     );
   }
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { Input, Button, Measure, Label } from '@wa/design-system';
+import { Input, PrimaryButton, Measure, Label } from '@wa/design-system';
 import { Me } from '../me';
 
 export class LoginForm extends React.Component {
@@ -89,9 +89,9 @@ export class LoginForm extends React.Component {
               />
               {this.state.email &&
                 this.state.password && (
-                  <Button onClick={this.authenticateUser} bg="fuschia" mt={2}>
+                  <PrimaryButton onClick={this.authenticateUser} mt={2}>
                     Log in
-                  </Button>
+                  </PrimaryButton>
                 )}
             </Measure>
           );

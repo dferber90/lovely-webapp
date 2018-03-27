@@ -5,8 +5,9 @@
 // However we need to reconfigure rebass to make it work with react-router
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider, NavLink, Flex, Box, Text } from 'rebass';
+import { Provider, NavLink, Flex, Box, Text, Button } from 'rebass';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import sys from 'system-components';
 
 export * from 'rebass';
@@ -23,6 +24,11 @@ export const LocalLink = sys(
   },
   'space'
 );
+
+export const PrimaryButton = styled(Button)``;
+PrimaryButton.defaultProps = {
+  bg: 'fuschia',
+};
 
 export const Breadcrumbs = ({ children }) => (
   <Flex fontSize={12}>
@@ -58,5 +64,12 @@ export const ThemeProvider = props => (
     }}
   />
 );
+
+export const ErrorMessage = styled(Text)``;
+ErrorMessage.defaultProps = {
+  color: 'red',
+  fontSize: 12,
+  m: 1,
+};
 
 LocalLink.displayName = 'LocalLink';
