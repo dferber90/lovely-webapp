@@ -24,6 +24,7 @@ export class TourHome extends React.Component {
           <li>Image loading on server and client</li>
           <li>Page title and meta information</li>
           <li>Form with validation, error handling and immediate updates</li>
+          <li>Continuous Deployment</li>
         </ul>
         <Divider color="fuschia" />
         <ul>
