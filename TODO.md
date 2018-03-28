@@ -7,6 +7,10 @@
 * file uploads
 * checker for new release (check git version of server every x secs)
 
+## React
+
+* Preload data before navigation with Suspense
+
 ## Webpack
 
 * long-term caching

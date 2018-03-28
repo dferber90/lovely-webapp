@@ -5,6 +5,8 @@ const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const publicPath = '/assets/';
 const outputPath = path.join(
@@ -69,12 +71,19 @@ module.exports = {
       DEV: 'true',
     }),
     new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
+    new HtmlWebpackPlugin({
+      filename: '../static/index.html',
+      template: 'index.template.html',
+      alwaysWriteToDisk: true,
+      config: JSON.stringify({
+        GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+      }),
+    }),
+    // this plugin provideds the alwaysWriteToDisk option for HtmlWebpackPlugin
+    new HtmlWebpackHarddiskPlugin(),
   ],
   serve: {
-    content: [
-      'static',
-      path.join(process.cwd(), 'packages', 'client', 'static'),
-    ],
+    content: [path.join(outputPath, '..', 'static')],
     hot: {},
     clipboard: false,
     dev: { publicPath },
