@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, LocalLink, Divider, Subhead } from '@wa/design-system';
+import { Code, LocalLink, Divider, Lead } from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Page } from '../page';
 
@@ -9,12 +9,16 @@ export class TourHome extends React.Component {
     return (
       <Page heading="Tour" lead="Cool stuff this lovely site does">
         <Helmet>
-          <title>Tour of Webapp</title>
+          <title>Tour of Lovely Webapp</title>
         </Helmet>
-        <Subhead pt={2}>Showoff</Subhead>
+        <Lead>
+          The tour shows different features of this site. The tour will be
+          extended as the site grows. Articles about the stack will be released
+          once it hits a certain level of maturity.
+        </Lead>
         <ul>
           <li>
-            <LocalLink to="/tour/auth">Account System</LocalLink>
+            <LocalLink to="/tour/account-system">Account System</LocalLink>
           </li>
           <li>Server-Side Rendering & Data Inlining & Hydration</li>
           <li>Client-side Takeover</li>

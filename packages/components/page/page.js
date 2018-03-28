@@ -14,24 +14,24 @@ export class Page extends React.Component {
     return (
       <React.Fragment>
         <Flex>
-          <Box mx={[-2, 0, 4]} px={[-2, 0, 8]} pt={[0, 2]}>
+          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pt={[0, 2]}>
             <Heading>{this.props.heading}</Heading>
           </Box>
         </Flex>
         <Flex>
-          <Box mx={[-2, 0, 4]} px={[-2, 0, 8]} pt={0} pb={2}>
+          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pt={2} pb={2}>
             <Lead>{this.props.lead}</Lead>
           </Box>
         </Flex>
         {this.props.breadcrumbs && (
           <Flex>
-            <Box mx={[-2, 0, 4]} px={[-2, 0, 8]} pb={2}>
+            <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pb={2}>
               {this.props.breadcrumbs}
             </Box>
           </Flex>
         )}
         <Flex>
-          <Box mx={[-2, 0, 4]} px={[-2, 0, 8]} py={3}>
+          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} py={3}>
             {this.props.children}
           </Box>
         </Flex>

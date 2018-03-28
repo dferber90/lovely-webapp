@@ -5,9 +5,11 @@ import {
   Toolbar,
   NavItem,
   NavLink,
-  Link,
+  FooterLink,
   Divider,
   Text,
+  Flex,
+  Box,
 } from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
@@ -35,10 +37,10 @@ const LoadableTour = Loadable({
   loading: Loading,
 });
 
-const LoadableToggle = Loadable({
-  loader: () => import('../toggle'),
+const LoadableHome = Loadable({
+  loader: () => import('../home'),
   // eslint-disable-next-line react/prop-types
-  render: ({ Toggle }, props) => <Toggle {...props} />,
+  render: ({ Home }, props) => <Home {...props} />,
   loading: Loading,
 });
 
@@ -57,11 +59,10 @@ export const Application = () => (
       <link rel="shortcut icon" href="/favicon.png" />
     </Helmet>
     <Toolbar bg="fuschia" mb={2}>
-      <NavItem to="/">PoC</NavItem>
-      <NavItem ml="auto" to="/a">
-        A
+      <NavItem to="/">Lovely Webapp</NavItem>
+      <NavItem ml="auto" to="/tour">
+        Tour
       </NavItem>
-      <NavItem to="/tour">Tour</NavItem>
       <NavItem to="/user">User</NavItem>
       <NavItem to="/protected">Protected</NavItem>
       <NavItem to="/image">Image</NavItem>
@@ -72,21 +73,13 @@ export const Application = () => (
     </Toolbar>
     <Container>
       <Switch>
-        <Route path="/" exact render={() => <LoadableToggle />} />
-        <Route path="/tour" render={() => <LoadableTour />} />
-        <Route path="/user" exact render={() => <UserPage />} />
+        <Route path="/" exact component={LoadableHome} />
+        <Route path="/tour" component={LoadableTour} />
+        <Route path="/user" exact component={UserPage} />
         <Route path="/login" exact render={() => <LoginForm to="/" />} />
-        <Route path="/signup" exact render={() => <SignupForm />} />
-        <Route path="/a" render={() => 'a'} />
-        <Route path="/image" render={() => <LoadableImagePage />} />
-        <Route
-          path="/data"
-          render={() => (
-            <React.Fragment>
-              <Data />
-            </React.Fragment>
-          )}
-        />
+        <Route path="/signup" exact component={SignupForm} />
+        <Route path="/image" component={LoadableImagePage} />
+        <Route path="/data" component={Data} />
         <Route
           path="/protected"
           render={() => (
@@ -104,12 +97,16 @@ export const Application = () => (
       </Switch>
     </Container>
     <Container>
-      <Divider />
-      <Text fontSize={12} pt={2} mb={4} align="center">
-        <Link href="https://www.dferber.de" target="_blank">
-          dferber.de
-        </Link>
-      </Text>
+      <Flex>
+        <Box mx={[-2, 2, 6]} py={3}>
+          <Divider />
+          <Text fontSize={12} pt={2} mb={4} align="center">
+            <FooterLink href="https://www.dferber.de" target="_blank">
+              dferber.de
+            </FooterLink>
+          </Text>
+        </Box>
+      </Flex>
     </Container>
   </ThemeProvider>
 );

@@ -16,8 +16,8 @@ import { Me } from '../me';
 import { FriendlyLoader } from '../friendly-loader';
 import { Logout } from '../logout';
 
-export class TourAuth extends React.Component {
-  static displayName = 'TourAuth';
+export class TourAccountSystem extends React.Component {
+  static displayName = 'TourAccountSystem';
   render() {
     return (
       <Page
@@ -30,7 +30,7 @@ export class TourAuth extends React.Component {
         }
       >
         <Helmet>
-          <title>Account System of Webapp</title>
+          <title>Account System of Lovely Webapp</title>
         </Helmet>
         <Subhead pt={2} pb={1}>
           Account Creation
@@ -75,7 +75,7 @@ export class TourAuth extends React.Component {
                       form.
                     </Text>
                   );
-                return <LoginForm to="/tour/auth" />;
+                return <LoginForm to="/tour/account-system" />;
               }}
             </Me>
           </Card>

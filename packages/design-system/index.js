@@ -25,6 +25,14 @@ export const LocalLink = sys(
   'space'
 );
 
+export const FooterLink = styled.a`
+  text-decoration: none;
+  color: #aaa;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export const PrimaryButton = styled(Button)``;
 PrimaryButton.defaultProps = {
   bg: 'fuschia',
