@@ -1,5 +1,14 @@
 import React from 'react';
-import { Code, LocalLink, Divider, Lead } from '@wa/design-system';
+import {
+  Code,
+  LocalLink,
+  Divider,
+  Lead,
+  Flex,
+  Box,
+  Input,
+  PrimaryButton,
+} from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Page } from '../page';
 
@@ -14,8 +23,17 @@ export class TourHome extends React.Component {
         <Lead>
           The tour shows different features of this site. The tour will be
           extended as the site grows. Articles about the stack will be released
-          once it hits a certain level of maturity.
+          incrementally. Sign up below if you want to get notifications when new
+          articles are released.
         </Lead>
+        <Flex py={4} alignItems="center">
+          <Box width={2 / 4} px={2}>
+            <Input placeholder="Email" />
+          </Box>
+          <Box width={1 / 4} px={2}>
+            <PrimaryButton>Subscribe</PrimaryButton>
+          </Box>
+        </Flex>
         <ul>
           <li>
             <LocalLink to="/tour/account-system">Account System</LocalLink>

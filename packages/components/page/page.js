@@ -1,6 +1,9 @@
+/* eslint-env browser */
+/* eslint-disable react/no-multi-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Heading, Lead, Flex, Box } from '@wa/design-system';
+import { Heading, Lead, Flex, Box, LocalLink } from '@wa/design-system';
+import { ScrollToTop } from '../scroll-to-top';
 
 export class Page extends React.Component {
   static displayName = 'Page';
@@ -13,8 +16,16 @@ export class Page extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <ScrollToTop />
         <Flex>
-          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pt={[0, 2]}>
+          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pt={[0, 2]} mt={[3, 5]}>
+            <LocalLink to="/">
+              <img src="/favicon.png" alt="home" width="32" />
+            </LocalLink>
+          </Box>
+        </Flex>
+        <Flex>
+          <Box mx={[-2, 2, 6]} px={[-2, 0, 8]} pt={[0, 2]} mt={2}>
             <Heading>{this.props.heading}</Heading>
           </Box>
         </Flex>

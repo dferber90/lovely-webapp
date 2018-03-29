@@ -69,9 +69,18 @@ async function vote(parent, args, context, info) {
   );
 }
 
+async function subscribe(parent, args, context, info) {
+  const { email } = args;
+  return context.db.mutation.createNewsletterSubscriber({
+    data: { email },
+    info,
+  });
+}
+
 module.exports = {
   signup,
   login,
   post,
   vote,
+  subscribe,
 };

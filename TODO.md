@@ -7,9 +7,15 @@
 * file uploads
 * checker for new release (check git version of server every x secs)
 
+## Site
+
+* add Google Analytics
+* add ScrollToTop component
+
 ## React
 
 * Preload data before navigation with Suspense
+* Redbox
 
 ## Webpack
 

@@ -13,6 +13,11 @@ type Link implements Node {
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
 }
 
+type NewsletterSubscriber implements Node {
+  id: ID!
+  email: String!
+}
+
 type User implements Node {
   id: ID!
   name: String!
@@ -34,6 +39,10 @@ type Vote implements Node {
 #
 
 type AggregateLink {
+  count: Int!
+}
+
+type AggregateNewsletterSubscriber {
   count: Int!
 }
 
@@ -404,27 +413,243 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   createLink(data: LinkCreateInput!): Link!
   createVote(data: VoteCreateInput!): Vote!
+  createNewsletterSubscriber(data: NewsletterSubscriberCreateInput!): NewsletterSubscriber!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
   updateVote(data: VoteUpdateInput!, where: VoteWhereUniqueInput!): Vote
+  updateNewsletterSubscriber(data: NewsletterSubscriberUpdateInput!, where: NewsletterSubscriberWhereUniqueInput!): NewsletterSubscriber
   deleteUser(where: UserWhereUniqueInput!): User
   deleteLink(where: LinkWhereUniqueInput!): Link
   deleteVote(where: VoteWhereUniqueInput!): Vote
+  deleteNewsletterSubscriber(where: NewsletterSubscriberWhereUniqueInput!): NewsletterSubscriber
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
   upsertVote(where: VoteWhereUniqueInput!, create: VoteCreateInput!, update: VoteUpdateInput!): Vote!
+  upsertNewsletterSubscriber(where: NewsletterSubscriberWhereUniqueInput!, create: NewsletterSubscriberCreateInput!, update: NewsletterSubscriberUpdateInput!): NewsletterSubscriber!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput!): BatchPayload!
   updateManyLinks(data: LinkUpdateInput!, where: LinkWhereInput!): BatchPayload!
   updateManyVotes(data: VoteUpdateInput!, where: VoteWhereInput!): BatchPayload!
+  updateManyNewsletterSubscribers(data: NewsletterSubscriberUpdateInput!, where: NewsletterSubscriberWhereInput!): BatchPayload!
   deleteManyUsers(where: UserWhereInput!): BatchPayload!
   deleteManyLinks(where: LinkWhereInput!): BatchPayload!
   deleteManyVotes(where: VoteWhereInput!): BatchPayload!
+  deleteManyNewsletterSubscribers(where: NewsletterSubscriberWhereInput!): BatchPayload!
 }
 
 enum MutationType {
   CREATED
   UPDATED
   DELETED
+}
+
+"""
+A connection to a list of items.
+"""
+type NewsletterSubscriberConnection {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+  """
+  A list of edges.
+  """
+  edges: [NewsletterSubscriberEdge]!
+  aggregate: AggregateNewsletterSubscriber!
+}
+
+input NewsletterSubscriberCreateInput {
+  email: String!
+}
+
+"""
+An edge in a connection.
+"""
+type NewsletterSubscriberEdge {
+  """
+  The item at the end of the edge.
+  """
+  node: NewsletterSubscriber!
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+}
+
+enum NewsletterSubscriberOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type NewsletterSubscriberPreviousValues {
+  id: ID!
+  email: String!
+}
+
+type NewsletterSubscriberSubscriptionPayload {
+  mutation: MutationType!
+  node: NewsletterSubscriber
+  updatedFields: [String!]
+  previousValues: NewsletterSubscriberPreviousValues
+}
+
+input NewsletterSubscriberSubscriptionWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [NewsletterSubscriberSubscriptionWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [NewsletterSubscriberSubscriptionWhereInput!]
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: NewsletterSubscriberWhereInput
+}
+
+input NewsletterSubscriberUpdateInput {
+  email: String
+}
+
+input NewsletterSubscriberWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [NewsletterSubscriberWhereInput!]
+  """
+  Logical OR on all given filters.
+  """
+  OR: [NewsletterSubscriberWhereInput!]
+  id: ID
+  """
+  All values that are not equal to given value.
+  """
+  id_not: ID
+  """
+  All values that are contained in given list.
+  """
+  id_in: [ID!]
+  """
+  All values that are not contained in given list.
+  """
+  id_not_in: [ID!]
+  """
+  All values less than the given value.
+  """
+  id_lt: ID
+  """
+  All values less than or equal the given value.
+  """
+  id_lte: ID
+  """
+  All values greater than the given value.
+  """
+  id_gt: ID
+  """
+  All values greater than or equal the given value.
+  """
+  id_gte: ID
+  """
+  All values containing the given string.
+  """
+  id_contains: ID
+  """
+  All values not containing the given string.
+  """
+  id_not_contains: ID
+  """
+  All values starting with the given string.
+  """
+  id_starts_with: ID
+  """
+  All values not starting with the given string.
+  """
+  id_not_starts_with: ID
+  """
+  All values ending with the given string.
+  """
+  id_ends_with: ID
+  """
+  All values not ending with the given string.
+  """
+  id_not_ends_with: ID
+  email: String
+  """
+  All values that are not equal to given value.
+  """
+  email_not: String
+  """
+  All values that are contained in given list.
+  """
+  email_in: [String!]
+  """
+  All values that are not contained in given list.
+  """
+  email_not_in: [String!]
+  """
+  All values less than the given value.
+  """
+  email_lt: String
+  """
+  All values less than or equal the given value.
+  """
+  email_lte: String
+  """
+  All values greater than the given value.
+  """
+  email_gt: String
+  """
+  All values greater than or equal the given value.
+  """
+  email_gte: String
+  """
+  All values containing the given string.
+  """
+  email_contains: String
+  """
+  All values not containing the given string.
+  """
+  email_not_contains: String
+  """
+  All values starting with the given string.
+  """
+  email_starts_with: String
+  """
+  All values not starting with the given string.
+  """
+  email_not_starts_with: String
+  """
+  All values ending with the given string.
+  """
+  email_ends_with: String
+  """
+  All values not ending with the given string.
+  """
+  email_not_ends_with: String
+}
+
+input NewsletterSubscriberWhereUniqueInput {
+  id: ID
+  email: String
 }
 
 """
@@ -463,12 +688,15 @@ type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote]!
+  newsletterSubscribers(where: NewsletterSubscriberWhereInput, orderBy: NewsletterSubscriberOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [NewsletterSubscriber]!
   user(where: UserWhereUniqueInput!): User
   link(where: LinkWhereUniqueInput!): Link
   vote(where: VoteWhereUniqueInput!): Vote
+  newsletterSubscriber(where: NewsletterSubscriberWhereUniqueInput!): NewsletterSubscriber
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
   votesConnection(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VoteConnection!
+  newsletterSubscribersConnection(where: NewsletterSubscriberWhereInput, orderBy: NewsletterSubscriberOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NewsletterSubscriberConnection!
   """
   Fetches an object given its ID
   """
@@ -482,6 +710,7 @@ type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   link(where: LinkSubscriptionWhereInput): LinkSubscriptionPayload
   vote(where: VoteSubscriptionWhereInput): VoteSubscriptionPayload
+  newsletterSubscriber(where: NewsletterSubscriberSubscriptionWhereInput): NewsletterSubscriberSubscriptionPayload
 }
 
 """

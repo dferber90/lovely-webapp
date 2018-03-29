@@ -20,3 +20,8 @@ type Vote {
   link: Link!
   user: User!
 }
+
+type NewsletterSubscriber {
+  id: ID! @unique
+  email: String! @unique
+}

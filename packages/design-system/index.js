@@ -80,4 +80,11 @@ ErrorMessage.defaultProps = {
   m: 1,
 };
 
+export const SuccessMessage = styled(Text)``;
+SuccessMessage.defaultProps = {
+  color: 'green',
+  fontSize: 12,
+  m: 1,
+};
+
 LocalLink.displayName = 'LocalLink';

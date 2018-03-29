@@ -58,25 +58,27 @@ export const Application = () => (
       <title>Webapp</title>
       <link rel="shortcut icon" href="/favicon.png" />
     </Helmet>
-    <Toolbar bg="fuschia" mb={2}>
-      <NavItem to="/">Lovely Webapp</NavItem>
-      <NavItem ml="auto" to="/tour">
-        Tour
-      </NavItem>
-      <NavItem to="/user">User</NavItem>
-      <NavItem to="/protected">Protected</NavItem>
-      <NavItem to="/image">Image</NavItem>
-      <NavItem to="/data">Data</NavItem>
-      <NavItem to="/something-that-does-not-exist">404</NavItem>
-      <NavItem to="/redirect-to-home">Redirect</NavItem>
-      <NavLink href="/server-side">Server Side</NavLink>
-    </Toolbar>
+    {DEV && (
+      <Toolbar bg="fuschia" mb={2}>
+        <NavItem to="/">Lovely Webapp</NavItem>
+        <NavItem ml="auto" to="/tour">
+          Tour
+        </NavItem>
+        <NavItem to="/user">User</NavItem>
+        <NavItem to="/protected">Protected</NavItem>
+        <NavItem to="/image">Image</NavItem>
+        <NavItem to="/data">Data</NavItem>
+        <NavItem to="/something-that-does-not-exist">404</NavItem>
+        <NavItem to="/redirect-to-home">Redirect</NavItem>
+        <NavLink href="/server-side">Server Side</NavLink>
+      </Toolbar>
+    )}
     <Container>
       <Switch>
         <Route path="/" exact component={LoadableHome} />
         <Route path="/tour" component={LoadableTour} />
         <Route path="/user" exact component={UserPage} />
-        <Route path="/login" exact render={() => <LoginForm to="/" />} />
+        <Route path="/login" exact render={() => <LoginForm to="/user" />} />
         <Route path="/signup" exact component={SignupForm} />
         <Route path="/image" component={LoadableImagePage} />
         <Route path="/data" component={Data} />
