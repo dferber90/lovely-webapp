@@ -1,15 +1,15 @@
 import React from 'react';
 import {
   ThemeProvider,
-  Container,
-  Toolbar,
-  NavItem,
-  NavLink,
-  FooterLink,
-  Divider,
-  Text,
-  Flex,
-  Box,
+  // Container,
+  // Toolbar,
+  // NavItem,
+  // NavLink,
+  // FooterLink,
+  // Divider,
+  // Text,
+  // Flex,
+  // Box,
 } from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
@@ -44,6 +44,20 @@ const LoadableHome = Loadable({
   loading: Loading,
 });
 
+const LoadableRecipies = Loadable({
+  loader: () => import('../recipies'),
+  // eslint-disable-next-line react/prop-types
+  render: ({ Recipies }, props) => <Recipies {...props} />,
+  loading: Loading,
+});
+
+const LoadableComparison = Loadable({
+  loader: () => import('../comparison'),
+  // eslint-disable-next-line react/prop-types
+  render: ({ Comparison }, props) => <Comparison {...props} />,
+  loading: Loading,
+});
+
 const LoadableImagePage = Loadable({
   loader: () => import('../image-page'),
   // eslint-disable-next-line react/prop-types
@@ -58,7 +72,7 @@ export const Application = () => (
       <title>Webapp</title>
       <link rel="shortcut icon" href="/favicon.png" />
     </Helmet>
-    {DEV && (
+    {/* DEV && (
       <Toolbar bg="fuschia" mb={2}>
         <NavItem to="/">Lovely Webapp</NavItem>
         <NavItem ml="auto" to="/tour">
@@ -72,43 +86,32 @@ export const Application = () => (
         <NavItem to="/redirect-to-home">Redirect</NavItem>
         <NavLink href="/server-side">Server Side</NavLink>
       </Toolbar>
-    )}
-    <Container>
-      <Switch>
-        <Route path="/" exact component={LoadableHome} />
-        <Route path="/tour" component={LoadableTour} />
-        <Route path="/user" exact component={UserPage} />
-        <Route path="/login" exact render={() => <LoginForm to="/user" />} />
-        <Route path="/signup" exact component={SignupForm} />
-        <Route path="/image" component={LoadableImagePage} />
-        <Route path="/data" component={Data} />
-        <Route
-          path="/protected"
-          render={() => (
-            <Me>
-              {({ loading, error, me }) => {
-                if (error || loading) return <FriendlyLoader error={error} />;
-                if (!me) return 'No Access';
-                return 'Welcome to protected route';
-              }}
-            </Me>
-          )}
-        />
-        <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
-        <Route component={NotFound} />
-      </Switch>
-    </Container>
-    <Container>
-      <Flex>
-        <Box mx={[-2, 2, 6]} py={3}>
-          <Divider />
-          <Text fontSize={12} pt={2} mb={4} align="center">
-            <FooterLink href="https://www.dferber.de" target="_blank">
-              dferber.de
-            </FooterLink>
-          </Text>
-        </Box>
-      </Flex>
-    </Container>
+    ) */}
+
+    <Switch>
+      <Route path="/" exact component={LoadableHome} />
+      <Route path="/tour" component={LoadableTour} />
+      <Route path="/user" exact component={UserPage} />
+      <Route path="/login" exact render={() => <LoginForm to="/user" />} />
+      <Route path="/signup" exact component={SignupForm} />
+      <Route path="/image" component={LoadableImagePage} />
+      <Route path="/data" component={Data} />
+      <Route path="/recipies" component={LoadableRecipies} />
+      <Route path="/comparison" component={LoadableComparison} />
+      <Route
+        path="/protected"
+        render={() => (
+          <Me>
+            {({ loading, error, me }) => {
+              if (error || loading) return <FriendlyLoader error={error} />;
+              if (!me) return 'No Access';
+              return 'Welcome to protected route';
+            }}
+          </Me>
+        )}
+      />
+      <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
+      <Route component={NotFound} />
+    </Switch>
   </ThemeProvider>
 );

@@ -1,0 +1,88 @@
+import React from 'react';
+import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  LocalLink,
+  Flex,
+  Box,
+  Container,
+  Divider,
+  Text,
+  FooterLink,
+  NavigationLink,
+} from '@wa/design-system';
+import { ScrollToTop } from '../scroll-to-top';
+
+export class Layout extends React.Component {
+  static displayName = 'Layout';
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <ScrollToTop />
+        <Container>
+          <Flex mx={[-2, 2, 6]} px={[-2, 0, 8]} flexDirection="column">
+            <Flex alignItems="top" mt={[3, 5]} pt={[0, 2]}>
+              <Box>
+                <LocalLink to="/">
+                  <img src="/favicon.png" alt="home" width="32" />
+                </LocalLink>
+              </Box>
+              <Box ml="auto" pt={2} px={[0, 1]}>
+                <Route path="/tour">
+                  {({ match }) => (
+                    <NavigationLink
+                      to="/tour"
+                      color={match ? undefined : 'grey'}
+                    >
+                      Tour
+                    </NavigationLink>
+                  )}
+                </Route>
+              </Box>
+              <Box ml={2} pt={2} px={[0, 1]}>
+                <Route path="/recipies">
+                  {({ match }) => (
+                    <NavigationLink
+                      to="/recipies"
+                      color={match ? undefined : 'grey'}
+                    >
+                      Recipies
+                    </NavigationLink>
+                  )}
+                </Route>
+              </Box>
+              <Box ml={2} pt={2} px={[0, 1]}>
+                <Route path="/comparison">
+                  {({ match }) => (
+                    <NavigationLink
+                      to="/comparison"
+                      color={match ? undefined : 'grey'}
+                    >
+                      Comparison
+                    </NavigationLink>
+                  )}
+                </Route>
+              </Box>
+            </Flex>
+            {this.props.children}
+          </Flex>
+        </Container>
+        <Container>
+          <Flex>
+            <Box mx={[-2, 2, 6]} py={3}>
+              <Divider />
+              <Text fontSize={12} pt={2} mb={4} align="center">
+                <FooterLink href="https://www.dferber.de" target="_blank">
+                  dferber.de
+                </FooterLink>
+              </Text>
+            </Box>
+          </Flex>
+        </Container>
+      </React.Fragment>
+    );
+  }
+}

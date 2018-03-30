@@ -7,12 +7,12 @@ class CreateScrollToTop extends React.Component {
   static propTypes = {
     location: PropTypes.any,
   };
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      window.scrollTo(0, 0);
-    }
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) window.scrollTo(0, 0);
+  }
   render() {
     return null;
   }

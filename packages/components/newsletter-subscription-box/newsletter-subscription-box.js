@@ -71,8 +71,8 @@ export class NewsletterSubscriptionBox extends React.Component {
             }
             render={formik => (
               <form onSubmit={formik.handleSubmit}>
-                <Flex py={4} alignItems="baseline">
-                  <Box width={2 / 4} px={2}>
+                <Flex pt={2} pb={3} px={2} alignItems="baseline">
+                  <Box width={[3 / 4, 2 / 4]} px={2}>
                     <Input
                       name="subscribeEmail"
                       placeholder="Email"
@@ -98,7 +98,7 @@ export class NewsletterSubscriptionBox extends React.Component {
                       </ErrorMessage>
                     )}
                   </Box>
-                  <Box width={1 / 4} px={2}>
+                  <Box width={1 / 4}>
                     <PrimaryButton disabled={formik.isSubmitting}>
                       Subscribe
                     </PrimaryButton>

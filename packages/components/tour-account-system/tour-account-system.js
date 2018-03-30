@@ -2,14 +2,17 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Breadcrumbs,
-  BreadcrumbLink,
+  LocalLink,
   Text,
   Subhead,
   Card,
   Measure,
+  Box,
+  Heading,
+  Lead,
   PrimaryButton,
 } from '@wa/design-system';
-import { Page } from '../page';
+import { Layout } from '../layout';
 import { LoginForm } from '../login-form';
 import { SignupForm } from '../signup-form';
 import { Me } from '../me';
@@ -20,18 +23,26 @@ export class TourAccountSystem extends React.Component {
   static displayName = 'TourAccountSystem';
   render() {
     return (
-      <Page
-        heading="Account System"
-        lead="Cookie-based user system that can render authenticated parts on the server."
-        breadcrumbs={
-          <Breadcrumbs>
-            <BreadcrumbLink to="/tour">Tour</BreadcrumbLink>
-          </Breadcrumbs>
-        }
-      >
+      <Layout>
         <Helmet>
           <title>Account System of Lovely Webapp</title>
         </Helmet>
+        <Box pt={[0, 2]} mt={2}>
+          <Heading.h2>Account System</Heading.h2>
+        </Box>
+        <Box pt={1} pb={2}>
+          <Breadcrumbs>
+            <LocalLink to="/">Lovely Webapp</LocalLink>
+            <LocalLink to="/tour">Tour</LocalLink>
+            <Text>Account System</Text>
+          </Breadcrumbs>
+        </Box>
+        <Box pt={2} pb={2}>
+          <Lead>
+            Cookie-based user system that can render authenticated parts on the
+            server.
+          </Lead>
+        </Box>
         <Subhead pt={2} pb={1}>
           Account Creation
         </Subhead>
@@ -111,7 +122,7 @@ export class TourAccountSystem extends React.Component {
             </Me>
           </Card>
         </Measure>
-      </Page>
+      </Layout>
     );
   }
 }

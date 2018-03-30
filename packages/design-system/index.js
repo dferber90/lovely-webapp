@@ -9,6 +9,7 @@ import { Provider, NavLink, Flex, Box, Text, Button } from 'rebass';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import sys from 'system-components';
+import { theme } from './theme';
 
 export * from 'rebass';
 
@@ -23,7 +24,16 @@ export const LocalLink = sys(
     color: 'fuschia',
   },
   'space'
-);
+).extend`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const NavigationLink = LocalLink.extend`
+  text-decoration: none;
+`;
 
 export const FooterLink = styled.a`
   text-decoration: none;
@@ -33,7 +43,9 @@ export const FooterLink = styled.a`
   }
 `;
 
-export const PrimaryButton = styled(Button)``;
+export const PrimaryButton = styled(Button)`
+  cursor: pointer;
+`;
 PrimaryButton.defaultProps = {
   bg: 'fuschia',
 };
@@ -57,21 +69,7 @@ Breadcrumbs.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const BreadcrumbLink = LocalLink.extend`
-  text-decoration: none;
-`;
-
-export const ThemeProvider = props => (
-  <Provider
-    {...props}
-    theme={{
-      fonts: {
-        sans: '"Avenir Next", Helvetica, sans-serif',
-        mono: 'Menlo, monospace',
-      },
-    }}
-  />
-);
+export const ThemeProvider = props => <Provider {...props} theme={theme} />;
 
 export const ErrorMessage = styled(Text)``;
 ErrorMessage.defaultProps = {
