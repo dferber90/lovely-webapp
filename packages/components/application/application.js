@@ -58,13 +58,6 @@ const LoadableComparison = Loadable({
   loading: Loading,
 });
 
-const LoadableImagePage = Loadable({
-  loader: () => import('../image-page'),
-  // eslint-disable-next-line react/prop-types
-  render: ({ ImagePage }, props) => <ImagePage {...props} />,
-  loading: Loading,
-});
-
 export const Application = () => (
   <ThemeProvider>
     <Helmet>
@@ -80,7 +73,6 @@ export const Application = () => (
         </NavItem>
         <NavItem to="/user">User</NavItem>
         <NavItem to="/protected">Protected</NavItem>
-        <NavItem to="/image">Image</NavItem>
         <NavItem to="/data">Data</NavItem>
         <NavItem to="/something-that-does-not-exist">404</NavItem>
         <NavItem to="/redirect-to-home">Redirect</NavItem>
@@ -94,7 +86,6 @@ export const Application = () => (
       <Route path="/user" exact component={UserPage} />
       <Route path="/login" exact render={() => <LoginForm to="/user" />} />
       <Route path="/signup" exact component={SignupForm} />
-      <Route path="/image" component={LoadableImagePage} />
       <Route path="/data" component={Data} />
       <Route path="/recipies" component={LoadableRecipies} />
       <Route path="/comparison" component={LoadableComparison} />

@@ -45,7 +45,11 @@ export class TourHome extends React.Component {
           <li>Code-Splitting & Inlining of required chunk</li>
           <li>Redirects on server (with HTTP status) and on client</li>
           <li>Build output (one folder for frontend, one for api)</li>
-          <li>Image loading on server and client</li>
+          <li>
+            <LocalLink to="/tour/images">
+              Image loading on server and client
+            </LocalLink>
+          </li>
           <li>Page title and meta information</li>
           <li>Form with validation, error handling and immediate updates</li>
           <li>Continuous Deployment</li>
