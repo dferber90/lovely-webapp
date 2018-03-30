@@ -19,7 +19,7 @@ export class TourHome extends React.Component {
         <Helmet>
           <title>Tour of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 2]} mt={2}>
+        <Box pt={[0, 3]} mt={[2, 3]}>
           <Heading.h2>Tour</Heading.h2>
         </Box>
         <Box pt={1} pb={2}>

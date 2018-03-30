@@ -20,7 +20,7 @@ export class RecipiesHome extends React.Component {
         <Helmet>
           <title>Recipies of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 2]} mt={2}>
+        <Box pt={[0, 3]} mt={[2, 3]}>
           <Heading.h2>Recipies</Heading.h2>
         </Box>
         <Box pt={1} pb={2}>

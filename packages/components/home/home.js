@@ -15,11 +15,11 @@ import { Layout } from '../layout';
 export class Home extends React.Component {
   render() {
     return (
-      <Layout>
+      <Layout mt={[3, 5]}>
         <Helmet>
           <title>Home of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 2]} mt={2}>
+        <Box py={[0, 2]}>
           <Heading.h1 fontSize={6}>Lovely Webapp</Heading.h1>
         </Box>
         <Box pt={2} pb={2}>

@@ -17,14 +17,21 @@ export class Layout extends React.Component {
   static displayName = 'Layout';
   static propTypes = {
     children: PropTypes.node.isRequired,
+    mt: PropTypes.array,
   };
   render() {
     return (
       <React.Fragment>
         <ScrollToTop />
         <Container>
-          <Flex mx={[-2, 2, 6]} px={[-2, 0, 8]} flexDirection="column">
-            <Flex alignItems="top" mt={[3, 5]} pt={[0, 2]}>
+          <Flex
+            mx={[-2, 2, 6]}
+            mt={this.props.mt}
+            pt={2}
+            px={[-2, 0, 8]}
+            flexDirection="column"
+          >
+            <Flex alignItems="top" pt={[0, 2]}>
               <Box>
                 <LocalLink to="/">
                   <img src="/favicon.png" alt="home" width="32" />

@@ -11,6 +11,7 @@ import {
   Heading,
   Lead,
   PrimaryButton,
+  Message,
 } from '@wa/design-system';
 import { Layout } from '../layout';
 import { LoginForm } from '../login-form';
@@ -27,7 +28,7 @@ export class TourAccountSystem extends React.Component {
         <Helmet>
           <title>Account System of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 2]} mt={2}>
+        <Box pt={[0, 3]} mt={[2, 3]}>
           <Heading.h2>Account System</Heading.h2>
         </Box>
         <Box pt={1} pb={2}>
