@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
-import { LocalLink, Tabs, Tab, Measure, Container } from '@wa/design-system';
+import { Tabs, Tab, Measure } from '@wa/design-system';
 import { Me } from '../me';
 import { FriendlyLoader } from '../friendly-loader';
 import { LoginForm } from '../login-form';

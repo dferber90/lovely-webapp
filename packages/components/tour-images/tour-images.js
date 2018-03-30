@@ -4,7 +4,6 @@ import {
   Breadcrumbs,
   LocalLink,
   Text,
-  Subhead,
   Card,
   Measure,
   Box,

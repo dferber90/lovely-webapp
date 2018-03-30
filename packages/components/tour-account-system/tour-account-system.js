@@ -11,7 +11,6 @@ import {
   Heading,
   Lead,
   PrimaryButton,
-  Message,
 } from '@wa/design-system';
 import { Layout } from '../layout';
 import { LoginForm } from '../login-form';
