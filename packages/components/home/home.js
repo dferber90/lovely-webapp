@@ -17,7 +17,7 @@ export class Home extends React.Component {
     return (
       <Layout mt={[3, 5]}>
         <Helmet>
-          <title>Home of Lovely Webapp</title>
+          <title>Lovely Webapp</title>
         </Helmet>
         <Box py={[0, 2]}>
           <Heading.h1 fontSize={6}>Lovely Webapp</Heading.h1>
@@ -57,7 +57,7 @@ export class Home extends React.Component {
             enabled by the modern stack the site is built on.
           </Text>
         </Box>
-        <Box mx="auto">
+        <Box mx="auto" mt={4}>
           <LocalLink to="/tour">
             <PrimaryButton>Take Tour</PrimaryButton>
           </LocalLink>
