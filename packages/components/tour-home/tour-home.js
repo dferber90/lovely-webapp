@@ -29,12 +29,7 @@ export class TourHome extends React.Component {
           </Breadcrumbs>
         </Box>
         <Box pt={2} pb={2}>
-          <Lead>
-            The tour shows different features of this site. The tour will be
-            extended as the site grows. Articles about the stack will be
-            released incrementally. Sign up below if you want to get
-            notifications when new articles are released.
-          </Lead>
+          <Lead>Learn about the features which make this site so lovely.</Lead>
         </Box>
         <ul>
           <li>

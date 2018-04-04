@@ -8,6 +8,7 @@ import {
   Breadcrumbs,
   LocalLink,
   Lead,
+  Code,
 } from '@wa/design-system';
 import { Helmet } from 'react-helmet';
 import { Layout } from '../layout';
@@ -36,7 +37,7 @@ export class Comparison extends React.Component {
             Lovely Stack is useful for.
           </Lead>
         </Box>
-        <Subhead pt={2} pb={1}>
+        <Subhead pt={3} pb={1}>
           Gatsby
         </Subhead>
         <Text py={1}>
@@ -83,6 +84,61 @@ export class Comparison extends React.Component {
               on Twitter
             </Link>.
           </i>
+        </Text>
+        <Subhead pt={3} pb={1}>
+          create-react-app
+        </Subhead>
+        <Text py={1}>
+          <Link
+            href="https://github.com/facebook/create-react-app/"
+            target="_blank"
+          >
+            <Code>create-react-app</Code>
+          </Link>{' '}
+          is huge timesaver when staring new React projects. It is very beginner
+          friendly and offers a great developer experience.
+        </Text>
+        <Text py={1}>
+          <Code>create-react-app</Code> is only concerned with the frontend
+          bundle. It doesn&#39;t have server-side rendering, nor does it come
+          with any solution for data fetching or a database. It is a basic
+          starting point for the frontend part of web applications.
+        </Text>
+        <Subhead pt={3} pb={1}>
+          Razzle
+        </Subhead>
+        <Text py={1}>
+          <Link href="https://github.com/jaredpalmer/razzle" target="_blank">
+            Razzle
+          </Link>{' '}
+          is similar to{' '}
+          <Link
+            href="https://github.com/facebook/create-react-app/"
+            target="_blank"
+          >
+            <Code>create-react-app</Code>
+          </Link>. Razzle comes with server-side rendering out of the box.
+          However, it doesn&#39;t have any solution to routing or data fetching
+          included. Those are hard to get right and it&#39;s up to the user of
+          Razzle to set these things up. Razzle further doesn&#39;t include any
+          data backend. Razzle uses{' '}
+          <Link
+            href="https://github.com/css-modules/css-modules"
+            target="_blank"
+          >
+            CSS Modules
+          </Link>{' '}
+          for styling whereas this project uses{' '}
+          <Link href="https://www.styled-components.com/" target="_blank">
+            styled-components
+          </Link>. The biggest advantage of <Code>styled-components</Code> in is
+          that they are ideal to set up a design system which cultivates the
+          usages of best practices like the usage of design tokens.
+        </Text>
+        <Text py={1}>
+          It feels like the Lovely Stack could be built on top of Razzle. The
+          Lovely Stack is more concrete in some areas, whereas Razzle offers
+          more flexibility and leaves more decisions up to the developer.
         </Text>
       </Layout>
     );

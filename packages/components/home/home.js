@@ -49,7 +49,8 @@ export class Home extends React.Component {
           <Text py={1}>
             The biggest advantage of this stack is that the developer experience
             does not suffer from the focus on page speed. The exact same code
-            runs on the server and in the browser.
+            runs on the server and in the browser. Changed code is hot-loaded
+            instantly. Data fetching and routing is already set up.
           </Text>
           <Text py={1}>
             You can take a <LocalLink to="/tour">Tour</LocalLink> of the cool
