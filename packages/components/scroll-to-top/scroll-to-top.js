@@ -8,7 +8,8 @@ class CreateScrollToTop extends React.Component {
     location: PropTypes.any,
   };
   componentDidMount() {
-    window.scrollTo(0, 0);
+    // disabled to avoid scrolling to top during hot module replacement
+    if (!DEV) window.scrollTo(0, 0);
   }
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) window.scrollTo(0, 0);
