@@ -18,7 +18,7 @@ import Loadable from 'react-loadable';
 import { Data } from '../data';
 import { LoginForm } from '../login-form';
 import { SignupForm } from '../signup-form';
-import { Loading } from '../loading';
+import { LoadingPage } from '../loading-page';
 import { UserPage } from '../user-page';
 import { RedirectWithStatus, NotFound } from '../route-helpers';
 import { FriendlyLoader } from '../friendly-loader';
@@ -34,28 +34,28 @@ const LoadableTour = Loadable({
   loader: () => import('../tour'),
   // eslint-disable-next-line react/prop-types
   render: ({ Tour }, props) => <Tour {...props} />,
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const LoadableHome = Loadable({
   loader: () => import('../home'),
   // eslint-disable-next-line react/prop-types
   render: ({ Home }, props) => <Home {...props} />,
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const LoadableRecipies = Loadable({
   loader: () => import('../recipies'),
   // eslint-disable-next-line react/prop-types
   render: ({ Recipies }, props) => <Recipies {...props} />,
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 const LoadableComparison = Loadable({
   loader: () => import('../comparison'),
   // eslint-disable-next-line react/prop-types
   render: ({ Comparison }, props) => <Comparison {...props} />,
-  loading: Loading,
+  loading: LoadingPage,
 });
 
 export const Application = () => (
