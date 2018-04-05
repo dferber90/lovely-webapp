@@ -27,9 +27,9 @@ export class TourAccountSystem extends React.Component {
         <Helmet>
           <title>Account System of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 3]} mt={[2, 3]}>
-          <Heading.h2>Account System</Heading.h2>
-        </Box>
+        <Heading.h2 pt={[0, 3]} mt={[2, 3]}>
+          Account System
+        </Heading.h2>
         <Box pt={1} pb={2}>
           <Breadcrumbs>
             <LocalLink to="/">Lovely Webapp</LocalLink>
@@ -37,12 +37,10 @@ export class TourAccountSystem extends React.Component {
             <Text>Account System</Text>
           </Breadcrumbs>
         </Box>
-        <Box pt={2} pb={2}>
-          <Lead>
-            Cookie-based user system that can render authenticated parts on the
-            server.
-          </Lead>
-        </Box>
+        <Lead pt={2} pb={2}>
+          Cookie-based user system that can render authenticated parts on the
+          server.
+        </Lead>
         <Subhead pt={2} pb={1}>
           Account Creation
         </Subhead>

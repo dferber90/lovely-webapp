@@ -22,9 +22,9 @@ export class TourImages extends React.Component {
         <Helmet>
           <title>Images of Lovely Webapp</title>
         </Helmet>
-        <Box pt={[0, 3]} mt={[2, 3]}>
-          <Heading.h2>Images</Heading.h2>
-        </Box>
+        <Heading.h2 pt={[0, 3]} mt={[2, 3]}>
+          Images
+        </Heading.h2>
         <Box pt={1} pb={2}>
           <Breadcrumbs>
             <LocalLink to="/">Lovely Webapp</LocalLink>
@@ -32,13 +32,10 @@ export class TourImages extends React.Component {
             <Text>Images</Text>
           </Breadcrumbs>
         </Box>
-        <Box pt={2} pb={2}>
-          <Lead>
-            The stack supports rendering of static assets like images. Both, the
-            server and the client, know how to find assets processed with
-            webpack.
-          </Lead>
-        </Box>
+        <Lead py={2}>
+          The stack supports rendering of static assets like images. Both, the
+          server and the client, know how to find assets processed with webpack.
+        </Lead>
         <Measure ml={[0, 3]}>
           <Card my={[2, 3]} p={3}>
             <Image mx="auto" src={partyParrotUrl} alt="party-parrot" />

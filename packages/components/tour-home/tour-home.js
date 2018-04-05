@@ -36,7 +36,11 @@ export class TourHome extends React.Component {
             <LocalLink to="/tour/account-system">Account System</LocalLink>
           </li>
           <li>Server-Side Rendering & Data Inlining & Hydration</li>
-          <li>Client-side Takeover</li>
+          <li>
+            <LocalLink to="/tour/client-side-takeover">
+              Client-Side Takeover
+            </LocalLink>
+          </li>
           <li>Code-Splitting & Inlining of required chunk</li>
           <li>Redirects on server (with HTTP status) and on client</li>
           <li>Build output (one folder for frontend, one for api)</li>
