@@ -10,6 +10,7 @@ import {
   Text,
   FooterLink,
   NavigationLink,
+  Link,
 } from '@wa/design-system';
 import { ScrollToTop } from '../scroll-to-top';
 
@@ -79,9 +80,18 @@ export class Layout extends React.Component {
         </Container>
         <Container>
           <Flex>
-            <Box mx={[-2, 2, 6]} py={3}>
-              <Divider />
-              <Text fontSize={12} pt={2} mb={4} align="center">
+            <Box mx={[-2, 2, 6]} py={3} mt={5}>
+              <Text fontSize={12} pt={2}>
+                You can find the complete source code at{' '}
+                <Link
+                  href="https://github.com/dferber90/wa"
+                  target="_blank"
+                  color="grey"
+                >
+                  github.com/dferber90/wa
+                </Link>
+              </Text>
+              <Text fontSize={12} pt={2} mb={4}>
                 <FooterLink href="https://www.dferber.de" target="_blank">
                   dferber.de
                 </FooterLink>
