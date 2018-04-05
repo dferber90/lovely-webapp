@@ -6,7 +6,6 @@ import {
   Flex,
   Box,
   Container,
-  Divider,
   Text,
   FooterLink,
   NavigationLink,
