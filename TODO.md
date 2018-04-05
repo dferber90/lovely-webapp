@@ -17,6 +17,10 @@
 * Preload data before navigation with Suspense
 * Redbox
 
+## Developer Experience
+
+* lint staged files
+
 ## Webpack
 
 * long-term caching
