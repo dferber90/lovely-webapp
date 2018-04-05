@@ -17,7 +17,7 @@ export * from 'rebass';
 export const NavItem = props => <NavLink {...props} is={Link} />;
 NavItem.propTypes = { to: PropTypes.string };
 
-// implement from https://github.com/jxnblk/rebass/blob/master/src/Link.js
+// implementation from https://github.com/jxnblk/rebass/blob/master/src/Link.js
 export const LocalLink = sys(
   {
     is: Link,
