@@ -78,6 +78,19 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
           .join('\n');
       };
 
+  const analyticsSnippet = DEV
+    ? '<!-- placeholder for tracking snippet -->'
+    : `<!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46478607-9"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-46478607-9');
+        </script>
+      `;
+
   const config = {
     GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
   };
@@ -90,6 +103,7 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
         ${helmet.meta.toString()}
         ${helmet.link.toString()}
         ${styles}
+        ${analyticsSnippet}
       </head>
       <body ${helmet.bodyAttributes.toString()}>
         <div id="app">${body}</div>
