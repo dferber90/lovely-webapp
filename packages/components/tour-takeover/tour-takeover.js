@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import {
@@ -9,12 +10,10 @@ import {
   Box,
   Heading,
   Lead,
-  Image,
   Subhead,
   PrimaryButton,
 } from '@wa/design-system';
 import { Layout } from '../layout';
-import partyParrotUrl from '../assets/party-parrot.png';
 
 // This console log is part of the Client-Side Takeover tour.
 // It should not be removed.
@@ -67,7 +66,7 @@ export class TourTakeover extends React.Component {
         <Lead py={2}>
           Traditional non-static websites are rendered by the server. Every
           navigation triggers a new request to the server. This results in
-          unnecessary data transfer.
+          unnecessary data transfer which modern stacks can avoid.
         </Lead>
         <Text py={1}>
           On the first page load the server renders the application to enable
@@ -112,11 +111,20 @@ export class TourTakeover extends React.Component {
           Alternatively, you can watch the screen recording below where I went
           through these steps for you.
         </Text>
-        <Measure ml={[0, 3]}>
-          <Card my={[2, 3]} p={3}>
-            <i>To be done.</i>
-          </Card>
-        </Measure>
+        <Card my={[2, 3]} p={3}>
+          <video src="/takeover.mp4" autoPlay loop style={{ width: '100%' }}>
+            <track
+              label="English"
+              kind="subtitles"
+              srcLang="en"
+              src="/takeover.vtt"
+              default
+            />
+            Sorry, your browser doesn&#39;t support embedded videos, but
+            don&#39;t worry, you can <a href="/takeover.mp4">download it</a>
+            and watch it with your favorite video player!
+          </video>
+        </Card>
         <Text py={1}>
           This section has shown how we can achieve immediate rendering of the
           site&#39;s content while not losing any interactivity. The next
@@ -142,14 +150,22 @@ export class TourTakeover extends React.Component {
           Those are parts of this web application which have been split out to
           keep the size of the individual chunks lower. Every route or component
           of the application can be split out into separate chunks, so that the
-          browser only needs to load whatever it needs torender the current
+          browser only needs to load whatever it needs to render the current
           view.
         </Text>
-        <Measure ml={[0, 3]}>
-          <Card my={[2, 3]} p={3}>
-            <Image mx="auto" src={partyParrotUrl} alt="party-parrot" />
-          </Card>
-        </Measure>
+        <Card my={[2, 3]} p={3}>
+          <video
+            src="/incremental-load.mp4"
+            autoPlay
+            loop
+            style={{ width: '100%' }}
+          >
+            Sorry, your browser doesn&#39;t support embedded videos, but
+            don&#39;t worry, you can{' '}
+            <a href="/incremental-load.mp4">download it</a>
+            and watch it with your favorite video player!
+          </video>
+        </Card>
         <Subhead pt={4}>Summary</Subhead>
         <Text py={1}>
           <ul>
@@ -157,7 +173,10 @@ export class TourTakeover extends React.Component {
             <li>this leads to fast time-to-first-render</li>
             <li>however, app is not interactive until bundle is loaded</li>
             <li>subsequent routing happens on the client only</li>
-            <li>only additional data and logic is fetched, no more HTML</li>
+            <li>
+              only additional data, styles and logic chunks are fetched, no more
+              HTML
+            </li>
           </ul>
         </Text>
       </Layout>

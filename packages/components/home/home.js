@@ -24,12 +24,33 @@ export class Home extends React.Component {
         </Box>
         <Box pt={2} pb={2}>
           <Lead>
-            This site is built to show off how the latest web technologies can
-            be combined to create the foundation of a solid, server-rendered web
-            application with client-side takeover.
+            This site is built to show how the latest web technologies can be
+            combined to create the foundation of a solid, server-rendered web
+            application with client-side takeover and an authentication system.
           </Lead>
         </Box>
         <Box py={3}>
+          <Subhead pt={2} pb={1}>
+            What makes this site so lovely?
+          </Subhead>
+          <Text py={1}>
+            This site aims to serve as a continuously improving foundation of a
+            solid web application. Here&#39;s a list of this site&#39;s most
+            important features:
+          </Text>
+          <ul>
+            <li>Server-Side Rendering</li>
+            <li>Routing</li>
+            <li>Authentication System</li>
+            <li>Data Fetching and Caching</li>
+            <li>Design System</li>
+            <li>Continuous Integration &amp; Continuous Deployment</li>
+            <li>Test Setup</li>
+          </ul>
+          <Text py={1}>
+            There&#39;s much more about this site though. I will articles about
+            features of this website every now and then.
+          </Text>
           <Subhead pt={2} pb={1}>
             What makes this site so lovely?
           </Subhead>

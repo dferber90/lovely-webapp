@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.500
+Enable network throttling to simulate slow network
+
+2
+00:00:03.000 --> 00:00:06.000
+Open website
+
+3
+00:00:09.000 --> 00:00:12.000
+Clicking button, but nothing happens as bundle is not loaded yet
+
+4
+00:00:13.000 --> 00:00:15.000
+Bundle is now loaded and site is interactive
+
+5
+00:00:15.000 --> 00:00:16.000
+Message is logged to console
+
+6
+00:00:17.000 --> 00:00:18.500
+Button is interactive
+
+7
+00:00:20.000 --> 00:00:22.500
+Chunk which made the site interactive arrived

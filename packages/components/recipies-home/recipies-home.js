@@ -32,6 +32,10 @@ export class RecipiesHome extends React.Component {
         <Box pt={2} pb={2}>
           <Lead>Recipies show the way this site is built.</Lead>
         </Box>
+        <Text py={1}>
+          This is a rudimentary overview at the moment. I plan to extend it with
+          articles about most of the features listed below.
+        </Text>
         <ul>
           <li>
             Performance
@@ -40,6 +44,8 @@ export class RecipiesHome extends React.Component {
                 Server-Side Rendering
                 <ul>
                   <li>Images</li>
+                  <li>Redirects</li>
+                  <li>Meta-Data</li>
                   <li>Styles</li>
                   <li>Markup</li>
                   <li>Data Fetching & Inlining</li>
