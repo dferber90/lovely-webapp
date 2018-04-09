@@ -61,6 +61,7 @@ const pkg = {
   scripts: {
     start: 'node server.js',
     'start:local': 'NODE_ENV=production node --require dotenv/config server.js',
+    predeploy: 'now rm wa --safe --yes --token $NOW_TOKEN || exit 0',
     deploy:
       'now -e NODE_ENV=production -e GRAPHQL_ENDPOINT --token $NOW_TOKEN --npm  --public',
     alias: 'now alias --token=$NOW_TOKEN',
