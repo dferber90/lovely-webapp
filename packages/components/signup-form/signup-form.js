@@ -1,5 +1,6 @@
 /* eslint-env browser */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
 import { Input, PrimaryButton, Measure, Label, Text } from '@wa/design-system';
 import gql from 'graphql-tag';
@@ -24,6 +25,9 @@ const CREATE_USER_MUTATION = gql`
 `;
 
 class CreateSignupForm extends React.Component {
+  static propTypes = {
+    redirectTo: PropTypes.string,
+  };
   state = {
     name: '',
     email: '',
@@ -49,10 +53,10 @@ class CreateSignupForm extends React.Component {
       return;
     }
 
-    if (response.data && response.data.login && response.data.login.token) {
-      Cookies.set('authToken', response.data.login.token);
+    if (response.data && response.data.signup && response.data.signup.token) {
+      Cookies.set('authToken', response.data.signup.token);
       // hard refresh so that user is taken into account everywhere
-      window.location.href = '/';
+      window.location.href = this.props.redirectTo || '/';
     } else {
       // eslint-disable-next-line no-alert
       alert('Failed login:', response.error);

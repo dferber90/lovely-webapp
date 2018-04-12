@@ -9,6 +9,7 @@ import {
   LocalLink,
   Lead,
   Box,
+  Link,
 } from '@wa/design-system';
 import { Layout } from '../layout';
 
@@ -26,18 +27,53 @@ export class Home extends React.Component {
           <Lead>
             This site is built to show how the latest web technologies can be
             combined to create the foundation of a solid, server-rendered web
-            application with client-side takeover and an authentication system.
+            application with client-side takeover, an authentication system and
+            persistent data.
           </Lead>
         </Box>
         <Box py={3}>
           <Subhead pt={2} pb={1}>
-            What makes this site so lovely?
+            What is this site for?
           </Subhead>
           <Text py={1}>
             This site aims to serve as a continuously improving foundation of a
-            solid web application. Here&#39;s a list of this site&#39;s most
-            important features:
+            solid web application. It is meant to show how traditionally
+            hard-to-achieve features are made possible with a modern stack. It
+            is meant as a reference point, an insipiration and proof that a
+            modern stack can fulfill the needs of web applications.
           </Text>
+          <Text py={1}>
+            The source code is available at{' '}
+            <Link href="https://github.com/dferber90/wa" target="_blank">
+              github.com/dferber90/wa
+            </Link>.
+          </Text>
+          <Subhead pt={2} pb={1}>
+            Why?
+          </Subhead>
+          <Text py={1}>
+            Many web applications share roughly the same requirements: They
+            should load fast, be able to have dynamic content, provide an
+            authentication mechanism, have consistent styling, be visible to
+            search engines and be fun to develop. When I noticed that overlap in
+            requirements, I set out to create a boilerplate for my dream stack -
+            and failed. That was two years ago.
+          </Text>
+          <Text py={1}>
+            In the meantime many great new libraries and technologies like
+            GraphQL, Apollo, styled-components, Prisma and many others were
+            developed which made the whole setup easier. So, after these two
+            years I tried again and I&#39;m quite happy with the result. I was
+            able to set up a site which fulfills all the requirements I would
+            have for a solid web application.
+          </Text>
+          <Text py={1}>
+            This site is proof, inspiration and a guide of how to combine modern
+            tools into a real production-ready stack.
+          </Text>
+          <Subhead pt={2} pb={1}>
+            What makes this site so lovely?
+          </Subhead>
           <ul>
             <li>Server-Side Rendering</li>
             <li>Routing</li>
@@ -48,14 +84,15 @@ export class Home extends React.Component {
             <li>Test Setup</li>
           </ul>
           <Text py={1}>
-            There&#39;s much more about this site though. I will articles about
-            features of this website every now and then.
+            There&#39;s much more about this site though. Articles about
+            features of this website will be published every now and then. You
+            can subscribe to them in the tour section.
           </Text>
           <Subhead pt={2} pb={1}>
-            What makes this site so lovely?
+            The gist
           </Subhead>
           <Text py={1}>
-            This foundation enables incredible fast page loads, while still
+            This foundation enables incredibly fast page loads, while still
             offering the tools to build an interactive site. It combines the
             best of both worlds: traditional pages rendered on the server and
             new-school, interactive client-side web applications.
@@ -66,12 +103,15 @@ export class Home extends React.Component {
             additional HTTP requests. This results in the fastest possible time
             to first paint. After that, the client takes over and from that
             point onwards, only additional data and logic of the page is loaded.
+            As a result, subsequently opened pages are loaded even faster than
+            the inital page.
           </Text>
           <Text py={1}>
-            The biggest advantage of this stack is that the developer experience
-            does not suffer from the focus on page speed. The exact same code
-            runs on the server and in the browser. Changed code is hot-loaded
-            instantly. Data fetching and routing is already set up.
+            The biggest advantage of this stack is that neither the developer
+            experience nor the interactivity suffer from the focus on page
+            speed. The exact same code runs on the server and in the browser.
+            During development, changed code is hot-loaded instantly. Data
+            fetching, authentication and routing is already set up.
           </Text>
           <Text py={1}>
             You can take a <LocalLink to="/tour">Tour</LocalLink> of the cool
