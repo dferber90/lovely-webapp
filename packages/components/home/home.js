@@ -72,6 +72,21 @@ export class Home extends React.Component {
             tools into a real production-ready stack.
           </Text>
           <Subhead pt={2} pb={1}>
+            Why not?
+          </Subhead>
+          <Text py={1}>
+            This site is - so far - a leisure-time experiment to see what an
+            ideal web application stack for specific requirements would look
+            like. It&#39;s likely that you may have different requirements for
+            your site for which a differnt staring point is more appropriate.
+            See the <LocalLink to="/comparison">Comparison</LocalLink> section
+            for alternatives and a comparison of use-cases.
+          </Text>
+          <Text py={1}>
+            While I&#39;m very confident about some parts of the stack,
+            other&#39;s still need some more love.
+          </Text>
+          <Subhead pt={2} pb={1}>
             What makes this site so lovely?
           </Subhead>
           <ul>
