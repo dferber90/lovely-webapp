@@ -184,16 +184,39 @@ _Even though the output bundle has a `package.json` with dependencies, it's not 
 
 ## Deployment
 
-Install [now.sh](https://zeit.co/now) locally.
+This stack can be deployed in any way you like. After the build, you're presented with two folders: `frontend` and `api`. Each containing a build ready to served with any hosting solution.
+
+Upload the folders, install the packages and serve the applications.
+
+### `now.sh`
+
+One way to deploy this application is using [now.sh](https://zeit.co/now).
+
+First, install [now.sh](https://zeit.co/now) locally.
 
 Then run `yarn build` to generate a build to `dist-production`.
-Afterwards, run `yarn deploy` to deploy to any server using `now.sh`.
+
+Afterwards, go into each directory and run `now -E ../../.prod.env deploy --public`.
+
+This requires that you set up a `.prod.env` in the root of this project which contains the environment variables meant to be used in production.
+
+It should look something like this:
+
+```
+NODE_ENV=production
+APP_SECRET=rpeigdn3iagr84PadfDar
+GRAPHQL_ENDPOINT=https://wa-api.now.sh
+PRISMA_ENDPOINT=https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev
+PRISMA_SECRET=as1df5F1urhg5lsnfvD
+```
 
 ## Technologies and Tools
 
 ### GraphQL
 
 The app uses [Prisma](https://www.prismagraphql.com/docs/quickstart/) by [graph.cool](https://www.graph.cool/) as a database layer. Using GraphQL means that the application won't over-fetch data as with typical REST applications. And far less time will be spent on the backend, as it's very convenient to get the backend set up with Prisma.
+
+> Prisma supports using different stages for development and production. This project doesn't yet make use of this feature. The development database is the same as the production database for now. This should be fairly easy to change though.
 
 ### Design System
 
