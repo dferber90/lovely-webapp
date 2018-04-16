@@ -95,7 +95,7 @@ And that concludes the one-time setup! You are now ready to run the application 
 
 Follow the next section for a detailed guide of how to develop locally.
 
-Some extra setup is necessary to enable Continuous Integration and Continuous Deployment. This will be covered in an extra section.
+Some extra setup is necessary to enable Continuous Delivery. It is already fully possible though. In fact, [wa.now.sh](https://wa.now.sh/) is deployed continuously using [TravisCI](http://travisci.org/). See the Continuous Delivery section of this README for more information.
 
 ### Start Development
 
@@ -209,6 +209,14 @@ GRAPHQL_ENDPOINT=https://wa-api.now.sh
 PRISMA_ENDPOINT=https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev
 PRISMA_SECRET=as1df5F1urhg5lsnfvD
 ```
+
+### Continuous Delivery
+
+Continuous Integration and Continuous Delivery is fully possible with this stack. You can see the `.travis.yml` file in this repository as a starting point.
+
+This project is deployed continuously using `now.sh` and TravisCI. You need to set up TravsiCI with the same environment variables as in your `.env` file, but you likely need different values.
+
+Additionally, you'll need a `NOW_TOKEN` environment variable set up in TravisCI.
 
 ## Technologies and Tools
 

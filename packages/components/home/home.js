@@ -95,7 +95,7 @@ export class Home extends React.Component {
             <li>Authentication System</li>
             <li>Data Fetching and Caching</li>
             <li>Design System</li>
-            <li>Continuous Integration &amp; Continuous Deployment</li>
+            <li>Continuous Delivery</li>
             <li>Test Setup</li>
           </ul>
           <Text py={1}>

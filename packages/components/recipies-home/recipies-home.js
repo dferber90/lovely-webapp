@@ -72,8 +72,7 @@ export class RecipiesHome extends React.Component {
               <li>Automatic Server Restarts</li>
               <li>Design System</li>
               <li>Building locally</li>
-              <li>Continuous Integration</li>
-              <li>Continuous Deployment</li>
+              <li>Continuous Delivery</li>
             </ul>
           </li>
           <li>

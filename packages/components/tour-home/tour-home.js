@@ -51,7 +51,7 @@ export class TourHome extends React.Component {
           </li>
           <li>Page title and meta information</li>
           <li>Form with validation, error handling and immediate updates</li>
-          <li>Continuous Deployment</li>
+          <li>Continuous Delivery</li>
         </ul>
         <Text py={1}>
           The tour will be extended as the site grows. Articles about the stack
