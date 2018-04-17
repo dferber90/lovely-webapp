@@ -30,6 +30,15 @@ injectGlobal`
   body { margin: 0; padding: 0; }
 `;
 
+// Every loadable uses webpack's prefetch feature by specifying
+// webpackPrefetch: true
+//
+// A higher priority can be given by supplying
+// webpackPrefetch: <number>
+// The higher the number, the higher the priority.
+// true counts as 0.
+// See: https://medium.com/webpack/link-rel-prefetch-preload-in-webpack-51a52358f84c
+
 const LoadableTour = Loadable({
   loader: () => import('../tour'),
   // eslint-disable-next-line react/prop-types
@@ -38,7 +47,9 @@ const LoadableTour = Loadable({
 });
 
 const LoadableHome = Loadable({
-  loader: () => import('../home'),
+  // It's likely that a user will go to the home section, so we tell webpack
+  // to tell the browser to prefetch this chunk
+  loader: () => import(/* webpackPrefetch: true */ '../home'),
   // eslint-disable-next-line react/prop-types
   render: ({ Home }, props) => <Home {...props} />,
   loading: LoadingPage,
