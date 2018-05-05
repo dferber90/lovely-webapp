@@ -81,7 +81,7 @@ export class Layout extends React.Component {
           <Flex>
             <Box mx={[-2, 2, 6]} py={3} mt={5}>
               <Text fontSize={12} pt={2}>
-                You can find the complete source code at{' '}
+                Source code at{' '}
                 <Link
                   href="https://github.com/dferber90/wa"
                   target="_blank"

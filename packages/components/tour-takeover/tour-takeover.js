@@ -60,6 +60,9 @@ export class TourTakeover extends React.Component {
           <Breadcrumbs>
             <LocalLink to="/">Lovely Webapp</LocalLink>
             <LocalLink to="/tour">Tour</LocalLink>
+            <LocalLink to="/tour/server-side-rendering">
+              Server-Side Rendering
+            </LocalLink>
             <Text>Client-Side Takeover</Text>
           </Breadcrumbs>
         </Box>
