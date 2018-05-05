@@ -49,7 +49,7 @@ export class Comparison extends React.Component {
           publicly accessible.
         </Text>
         <Text py={1}>
-          In comparison, the Lovely Website&#39;s stack is better suited for
+          In comparison, the Lovely Website&apos;s stack is better suited for
           sites which have regularily changing content, or where most sites need
           authentication.
         </Text>
@@ -57,18 +57,18 @@ export class Comparison extends React.Component {
           The essential architectural difference is that Gatsby requires you to
           recreate the static sites on every data change, while the lovely stack
           performs real server-side rendering upon every request. This can be a
-          good or a bad thing. When data changes are rare, it&#39;s better to
+          good or a bad thing. When data changes are rare, it&apos;s better to
           generate the static site upon every data change. However, when regular
           data changes can be expected, the regeneration of the static sites can
-          fall behind. In this case, it&#39;s better to use the Lovely Stack.
+          fall behind. In this case, it&apos;s better to use the Lovely Stack.
         </Text>
         <Text py={1}>
           There are possible escape hatches for both stacks to compensate for
-          their downsides. With Gatsby, it&#39;s possible to avoid rendering the
+          their downsides. With Gatsby, it&apos;s possible to avoid rendering the
           very dynamic data on the server and let clients handle it instead, at
           the cost of losing server-side rendering for those parts. Then the
           site does not need to be redeployed when updates are made. With the
-          Lovely Stack, it&#39;s possible to use a Redis server to cache the
+          Lovely Stack, it&apos;s possible to use a Redis server to cache the
           responses for parts of the sites which are known to be static. Then
           the more costly server-side rendering can be avoided for sites that
           are unlikely to change. However this comes with the cost that no CDN
@@ -76,9 +76,9 @@ export class Comparison extends React.Component {
         </Text>
         <Text py={1}>
           <i>
-            I don&#39;t have any experience with Gatsby and this comparison was
-            written based on chats with colleagues and articles I&#39;ve read.
-            If something is off, I&#39;m happy to correct it. You can let me
+            I don&apos;t have any experience with Gatsby and this comparison was
+            written based on chats with colleagues and articles I&apos;ve read.
+            If something is off, I&apos;m happy to correct it. You can let me
             know{' '}
             <Link href="https://twitter.com/dferber90" target="_blank">
               on Twitter
@@ -100,7 +100,7 @@ export class Comparison extends React.Component {
         </Text>
         <Text py={1}>
           <Code>create-react-app</Code> is only concerned with the frontend
-          bundle. It doesn&#39;t have server-side rendering, nor does it come
+          bundle. It doesn&apos;t have server-side rendering, nor does it come
           with any solution for data fetching or a database. It is a basic
           starting point for the frontend part of web applications.
         </Text>
@@ -118,9 +118,9 @@ export class Comparison extends React.Component {
           >
             <Code>create-react-app</Code>
           </Link>. Razzle comes with server-side rendering out of the box.
-          However, it doesn&#39;t have any solution to routing or data fetching
-          included. Those are hard to get right and it&#39;s up to the user of
-          Razzle to set these things up. Razzle further doesn&#39;t include any
+          However, it doesn&apos;t have any solution to routing or data fetching
+          included. Those are hard to get right and it&apos;s up to the user of
+          Razzle to set these things up. Razzle further doesn&apos;t include any
           data backend. Razzle uses{' '}
           <Link
             href="https://github.com/css-modules/css-modules"

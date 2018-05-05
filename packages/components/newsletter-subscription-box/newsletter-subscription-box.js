@@ -84,7 +84,7 @@ export class NewsletterSubscriptionBox extends React.Component {
                     />
                     {this.state.subscribed && (
                       <SuccessMessage>
-                        You&#39;ve been subscribed
+                        You&apos;ve been subscribed
                       </SuccessMessage>
                     )}
                     {formik.touched.subscribeEmail && (

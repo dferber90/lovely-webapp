@@ -57,11 +57,11 @@ export class TourImages extends React.Component {
         <Text py={1}>
           You can see that images are rendered no matter whether the page is
           rendered on the server or on the client. To try this out, reload this
-          page entirely and inspect the source code. You&#39;ll notice that the
+          page entirely and inspect the source code. You&apos;ll notice that the
           server provides the full URL to the party parrot image above.
         </Text>
         <Text py={1}>
-          Now try navigating to another section and then use the browser&#39;s
+          Now try navigating to another section and then use the browser&apos;s
           &quot;back&quot; button. This time the page will have been rendered by
           your browser - and the image is still there, with the same URL.
         </Text>

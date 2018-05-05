@@ -63,7 +63,7 @@ export class Home extends React.Component {
             In the meantime many great new libraries and technologies like
             GraphQL, Apollo, styled-components, Prisma and many others were
             developed which made the whole setup easier. So, after these two
-            years I tried again and I&#39;m quite happy with the result. I was
+            years I tried again and I&apos;m quite happy with the result. I was
             able to set up a site which fulfills all the requirements I would
             have for a solid web application.
           </Text>
@@ -77,14 +77,14 @@ export class Home extends React.Component {
           <Text py={1}>
             This site is - so far - a leisure-time experiment to see what an
             ideal web application stack for specific requirements would look
-            like. It&#39;s likely that you may have different requirements for
+            like. It&apos;s likely that you may have different requirements for
             your site for which a differnt staring point is more appropriate.
             See the <LocalLink to="/comparison">Comparison</LocalLink> section
             for alternatives and a comparison of use-cases.
           </Text>
           <Text py={1}>
-            While I&#39;m very confident about some parts of the stack,
-            other&#39;s still need some more love.
+            While I&apos;m very confident about some parts of the stack,
+            other&apos;s still need some more love.
           </Text>
           <Subhead pt={2} pb={1}>
             What makes this site so lovely?
@@ -99,7 +99,7 @@ export class Home extends React.Component {
             <li>Test Setup</li>
           </ul>
           <Text py={1}>
-            There&#39;s much more about this site though. Articles about
+            There&apos;s much more about this site though. Articles about
             features of this website will be published every now and then. You
             can subscribe to them in the tour section.
           </Text>

@@ -51,7 +51,7 @@ export class TourAccountSystem extends React.Component {
           Account Creation
         </Subhead>
         <Text py={1}>
-          Let&#39;s start by setting up an account for you which you can then
+          Let&apos;s start by setting up an account for you which you can then
           use to try out the account system.
         </Text>
         <Text py={1}>
@@ -80,7 +80,7 @@ export class TourAccountSystem extends React.Component {
           </Card>
         </Measure>
         <Text py={1}>
-          Feel free to skip this step in case you don&#39;t want to share your
+          Feel free to skip this step in case you don&apos;t want to share your
           email address. A public test user account is set up which can be used
           to experiment with this site as well. The login credentials are
           already prefilled in the next step.
@@ -122,7 +122,7 @@ export class TourAccountSystem extends React.Component {
         </Measure>
         <Subhead pt={4}>Login</Subhead>
         <Text py={1}>
-          Now that you own an account and logged yourself out, it&#39;s time to
+          Now that you own an account and logged yourself out, it&apos;s time to
           log back in again. When logging in the GraphQL API responds with a
           token which the client then sets as a cookie. Using a cookie ensures
           that server-rendered sites know about the authentication as well.
@@ -149,7 +149,7 @@ export class TourAccountSystem extends React.Component {
         <Text py={1}>
           Try manually reloading this page when logged in or logged out and
           check the differences in the received markup. When logged in
-          you&#39;ll notice that the logout button gets rendered by the server,
+          you&apos;ll notice that the logout button gets rendered by the server,
           otherwise the login form gets rendered. This is proof that the server
           knows about the currently authenticated user.
         </Text>

@@ -86,7 +86,7 @@ export class TourTakeover extends React.Component {
           without needing to load any additional bundle or data, the client
           simply renders it. No roundtrip to the server is necessary. In case
           data is needed, the client requests the missing data only. It already
-          knows how to display it, so it doesn&#39;t need to load the styles or
+          knows how to display it, so it doesn&apos;t need to load the styles or
           request any HTML again. This minimal transfer of information keeps the
           load on the servers low and enables fast page transitions.
         </Text>
@@ -95,10 +95,10 @@ export class TourTakeover extends React.Component {
         </Subhead>
         <Text py={1}>
           This part is a bit hard to demo, but we can achieve it with the help
-          of Google Chrome&#39;s developer tools. You can simulate a very slow
+          of Google Chrome&apos;s developer tools. You can simulate a very slow
           connection by going to Network tab of the developer tools in Google
           Chrome. Select the &quot;Fast 3G&quot; preset from the connection
-          speeds. Now do full refresh. You&#39;ll notice that nothing happens
+          speeds. Now do full refresh. You&apos;ll notice that nothing happens
           when clicking the button below until a certain chunk has been loaded
           in the network tab. When that chunk is loaded, executed and parsed the
           site is fully interactive. A special &quot;The client has now taken
@@ -123,14 +123,14 @@ export class TourTakeover extends React.Component {
               src="/takeover.vtt"
               default
             />
-            Sorry, your browser doesn&#39;t support embedded videos, but
-            don&#39;t worry, you can <a href="/takeover.mp4">download it</a>
+            Sorry, your browser doesn&apos;t support embedded videos, but
+            don&apos;t worry, you can <a href="/takeover.mp4">download it</a>
             and watch it with your favorite video player!
           </video>
         </Card>
         <Text py={1}>
           This section has shown how we can achieve immediate rendering of the
-          site&#39;s content while not losing any interactivity. The next
+          site&apos;s content while not losing any interactivity. The next
           section will show how we can use that to our advantage when routing.
         </Text>
         <Subhead pt={2} pb={1}>
@@ -144,12 +144,12 @@ export class TourTakeover extends React.Component {
         <Text py={1}>
           You can see this in action by going back and forth between the{' '}
           <LocalLink to="/tour">Tour overview</LocalLink> and this page. Keep
-          the Network tab open in Google Chromes&#39; developer tools to verify
+          the Network tab open in Google Chromes&apos; developer tools to verify
           for your self that no additional HTML is loaded.
         </Text>
         <Text py={1}>
           When you watch the network tab while navigating to other parts of this
-          site, you&#39;ll notice that some additional chunks will be loaded.
+          site, you&apos;ll notice that some additional chunks will be loaded.
           Those are parts of this web application which have been split out to
           keep the size of the individual chunks lower. Every route or component
           of the application can be split out into separate chunks, so that the
@@ -163,8 +163,8 @@ export class TourTakeover extends React.Component {
             loop
             style={{ width: '100%' }}
           >
-            Sorry, your browser doesn&#39;t support embedded videos, but
-            don&#39;t worry, you can{' '}
+            Sorry, your browser doesn&apos;t support embedded videos, but
+            don&apos;t worry, you can{' '}
             <a href="/incremental-load.mp4">download it</a>
             and watch it with your favorite video player!
           </video>

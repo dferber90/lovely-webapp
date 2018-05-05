@@ -63,7 +63,7 @@ export class TourServerSideRendering extends React.Component {
           HTML
         </Subhead>
         <Text py={1}>
-          Reload this page and view the source code. You&#39;ll see that the
+          Reload this page and view the source code. You&apos;ll see that the
           server responds with the full HTML markup of the whole page. This is
           great for the site&apos;s ranking in search engines.
         </Text>
