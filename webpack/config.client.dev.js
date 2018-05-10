@@ -72,7 +72,11 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
     new HtmlWebpackPlugin({
-      filename: '../static/index.html',
+      // We can't serve index.html from "static"
+      // as our server (packages/server) also serves the "static" folder.
+      // If an "index.html" file was in "static", we'd never run SSR for the
+      // main page during development
+      filename: '../static-dev/index.html',
       template: 'index.template.html',
       alwaysWriteToDisk: true,
       config: JSON.stringify({
@@ -83,7 +87,10 @@ module.exports = {
     new HtmlWebpackHarddiskPlugin(),
   ],
   serve: {
-    content: [path.join(outputPath, '..', 'static')],
+    content: [
+      path.join(outputPath, '..', 'static'),
+      path.join(outputPath, '..', 'static-dev'),
+    ],
     hot: {},
     clipboard: false,
     dev: { publicPath },
