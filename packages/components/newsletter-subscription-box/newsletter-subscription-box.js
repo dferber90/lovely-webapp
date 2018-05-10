@@ -33,6 +33,7 @@ export class NewsletterSubscriptionBox extends React.Component {
       <Mutation mutation={SUBSCRIBE_MUTATION}>
         {subscribe => (
           <Formik
+            initialValues={{ subscribeEmail: '' }}
             validate={values => {
               // same as above, but feel free to move this into a class method now.
               const errors = {};
