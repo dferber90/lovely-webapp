@@ -34,6 +34,7 @@ Create a `.env` file in the root directory of this project with the following co
 GRAPHQL_ENDPOINT=http://localhost:4000
 APP_SECRET=foo
 PRISMA_ENDPOINT=bar
+PRISMA_STAGE=default
 PRISMA_SECRET=baz
 ```
 
@@ -56,6 +57,10 @@ You'll also use this secret to create tokens which can be used to communicate wi
 This probably sounds very confusing, but it doesn't matter much at the moment.
 
 Pick any random string consisting of numbers and letters and assign it as the value in the `.env` file, just like before.
+
+#### `PRISMA_STAGE`
+
+Defines which stage to use. Those are separate instances of your database, each containing different data of the same schema. You can use one stage for development, one for production and one for End-to-End tests.
 
 #### `PRISMA_ENDPOINT`
 
