@@ -52,8 +52,8 @@ export class NewsletterSubscriptionBox extends React.Component {
               subscribe({
                 variables: { email: formValues.subscribeEmail },
               }).then(
-                () => {
-                  this.handleSuccessfulSubscription(formikBag);
+                result => {
+                  this.handleSuccessfulSubscription(formikBag, result);
                 },
                 error => {
                   if (
@@ -100,7 +100,10 @@ export class NewsletterSubscriptionBox extends React.Component {
                     )}
                   </Box>
                   <Box width={1 / 4}>
-                    <PrimaryButton disabled={formik.isSubmitting}>
+                    <PrimaryButton
+                      data-cypress-id="newsletter-subscribe-btn"
+                      disabled={formik.isSubmitting}
+                    >
                       Subscribe
                     </PrimaryButton>
                   </Box>
