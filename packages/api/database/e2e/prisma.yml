@@ -1,0 +1,23 @@
+# This would be the ideal configuration, as it would allow
+# CI to run e2e tests in separation.
+#
+# At the moment the E2E tests of multiple branches all would use the same
+# database when testing.
+#
+# endpoint: http://localhost:4466/blogr/e2e
+# datamodel: ../datamodel.graphql
+# seed:
+#   import: seed.graphql
+
+
+# protects your Prisma API
+secret: ${env:PRISMA_SECRET}
+
+# the file path pointing to your data model
+datamodel: ../datamodel.graphql
+
+#cluster: dominik-ferber-4ba4fb/prisma-eu1
+endpoint: https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/e2e
+
+seed:
+  import: seed.graphql

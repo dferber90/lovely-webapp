@@ -1,0 +1,17 @@
+mutation {
+  createLink(
+    data: { description: "Personal website", url: "https://dferber.de" }
+  ) {
+    id
+  }
+
+  createUser(
+    data: {
+      name: "John Doe"
+      email: "johndoe@graph.cool"
+      password: "$2a$10$JJUANNlzL3vsVBGwdtY0Q.F3GbKAqlK0SZvLW4MY./r1aKNLzEuQq"
+    }
+  ) {
+    id
+  }
+}

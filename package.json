@@ -17,8 +17,10 @@
     "prebuild": "node scripts/create-package-json.js",
     "prisma": "prisma",
     "start": "concurrently --names \"client,server,api\" --prefix-colors \"cyan,magenta,yellow\" \"yarn start:client\" \"yarn start:server\" \"yarn start:api\"",
+    "cypress:start": "concurrently --names \"client,server,api\" --prefix-colors \"cyan,magenta,yellow\" \"yarn start:client\" \"yarn start:server\" \"yarn start:api:cypress\"",
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
+    "start:api:cypress": "PRISMA_ENDPOINT=https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/e2e webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build": "concurrently --names \"api,frontend\" --prefix-colors \"cyan,magenta\" \"pushd dist-production/api; yarn start:local\" \"pushd dist-production/frontend; yarn start:local\"",
     "test": "wsrun test"

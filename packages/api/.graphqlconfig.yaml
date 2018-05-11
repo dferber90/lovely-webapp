@@ -1,0 +1,26 @@
+# This is a graphql-config
+# https://www.prisma.io/docs/1.7/graphql-ecosystem/graphql-config/overview-quaidah9pi#usage
+#
+# To deploy, run
+#   prisma deploy -e ../../../../.env -d
+# from packages/api/database/dev or whichever stage you want deployed
+# To reset and seed data before E2E tests, run
+#   PRISMA_SECRET=xxx prisma reset
+#   PRISMA_SECRET=xxx prisma seed
+# This will be automated at one point.
+projects:
+  # the full server which is only accessible over auth
+  database:
+    schemaPath: generated/prisma.graphql
+    extensions:
+      endpoints:
+        e2e:
+          prisma: database/e2e/prisma.yml
+        dev:
+          prisma: database/dev/prisma.yml
+  # the api-server itself which the frontend/backend talk to
+  app:
+    schemaPath: schema.graphql
+    extensions:
+      endpoints:
+        default: http://localhost:4000

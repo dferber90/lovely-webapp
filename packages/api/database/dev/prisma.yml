@@ -1,0 +1,21 @@
+# the name for the service (will be part of the service's HTTP endpoint)
+#service: blogr
+# the cluster and stage the service is deployed to
+#stage: dev
+
+# protects your Prisma API
+secret: ${env:PRISMA_SECRET}
+
+# the file path pointing to your data model
+datamodel: ../datamodel.graphql
+
+#cluster: dominik-ferber-4ba4fb/prisma-eu1
+endpoint: https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev
+
+hooks:
+  post-deploy:
+    - echo "Deployment finished"
+    # Download the GraphQL schema for the "database" project specified in .graphqlconfig.yml
+    - graphql get-schema --project database
+    # Invoke code generation as specified in .graphqlconfig.yml
+    - graphql prepare
