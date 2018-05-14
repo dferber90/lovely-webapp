@@ -18,8 +18,8 @@ export PRISMA_SECRET=e2e
 
 # reset database
 pushd packages/api/database/e2e
-prisma deploy
-prisma seed -r
+npx prisma deploy
+npx prisma seed -r
 popd
 
 # start api and frontend
