@@ -8,13 +8,13 @@ script:
 - yarn lint
 - yarn test
 - yarn build
-deploy:
-  skip_cleanup: true
-  provider: script
-  script:
-  - bash scripts/deploy.sh
-  on:
-    branch: master
+# deploy:
+#   skip_cleanup: true
+#   provider: script
+#   script:
+#   - bash scripts/deploy.sh
+#   on:
+#     branch: master
 notifications:
   email: false
 env:
