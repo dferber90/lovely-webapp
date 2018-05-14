@@ -2,7 +2,7 @@
 endpoint: http://localhost:4466/blogr/e2e
 
 # protects your Prisma API
-secret: ${env:PRISMA_SECRET}
+secret: e2e
 
 # the file path pointing to your data model
 datamodel: ../datamodel.graphql

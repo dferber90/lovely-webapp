@@ -1,7 +1,10 @@
 dist-production
 dist-development
+dist-e2e
 node_modules
 yarn-error.log
 package-lock.json
 .env
 *.env
+cypress/videos
+cypress/screenshots

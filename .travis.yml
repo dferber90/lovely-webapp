@@ -8,6 +8,7 @@ script:
 - yarn lint
 - yarn test
 - yarn build
+- yarn e2e
 # deploy:
 #   skip_cleanup: true
 #   provider: script

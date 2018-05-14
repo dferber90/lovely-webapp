@@ -2,7 +2,7 @@ describe('client-side rendering', () => {
   describe('with invalid email', () => {
     describe('when submitting by clicking button', () => {
       it('should fail signup with invalid email address', () => {
-        cy.visit('http://localhost:8080/tour');
+        cy.visit('/tour');
         cy
           .get('input[name=subscribeEmail]')
           .type('Hello, World')
@@ -13,7 +13,7 @@ describe('client-side rendering', () => {
     });
     describe('when submitting by pressing enter', () => {
       it('should fail signup with invalid email address', () => {
-        cy.visit('http://localhost:8080/tour');
+        cy.visit('/tour');
         cy
           .get('input[name=subscribeEmail]')
           .type('Hello, World{enter}')
@@ -22,10 +22,33 @@ describe('client-side rendering', () => {
       });
     });
   });
-  describe('with valid email', () => {
+  describe('with valid email and stubbed response', () => {
     describe('when submitting by pressing enter', () => {
       it('should register', () => {
-        cy.visitStubbedGraphQl('http://localhost:8080/tour', {
+        cy.visitStubbedGraphQl('/tour', {
+          SubscribeMutation: (query, variables) => ({
+            data: {
+              subscribe: {
+                email: variables.email,
+                __typename: 'NewsletterSubscriber',
+              },
+            },
+          }),
+        });
+        const email = `foo@hello.com`;
+        cy
+          .get('input[name=subscribeEmail]')
+          .type(`${email}`)
+          .should('have.value', email);
+        cy.get('input[name=subscribeEmail]').type('{enter}');
+        cy.contains("You've been subscribed");
+      });
+    });
+  });
+  describe('with valid email as full E2E test', () => {
+    describe('when submitting by pressing enter', () => {
+      it('should register', () => {
+        cy.visit('/tour', {
           SubscribeMutation: (query, variables) => ({
             data: {
               subscribe: {
