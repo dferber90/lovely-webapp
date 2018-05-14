@@ -1,7 +1,19 @@
+# this is necessary to enable docker
+# https://docs.travis-ci.com/user/docker/
+sudo: required
+services:
+  - docker
+
+# this enables node
 language: node_js
 node_js:
 - 8
+
+# turn on caching for yarn
+# https://docs.travis-ci.com/user/caching/
+# https://travis-ci.org/dferber90/lovely-webapp/caches
 cache: yarn
+
 before_script:
 - yarn global add now
 script:
