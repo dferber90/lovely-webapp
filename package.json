@@ -18,6 +18,7 @@
     "playground": "graphql playground",
     "prebuild": "node scripts/create-package-json.js",
     "prisma": "prisma",
+    "cypress": "cypress",
     "start": "concurrently --names \"client,server,api\" --prefix-colors \"cyan,magenta,yellow\" \"yarn start:client\" \"yarn start:server\" \"yarn start:api\"",
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",

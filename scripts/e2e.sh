@@ -22,8 +22,8 @@ pushd packages/api/database/e2e
 docker-compose up -d
 sleep 20
 echo "deploying prisma"
-npx prisma deploy
-npx prisma seed -r
+yarn prisma deploy
+yarn prisma seed -r
 popd
 
 # start api
@@ -48,7 +48,7 @@ sleep 20
 
 # Run e2e tests
 echo "Running tests"
-npx cypress run --record --key $CYPRESS_RECORD_KEY
+yarn cypress run --record --key $CYPRESS_RECORD_KEY
 TEST_RESULT=$?
 
 echo "Killing processes"
