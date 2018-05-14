@@ -33,6 +33,10 @@ module.exports = {
     publicPath,
     filename: 'server.js',
   },
+  optimization: {
+    // opt out of uglify to keep code readable
+    minimizer: [],
+  },
   module: {
     rules: [
       {

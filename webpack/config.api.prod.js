@@ -17,6 +17,10 @@ module.exports = {
     path: outputPath,
     filename: 'index.js',
   },
+  optimization: {
+    // opt out of uglify to keep code readable
+    minimizer: [],
+  },
   module: {
     rules: [
       {
