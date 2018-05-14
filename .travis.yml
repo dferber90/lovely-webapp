@@ -15,7 +15,7 @@ node_js:
 cache: yarn
 
 before_script:
-- yarn global add now
+- yarn global add now prisma
 script:
 - yarn lint || travis_terminate 1
 - yarn test || travis_terminate 1

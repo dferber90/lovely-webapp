@@ -22,8 +22,8 @@ pushd packages/api/database/e2e
 docker-compose up -d
 sleep 20
 echo "deploying prisma"
-yarn prisma deploy
-yarn prisma seed -r
+prisma deploy
+prisma seed -r
 popd
 
 # start api
