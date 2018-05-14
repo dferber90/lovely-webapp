@@ -17,10 +17,10 @@ cache: yarn
 before_script:
 - yarn global add now
 script:
-- yarn lint
-- yarn test
-- yarn build
-- yarn e2e
+- yarn lint || travis_terminate 1
+- yarn test || travis_terminate 1
+- yarn build || travis_terminate 1
+- yarn e2e || travis_terminate 1
 # deploy:
 #   skip_cleanup: true
 #   provider: script
