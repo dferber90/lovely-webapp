@@ -1,4 +1,4 @@
-# webapp
+# lovely-webapp
 
 Playground to experiment with new web technologies.
 
