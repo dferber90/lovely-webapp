@@ -16,21 +16,26 @@ cache: yarn
 
 before_script:
 - yarn global add now prisma
+- yarn build
+
+
+stages:
+  - test
+  - name: deploy
+    if: branch = master
 
 jobs:
   include:
     - stage: test
       script: yarn lint
-    - script: yarn test
-    - script: yarn build
-    - stage: e2e
+    - stage: test
+      script: yarn test
+    - stage: test
       script: yarn e2e
     - stage: deploy
       script:
       - bash echo deploying
       #- bash scripts/deploy.sh
-      on:
-        branch: master
 
 notifications:
   email: false
