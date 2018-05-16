@@ -1,14 +1,9 @@
 #!/bin/bash
 
 # This script expects a CYPRESS_RECORD_KEY env variable to be present.
+# It also expects dist-production to exist
 
-# export $(cat .env | xargs)
-
-# This could be a .env file
-export APP_SECRET=app-secret
-export GRAPHQL_ENDPOINT=http://localhost:4000
-export PRISMA_ENDPOINT=http://localhost:4466/blogr/e2e
-export PRISMA_SECRET=e2e
+export $(cat .runtime.e2e.env | xargs)
 
 # copy folder
 echo "removing dist-e2e"

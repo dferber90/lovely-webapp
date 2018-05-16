@@ -6,7 +6,7 @@ function getUserId(context) {
     context.request.get('Authorization') || context.request.cookies.authToken;
   if (authorization) {
     const token = authorization.replace('Bearer ', '');
-    const { userId } = jwt.verify(token, process.env.APP_SECRET);
+    const { userId } = jwt.verify(token, process.env.API_TOKEN_SECRET);
     return userId;
   }
 

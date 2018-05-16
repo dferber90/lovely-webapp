@@ -83,10 +83,10 @@ module.exports = {
           from: path.join(process.cwd(), 'now', 'frontend.now.json'),
           to: path.join(outputPath, 'now.json'),
         },
-        !process.env.CI && {
-          from: path.join(process.cwd(), '.env'),
-          to: outputPath,
-        },
+        // !process.env.CI && {
+        //   from: path.join(process.cwd(), '.env'),
+        //   to: outputPath,
+        // },
       ].filter(Boolean)
     ),
     new webpack.DefinePlugin({

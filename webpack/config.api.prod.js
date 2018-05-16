@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -83,10 +82,10 @@ module.exports = {
           from: path.join(process.cwd(), 'now', 'api.now.json'),
           to: path.join(process.cwd(), 'dist-production', 'api', 'now.json'),
         },
-        !process.env.CI && {
-          from: path.join(process.cwd(), '.env'),
-          to: path.join(process.cwd(), 'dist-production', 'api'),
-        },
+        // !process.env.CI && {
+        //   from: path.join(process.cwd(), '.env'),
+        //   to: path.join(process.cwd(), 'dist-production', 'api'),
+        // },
       ].filter(Boolean)
     ),
     new webpack.DefinePlugin({

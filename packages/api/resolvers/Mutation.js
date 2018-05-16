@@ -11,7 +11,7 @@ async function signup(parent, args, context) {
     data: { ...args, password },
   });
 
-  const token = createToken(user.id, process.env.APP_SECRET);
+  const token = createToken(user.id, process.env.API_TOKEN_SECRET);
 
   return {
     token,
@@ -30,7 +30,7 @@ async function login(parent, args, context) {
     throw new Error('Invalid password');
   }
 
-  const token = createToken(user.id, process.env.APP_SECRET);
+  const token = createToken(user.id, process.env.API_TOKEN_SECRET);
 
   return {
     token,

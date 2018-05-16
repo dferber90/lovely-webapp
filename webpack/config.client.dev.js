@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
+const runtimeEnv = require('./utils/runtime-env');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -70,7 +70,6 @@ module.exports = {
       SERVER: 'false',
       DEV: 'true',
     }),
-    new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
     new HtmlWebpackPlugin({
       // We can't serve index.html from "static"
       // as our server (packages/server) also serves the "static" folder.
@@ -80,7 +79,7 @@ module.exports = {
       template: 'index.template.html',
       alwaysWriteToDisk: true,
       config: JSON.stringify({
-        GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+        API_ENDPOINT: { ...process.env, ...runtimeEnv }.API_ENDPOINT,
       }),
     }),
     // this plugin provideds the alwaysWriteToDisk option for HtmlWebpackPlugin

@@ -24,47 +24,60 @@ Install dependencies using
 yarn install
 ```
 
-### Create a `.env` file
+### Create `.runtime.*.env` files
 
-This file will contain the configuration specific to your instance of this project.
+Create a file called `.runtime.dev.env` and `.runtime.e2e.env`. These file will contain the configuration specific to your instance of this project.
 
-Create a `.env` file in the root directory of this project with the following content:
+Create a `.runtime.dev.env` file in the root directory of this project with the following content:
+
+`.runtime.dev.env`:
 
 ```
-GRAPHQL_ENDPOINT=http://localhost:4000
-APP_SECRET=foo
-PRISMA_ENDPOINT=bar
-PRISMA_STAGE=default
+API_ENDPOINT=http://localhost:4000
+API_TOKEN_SECRET=foo
+PRISMA_ENDPOINT=https://eu1.prisma.sh/<workspace-slug>/<service-name>/<stage>
 PRISMA_SECRET=baz
 ```
 
-Don't commit this file to Git, as it contains sensitive data.
+`.runtime.e2e.env`:
 
-#### `GRAPHQL_ENDPOINT`
+```
+API_ENDPOINT=http://localhost:4000
+API_TOKEN_SECRET=foo
+PRISMA_ENDPOINT=http://localhost:4466/<service-name>/<stage>
+PRISMA_SECRET=baz
+```
+
+Don't commit these files to Git, as they contain sensitive data.
+
+The next sections will show what these values are used for and which values they should be filled with.
+
+#### `API_ENDPOINT`
 
 You don't need to change the value of this setting. The value points to the instance of the API server which will be started along with the frontend server when running `yarn start`, which you can do after following this setup. Nothing you need to change for now.
 
-#### `APP_SECRET`
+When running in production, this environment variable needs to point to another server which runs the `api` build.
 
-You can pick any value for `APP_SECRET`. The `APP_SECRET` is used to sign the JWT tokens produced by your app. It should be a long secure string. It should never change, otherwise your users won't be able to log in again without resetting their passwords. It should never be shared. Pick any random string consisting of numbers and letters and assign it as the value in the `.env` file.
+#### `API_TOKEN_SECRET`
+
+You can pick any value for `API_TOKEN_SECRET`. The `API_TOKEN_SECRET` is used to sign the JWT tokens produced by your API (`packages/api`). It should be a long secure string. It should never change, otherwise your users won't be able to log in again without resetting their passwords. It should never be shared. Pick any random string consisting of numbers and letters and assign it as the value in the `.runtime.*.env` files.
 
 #### `PRISMA_SECRET`
 
-Just like with `APP_SECRET` you can pick any `PRISMA_SECRET` you desire. It will be used to ensure authentication between your Prisma database layer and your API server.
+Just like with `API_TOKEN_SECRET` you can pick any `PRISMA_SECRET` you desire. It will be used to ensure authentication between your Prisma database layer and your API server.
 
 You'll also use this secret to create tokens which can be used to communicate with the Prisma instance.
 
 This probably sounds very confusing, but it doesn't matter much at the moment.
 
-Pick any random string consisting of numbers and letters and assign it as the value in the `.env` file, just like before.
-
-#### `PRISMA_STAGE`
-
-Defines which stage to use. Those are separate instances of your database, each containing different data of the same schema. You can use one stage for development, one for production and one for End-to-End tests.
+Pick any random string consisting of numbers and letters and assign it as the value in the `.runtime.dev.env` file, just like before.
 
 #### `PRISMA_ENDPOINT`
 
-Next, you'll need to sign up for the free [Prisma](https://www.prisma.io/) service which serves as a database layer.
+> Unfortunately I'm not too sure about this step since I can't simulate an unauthenticated account. You might need to change the configuration in `packages/api/database/dev/prisma.yml`.
+> The most important part is that you end up with an endpoint URL of Prisma. This needs to go into `packages/api/database/dev/prisma.yml`. Further, it needs to be added to `.runtime.dev.env`.
+
+Next, you'll need to sign up for the free [Prisma](https://www.prisma.io/) service which serves as a database layer. You can do so [here](https://app.prisma.io/dominik-ferber-4ba4fb/services/),
 
 First you need to sign up for a new Prisma account at [https://app.prisma.sh/signup](https://app.prisma.sh/signup).
 
@@ -82,17 +95,17 @@ prisma login
 
 Finally, you need to deploy the database to your Prisma workspace. This will set up a database for you.
 
-Go to `packages/api` and run
+Go to `packages/api/database/dev` and run
 
 ```
 PRISMA_SECRET=<your secret> prisma deploy
 ```
 
-Replace `<your secret>` with the secret you stored as `PRISMA_SECRET` in `.env`.
+Replace `<your secret>` with the secret you stored as `PRISMA_SECRET` in `.runtime.dev.env`.
 
-You should now be provided with a Prisma endpoint URL. Store that in the `.env` file as the value of `PRISMA_ENDPOINT`.
+You should now be provided with a Prisma endpoint URL. Store that in the `.runtime.dev.env` file as the value of `PRISMA_ENDPOINT`.
 
-> Unfortunately I'm not too sure about this step since I can't simulate an unauthenticated account. You might need to change the configuration in `packages/api/database/prisma.yml`.
+Defines which stage to use. Those are separate instances of your database, each containing different data of the same schema. You can use one stage for development, one for production and one for End-to-End tests.
 
 For now, the `prisma` commands should always be executed from `packages/api`, as it needs the `packages/api/.graphqlconfig.yml` file for configuration.
 
@@ -160,29 +173,26 @@ This project produces two different bundles:
 
 #### Starting production builds locally
 
-First, generate the frontend- & api-bundle
+First, generate the frontend- & api-bundle with:
 
 ```
 yarn build
 ```
 
-Then, go to the `dist-production` folder.
-You'll notice two folders: `api` and `frontend`. Those are the individual builds, meant for deployment.
+Then run `yarn start:build:dev`. It will concurrently run `yarn start` in `dist-production/frontend` and `dist-production/api`.
 
-You'll also notice a `.env` file in each folder, which you might need to adapt.
-
-You can start the servers locally with:
+You can start the servers manually as well. Make sure that all required environment variables are set. Then run:
 
 ```
 cd dist-production/api
-yarn start:local
+yarn start
 ```
 
 In anther terminal
 
 ```
 cd dist-production/frontend
-yarn start:local
+yarn start
 ```
 
 _Even though the output bundle has a `package.json` with dependencies, it's not necessary to install them when running locally, node can resolve the dependencies from the project folder (which is the parent-folder of `dist-production`) already._
@@ -201,16 +211,16 @@ First, install [now.sh](https://zeit.co/now) locally.
 
 Then run `yarn build` to generate a build to `dist-production`.
 
-Afterwards, go into each directory and run `now -E ../../.prod.env deploy --public`.
+Afterwards, go into each directory and run `now -E ../../.runtime.prod.env deploy --public`.
 
-This requires that you set up a `.prod.env` in the root of this project which contains the environment variables meant to be used in production.
+This requires that you set up a `.runtime.prod.env` in the root of this project which contains the environment variables meant to be used in production.
 
 It should look something like this:
 
 ```
 NODE_ENV=production
-APP_SECRET=rpeigdn3iagr84PadfDar
-GRAPHQL_ENDPOINT=https://wa-api.now.sh
+API_TOKEN_SECRET=rpeigdn3iagr84PadfDar
+API_ENDPOINT=https://wa-api.now.sh
 PRISMA_ENDPOINT=https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev
 PRISMA_SECRET=as1df5F1urhg5lsnfvD
 ```
@@ -219,9 +229,11 @@ PRISMA_SECRET=as1df5F1urhg5lsnfvD
 
 Continuous Integration and Continuous Delivery is fully possible with this stack. You can see the `.travis.yml` file in this repository as a starting point.
 
-This project is deployed continuously using `now.sh` and TravisCI. You need to set up TravsiCI with the same environment variables as in your `.env` file, but you likely need different values.
+This project is deployed continuously using `now.sh` and TravisCI. You need to set up TravsiCI with the same environment variables as in your `.runtime.*.env` files, but you likely need different values.
 
 Additionally, you'll need a `NOW_TOKEN` environment variable set up in TravisCI.
+
+This project uses Cypress for E2E tests. Your CI will need to have a `CYPRESS_RECORD_KEY` environment variable set. You can obtain a key by registering at Cypress. The cypress `projectId` needs to be stored in `cypress.json` at the root of this project.
 
 ## Technologies and Tools
 
@@ -244,15 +256,15 @@ There is only one `.env` file for the whole project. It contains the environment
 
 ### API
 
-* `process.env.APP_SECRET`
+* `process.env.API_TOKEN_SECRET`
 * `process.env.PRISMA_SECRET`
 
 ### Frontend Client
 
-* `process.env.GRAPHQL_ENDPOINT`
+* `process.env.API_ENDPOINT`
 
 ### Frontend Server
 
-* `process.env.GRAPHQL_ENDPOINT`
+* `process.env.API_ENDPOINT`
 
 Additional environment variables are provided to each target using its Webpack configuration. You have access to `SERVER` and `DEV` variables.

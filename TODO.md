@@ -6,7 +6,6 @@
 * mail (send email from server on new email subscription)
 * file uploads
 * checker for new release (check git version of server every x secs)
-* e2e tests of subscription box
 * error boundaries
 
 ## React

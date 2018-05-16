@@ -23,7 +23,7 @@ export const createApolloClient = token => {
       authLink,
       new HttpLink({
         fetch,
-        uri: process.env.GRAPHQL_ENDPOINT,
+        uri: process.env.API_ENDPOINT,
       }),
     ]),
     cache: new InMemoryCache(),

@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
@@ -89,7 +88,6 @@ module.exports = {
     new StatsWriterPlugin({
       filename: '../stats.json',
     }),
-    new webpack.EnvironmentPlugin(['GRAPHQL_ENDPOINT']),
     new UglifyJSPlugin({
       sourceMap: true,
       parallel: true,

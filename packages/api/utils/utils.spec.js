@@ -29,7 +29,7 @@ describe('getUserId', () => {
       it('should call jwt verify with Authorization', () => {
         expect(jwt.verify).toHaveBeenCalledWith(
           'some-token',
-          process.env.APP_SECRET
+          process.env.API_TOKEN_SECRET
         );
       });
       it('should return something', () => {
@@ -46,7 +46,7 @@ describe('getUserId', () => {
         it('should call jwt verify with Authorization', () => {
           expect(jwt.verify).toHaveBeenCalledWith(
             'some-token',
-            process.env.APP_SECRET
+            process.env.API_TOKEN_SECRET
           );
         });
         it('should return something', () => {

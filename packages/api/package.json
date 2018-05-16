@@ -6,17 +6,16 @@
   "description": "My Graphcool Service",
   "scripts": {
     "start": "node index.js",
-    "start:local": "NODE_ENV=production node --require dotenv/config index.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "predeploy": "now rm wa-api --safe --yes --token $NOW_TOKEN || exit 0",
-    "deploy": "now -e NODE_ENV=production -e APP_SECRET -e PRISMA_ENDPOINT -e PRISMA_SECRET --token $NOW_TOKEN --npm --public",
+    "deploy": "now -e NODE_ENV=production -e API_TOKEN_SECRET -e PRISMA_ENDPOINT -e PRISMA_SECRET --token $NOW_TOKEN --npm --public",
     "alias": "now alias --token=$NOW_TOKEN"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.2",
-    "dotenv": "5.0.1",
+    "envalid": "4.1.4",
     "global": "4.3.2",
     "graphql": "0.13.2",
     "graphql-cli": "2.15.9",

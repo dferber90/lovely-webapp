@@ -1,4 +1,5 @@
-/* eslint-disable no-param-reassign, no-console */
+/* eslint-disable no-param-reassign, no-console, import/first */
+import './clean-env';
 import React from 'react';
 import { Application } from '@wa/components';
 import Koa from 'koa';
@@ -92,7 +93,7 @@ const html = ({ body, styles, cachedData, loadableModules, helmet }) => {
       `;
 
   const config = {
-    GRAPHQL_ENDPOINT: process.env.GRAPHQL_ENDPOINT,
+    API_ENDPOINT: process.env.API_ENDPOINT,
   };
 
   return `
