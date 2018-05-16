@@ -16,18 +16,22 @@ cache: yarn
 
 before_script:
 - yarn global add now prisma
-script:
-- yarn lint || travis_terminate 1
-- yarn test || travis_terminate 1
-- yarn build || travis_terminate 1
-- yarn e2e || travis_terminate 1
-# deploy:
-#   skip_cleanup: true
-#   provider: script
-#   script:
-#   - bash scripts/deploy.sh
-#   on:
-#     branch: master
+
+jobs:
+  include:
+    - stage: test
+      script: yarn lint
+    - script: yarn test
+    - script: yarn build
+    - stage: e2e
+      script: yarn e2e
+    - stage: deploy
+      script:
+      - bash echo deploying
+      #- bash scripts/deploy.sh
+      on:
+        branch: master
+
 notifications:
   email: false
 env:
