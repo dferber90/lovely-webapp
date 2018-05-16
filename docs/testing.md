@@ -8,7 +8,7 @@ Most of the time, only the tests should need changing and already works well. So
 
 ### During development
 
-The E2E tests use a Prisma cluster locally. It needs to be started with `docker-compose up -d` from `packages/api/database/e2e`.
+The E2E tests use a Prisma cluster locally. It needs to be started with `docker-compose up -d` from `database/e2e`.
 
 The application must be running in production mode and the database needs to be reset and seeded. You could do these steps manually, but it's easier to automate them.
 

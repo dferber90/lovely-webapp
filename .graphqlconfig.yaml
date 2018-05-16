@@ -3,7 +3,7 @@
 projects:
   # the full server which is only accessible over auth
   database:
-    schemaPath: generated/prisma.graphql
+    schemaPath: packages/api/generated/prisma.graphql
     extensions:
       endpoints:
         e2e:
@@ -12,7 +12,7 @@ projects:
           prisma: database/dev/prisma.yml
   # the api-server itself which the frontend/backend talk to
   app:
-    schemaPath: schema.graphql
+    schemaPath: packages/api/schema.graphql
     extensions:
       endpoints:
         default: http://localhost:4000

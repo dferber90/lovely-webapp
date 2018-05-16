@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # This script expects the Prisma Cluster to be running locally.
-# It can be started with "docker-compose up -d" from packages/api/database/e2e
+# It can be started with "docker-compose up -d" from database/e2e
 
 export $(cat .runtime.e2e.env | xargs)
 
 # start graphql server
 # echo "starting prisma server"
-# pushd packages/api/database/e2e
+# pushd database/e2e
 # docker-compose up &
 # PROCESS_PRISMA=$!
 # popd
@@ -15,7 +15,7 @@ export $(cat .runtime.e2e.env | xargs)
 # reset database
 # These commands require the PRISMA_SECRET to be present in the env,
 # which are provided by .runtime.e2e.env
-pushd packages/api/database/e2e
+pushd database/e2e
 echo "deploying database"
 yarn prisma deploy
 echo "seeding and resetting database"

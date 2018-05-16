@@ -1,4 +1,4 @@
-# run docker-compose up -d in the packages/api/database/e2e folder first
+# run docker-compose up -d in the database/e2e folder first
 endpoint: http://localhost:4466/blogr/e2e
 
 # protects your Prisma API

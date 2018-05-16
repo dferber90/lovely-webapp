@@ -74,8 +74,8 @@ Pick any random string consisting of numbers and letters and assign it as the va
 
 #### `PRISMA_ENDPOINT`
 
-> Unfortunately I'm not too sure about this step since I can't simulate an unauthenticated account. You might need to change the configuration in `packages/api/database/dev/prisma.yml`.
-> The most important part is that you end up with an endpoint URL of Prisma. This needs to go into `packages/api/database/dev/prisma.yml`. Further, it needs to be added to `.runtime.dev.env`.
+> Unfortunately I'm not too sure about this step since I can't simulate an unauthenticated account. You might need to change the configuration in `database/dev/prisma.yml`.
+> The most important part is that you end up with an endpoint URL of Prisma. This needs to go into `database/dev/prisma.yml`. Further, it needs to be added to `.runtime.dev.env`.
 
 Next, you'll need to sign up for the free [Prisma](https://www.prisma.io/) service which serves as a database layer. You can do so [here](https://app.prisma.io/dominik-ferber-4ba4fb/services/),
 
@@ -95,7 +95,7 @@ prisma login
 
 Finally, you need to deploy the database to your Prisma workspace. This will set up a database for you.
 
-Go to `packages/api/database/dev` and run
+Go to `database/dev` and run
 
 ```
 PRISMA_SECRET=<your secret> prisma deploy

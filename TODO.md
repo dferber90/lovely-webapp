@@ -1,5 +1,7 @@
 # TODO
 
+* add prod prisma stage (prod database)
+
 ## Features
 
 * auth
@@ -40,9 +42,6 @@
 * add subscriptions (https://www.howtographql.com/graphql-js/6-subscriptions/)
 
 ## CI / CD
-
-* setup CircleCI
-* add E2E
 
 ## Debt
 

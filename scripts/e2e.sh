@@ -13,7 +13,7 @@ cp -r dist-production dist-e2e
 
 # start graphql server
 echo "starting prisma server"
-pushd packages/api/database/e2e
+pushd database/e2e
 docker-compose up -d
 sleep 20
 echo "deploying prisma"
