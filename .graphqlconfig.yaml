@@ -8,8 +8,10 @@ projects:
       endpoints:
         e2e:
           prisma: database/e2e/prisma.yml
+          url: http://localhost:4466/blogr/e2e
         dev:
           prisma: database/dev/prisma.yml
+          url: https://eu1.prisma.sh/dominik-ferber-4ba4fb/blogr/dev
   # the api-server itself which the frontend/backend talk to
   app:
     schemaPath: packages/api/schema.graphql
