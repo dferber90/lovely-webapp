@@ -46,7 +46,7 @@ export class TourHome extends React.Component {
                 </LocalLink>
               </li>
               <li>
-                Routing (Redirects on server (with HTTP status) and on client)
+                <LocalLink to="/tour/routing">Routing</LocalLink>
               </li>
               <li>Data Fetching</li>
               <li>Data Inlining &amp; Rehydration</li>

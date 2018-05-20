@@ -86,7 +86,6 @@ export const Application = () => (
         <NavItem to="/protected">Protected</NavItem>
         <NavItem to="/data">Data</NavItem>
         <NavItem to="/something-that-does-not-exist">404</NavItem>
-        <NavItem to="/redirect-to-home">Redirect</NavItem>
         <NavLink href="/server-side">Server Side</NavLink>
       </Toolbar>
     ) */}
@@ -112,7 +111,11 @@ export const Application = () => (
           </Me>
         )}
       />
-      <RedirectWithStatus status={302} from="/redirect-to-home" to="/" />
+      <RedirectWithStatus
+        status={302}
+        from="/redirect-to-tour"
+        to="/tour/routing"
+      />
       <Route component={NotFound} />
     </Switch>
   </ThemeProvider>

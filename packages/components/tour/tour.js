@@ -5,6 +5,8 @@ import { TourImages } from '../tour-images';
 import { TourAccountSystem } from '../tour-account-system';
 import { TourTakeover } from '../tour-takeover';
 import { TourServerSideRendering } from '../tour-server-side-rendering';
+import { TourRouting } from '../tour-routing';
+import { NotFound } from '../route-helpers';
 
 export class Tour extends React.Component {
   static displayName = 'Tour';
@@ -12,13 +14,24 @@ export class Tour extends React.Component {
     return (
       <Switch>
         <Route exact path="/tour" component={TourHome} />
-        <Route path="/tour/account-system" component={TourAccountSystem} />
-        <Route path="/tour/images" component={TourImages} />
-        <Route path="/tour/client-side-takeover" component={TourTakeover} />
         <Route
+          exact
+          path="/tour/account-system"
+          component={TourAccountSystem}
+        />
+        <Route exact path="/tour/images" component={TourImages} />
+        <Route
+          exact
+          path="/tour/client-side-takeover"
+          component={TourTakeover}
+        />
+        <Route
+          exact
           path="/tour/server-side-rendering"
           component={TourServerSideRendering}
         />
+        <Route exact path="/tour/routing" component={TourRouting} />
+        <Route component={NotFound} />
       </Switch>
     );
   }
