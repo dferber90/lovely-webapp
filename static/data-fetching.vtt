@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.500
+Data Fetching
+
+2
+00:00:03.000 --> 00:00:06.000
+Full reload to clear cache
+
+3
+00:00:07.000 --> 00:00:09.000
+Navigating to page with data requirements
+
+4
+00:00:12.000 --> 00:00:15.000
+Network panel shows fetched data

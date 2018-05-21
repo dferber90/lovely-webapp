@@ -6,6 +6,7 @@ import { TourAccountSystem } from '../tour-account-system';
 import { TourTakeover } from '../tour-takeover';
 import { TourServerSideRendering } from '../tour-server-side-rendering';
 import { TourRouting } from '../tour-routing';
+import { TourDataFetching } from '../tour-data-fetching';
 import { NotFound } from '../route-helpers';
 
 export class Tour extends React.Component {
@@ -31,6 +32,7 @@ export class Tour extends React.Component {
           component={TourServerSideRendering}
         />
         <Route exact path="/tour/routing" component={TourRouting} />
+        <Route exact path="/tour/data-fetching" component={TourDataFetching} />
         <Route component={NotFound} />
       </Switch>
     );
