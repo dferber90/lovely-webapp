@@ -6,7 +6,6 @@ import { Query } from 'react-apollo';
 import {
   Breadcrumbs,
   LocalLink,
-  Link,
   Text,
   Card,
   Measure,
