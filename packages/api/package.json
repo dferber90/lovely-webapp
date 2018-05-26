@@ -8,7 +8,7 @@
     "start": "node index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "predeploy": "now rm wa-api --safe --yes --token $NOW_TOKEN || exit 0",
+    "predeploy": "now rm wa-api --yes --token $NOW_TOKEN || exit 0",
     "deploy": "now -e NODE_ENV=production -e API_TOKEN_SECRET -e PRISMA_ENDPOINT -e PRISMA_SECRET --token $NOW_TOKEN --npm --public",
     "alias": "now alias --token=$NOW_TOKEN"
   },
