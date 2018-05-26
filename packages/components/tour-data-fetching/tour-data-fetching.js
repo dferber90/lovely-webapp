@@ -127,7 +127,6 @@ export class TourDataFetching extends React.Component {
         <Card my={[2, 3]} p={3}>
           <video
             src="/data-fetching.mp4"
-            autoPlay
             loop
             style={{ width: '100%' }}
             controls
