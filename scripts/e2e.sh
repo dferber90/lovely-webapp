@@ -3,8 +3,6 @@
 # This script expects a CYPRESS_RECORD_KEY env variable to be present.
 # It also expects dist-production to exist
 
-export $(cat .runtime.e2e.env | xargs)
-
 # copy folder
 echo "removing dist-e2e"
 rm -rf dist-e2e

@@ -3,8 +3,6 @@
 # This script expects the Prisma Cluster to be running locally.
 # It can be started with "docker-compose up -d" from database/e2e
 
-export $(cat .runtime.e2e.env | xargs)
-
 # start graphql server
 # echo "starting prisma server"
 # pushd database/e2e

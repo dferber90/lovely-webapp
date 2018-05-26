@@ -7,8 +7,8 @@
   "scripts": {
     "build": "webpack --config webpack/config.prod.js",
     "postbuild": "rm dist-production/frontend/assets/*.map",
-    "e2e": "./scripts/e2e.sh",
-    "e2e:dev": "./scripts/e2e-dev.sh",
+    "e2e": "env-cmd .runtime.e2e.env ./scripts/e2e.sh",
+    "e2e:dev": "env-cmd .runtime.e2e.env ./scripts/e2e-dev.sh",
     "lint": "eslint packages cypress",
     "playground": "graphql playground",
     "prebuild": "node scripts/create-package-json.js",
@@ -18,8 +18,8 @@
     "start:client": "webpack-serve --config webpack/config.client.dev.js",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
-    "start:build:dev": "./scripts/run-prod.sh .runtime.dev.env",
-    "start:build:e2e": "./scripts/run-prod.sh .runtime.e2e.env",
+    "start:build:dev": "env-cmd .runtime.dev.env ./scripts/run-prod.sh",
+    "start:build:e2e": "env-cmd .runtime.e2e.env ./scripts/run-prod.sh",
     "test": "wsrun test"
   },
   "workspaces": [
@@ -36,6 +36,7 @@
     "connect-history-api-fallback": "1.5.0",
     "copy-webpack-plugin": "4.5.1",
     "cypress": "2.1.0",
+    "env-cmd": "8.0.2",
     "envfile": "2.3.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
