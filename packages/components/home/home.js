@@ -44,8 +44,8 @@ export class Home extends React.Component {
           </Text>
           <Text py={1}>
             The source code is available at{' '}
-            <Link href="https://github.com/dferber90/wa" target="_blank">
-              github.com/dferber90/wa
+            <Link href="https://github.com/dferber90/lovely-webapp" target="_blank">
+              github.com/dferber90/lovely-webapp
             </Link>.
           </Text>
           <Subhead pt={2} pb={1}>

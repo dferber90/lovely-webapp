@@ -83,11 +83,11 @@ export class Layout extends React.Component {
               <Text fontSize={12} pt={2}>
                 Source code at{' '}
                 <Link
-                  href="https://github.com/dferber90/wa"
+                  href="https://github.com/dferber90/lovely-webapp"
                   target="_blank"
                   color="grey"
                 >
-                  github.com/dferber90/wa
+                  github.com/dferber90/lovely-webapp
                 </Link>
               </Text>
               <Text fontSize={12} pt={2} mb={4}>
