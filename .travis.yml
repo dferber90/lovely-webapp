@@ -21,11 +21,11 @@ before_script:
 
 stages:
   - test
-  # You could easily add staging / production environments here
-  # - name: deploy-production
-  #   if: branch = production
-  - name: deploy
-    if: branch = master
+  # You could easily add staging environments here
+  # - name: deploy-staging
+  #   if: branch = master
+  - name: deploy-production
+    if: branch = production
 
 jobs:
   include:
@@ -35,7 +35,7 @@ jobs:
       script: yarn test
     - stage: test
       script: yarn e2e
-    - stage: deploy
+    - stage: deploy-production
       script:
       - bash scripts/deploy.sh
 
