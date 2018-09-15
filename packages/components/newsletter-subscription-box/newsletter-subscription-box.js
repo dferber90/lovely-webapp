@@ -106,6 +106,7 @@ export class NewsletterSubscriptionBox extends React.Component {
                     <PrimaryButton
                       data-cypress-id="newsletter-subscribe-btn"
                       disabled={formik.isSubmitting}
+                      type="submit"
                     >
                       Subscribe
                     </PrimaryButton>
