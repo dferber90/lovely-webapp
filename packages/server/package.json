@@ -47,6 +47,6 @@
     "@babel/plugin-transform-react-jsx": "7.0.0",
     "@babel/preset-env": "7.0.0",
     "babel-loader": "8.0.2",
-    "jest": "23.0.0"
+    "jest": "23.6.0"
   }
 }
