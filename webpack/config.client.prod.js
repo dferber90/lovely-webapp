@@ -51,16 +51,16 @@ module.exports = {
           options: {
             presets: [
               [
-                'env',
+                '@babel/preset-env',
                 { targets: { browsers: ['last 2 versions', 'safari >= 7'] } },
               ],
             ],
             plugins: [
-              'transform-react-jsx',
-              'transform-class-properties',
+              "@babel/plugin-transform-react-jsx",
+              "@babel/plugin-proposal-class-properties",
               'graphql-tag',
               ['styled-components', { ssr: true }],
-              'syntax-dynamic-import',
+              "@babel/plugin-syntax-dynamic-import",
               'react-loadable/babel',
               'transform-react-remove-prop-types',
             ],

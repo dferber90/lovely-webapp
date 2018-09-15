@@ -45,14 +45,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [['env', { targets: { node: 8 }, useBuiltIns: true }]],
+            presets: [['@babel/preset-env', { targets: { node: 8 }, useBuiltIns: 'entry' }]],
             plugins: [
-              'transform-react-jsx',
-              'transform-class-properties',
-              'transform-async-to-generator',
-              'transform-object-rest-spread',
-              'transform-do-expressions',
-              'syntax-dynamic-import',
+              '@babel/plugin-transform-react-jsx',
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-transform-async-to-generator',
+              '@babel/plugin-syntax-object-rest-spread',
+              '@babel/plugin-proposal-do-expressions',
+              '@babel/plugin-syntax-dynamic-import',
               'react-loadable/babel',
             ],
           },

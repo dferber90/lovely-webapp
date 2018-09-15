@@ -35,13 +35,13 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['env', { targets: { node: 'current' }, useBuiltIns: true }],
+              ['@babel/preset-env', { targets: { node: 'current' }, useBuiltIns: 'entry' }],
             ],
             plugins: [
-              'transform-class-properties',
-              'transform-async-to-generator',
-              'transform-object-rest-spread',
-              'transform-do-expressions',
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-transform-async-to-generator',
+              '@babel/plugin-syntax-object-rest-spread',
+              '@babel/plugin-proposal-do-expressions',
             ],
           },
         },

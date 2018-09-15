@@ -38,17 +38,17 @@ module.exports = {
           options: {
             presets: [
               [
-                'env',
+                '@babel/preset-env',
                 { targets: { browsers: ['last 2 versions', 'safari >= 7'] } },
               ],
             ],
             plugins: [
-              'transform-react-jsx',
-              'transform-class-properties',
-              'graphql-tag',
-              ['styled-components', { ssr: true }],
-              'syntax-dynamic-import',
-              'react-loadable/babel',
+              "@babel/plugin-transform-react-jsx",
+              "@babel/plugin-proposal-class-properties",
+              "graphql-tag",
+              ["styled-components", { "ssr": true }],
+              "@babel/plugin-syntax-dynamic-import",
+              "react-loadable/babel"
             ],
           },
         },
