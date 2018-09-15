@@ -3,6 +3,5 @@ module.exports = {
   globals: {
     DEV: false,
   },
-  setupFiles: ['./jest/setup-enzyme.js'],
-  setupTestFrameworkScriptFile: './jest/setup-test-framework-scripts.js',
+  setupTestFrameworkScriptFile: './jest/setup-test-framework-script.js'
 };

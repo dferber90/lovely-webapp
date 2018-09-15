@@ -22,10 +22,8 @@
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-react-remove-prop-types": "0.4.13",
-    "enzyme": "3.3.0",
-    "enzyme-adapter-react-16": "1.1.1",
-    "enzyme-matchers": "6.0.1",
-    "enzyme-to-json": "3.3.4",
-    "jest": "23.0.0"
+    "jest": "23.0.0",
+    "jest-dom": "1.12.0",
+    "react-testing-library": "5.0.1"
   }
 }
