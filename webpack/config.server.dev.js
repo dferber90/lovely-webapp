@@ -28,7 +28,7 @@ module.exports = {
     }),
   ],
   context: path.resolve(process.cwd(), 'packages', 'server'),
-  entry: ['babel-polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.js'],
   output: {
     publicPath,
     path: outputPath,

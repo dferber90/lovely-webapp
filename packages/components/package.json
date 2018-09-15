@@ -17,7 +17,7 @@
     "graphql-tag": "2.9.2",
     "prop-types": "15.6.2",
     "react": "16.5.1",
-    "react-apollo": "2.1.4",
+    "react-apollo": "2.1.11",
     "react-helmet": "5.2.0",
     "react-loadable": "5.5.0",
     "react-router-dom": "4.3.1",
@@ -25,10 +25,10 @@
     "url-regex": "4.1.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0",
     "babel-plugin-graphql-tag": "1.6.0",
     "babel-plugin-styled-components": "1.7.1",
-    "@babel/plugin-syntax-dynamic-import": "7.0.0",
-    "@babel/plugin-proposal-class-properties": "7.0.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.15",
     "jest": "23.0.0",
     "jest-dom": "1.12.0",

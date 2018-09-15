@@ -21,7 +21,7 @@ module.exports = {
   stats: 'minimal',
   devtool: 'cheap-module-source-map',
   context: path.resolve(process.cwd(), 'packages', 'client'),
-  entry: ['babel-polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.js'],
   output: {
     path: outputPath,
     publicPath,

@@ -18,7 +18,7 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   context: path.resolve(process.cwd(), 'packages', 'client'),
-  entry: ['babel-polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.js'],
   performance: {
     maxAssetSize: 260000,
   },
