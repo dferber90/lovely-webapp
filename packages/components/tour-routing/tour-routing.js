@@ -18,6 +18,7 @@ import { Layout } from '../layout';
 
 export class TourRouting extends React.Component {
   static displayName = 'TourRouting';
+
   render() {
     return (
       <Layout>
@@ -116,9 +117,15 @@ export class TourRouting extends React.Component {
         </Text>
         <Text py={1}>
           You can see it in action by following the link below. It will open in
-          a new tab, thus making a request to the server. The server will open{' '}
-          <code>/redirect-to-tour</code> which redirects you to this page again.
-          It will use status code <code>302</code> for the redirect, which is
+          a new tab, thus making a request to the server. The server will open
+          {' '}
+          <code>/redirect-to-tour</code>
+          {' '}
+which redirects you to this page again.
+          It will use status code
+          <code>302</code>
+          {' '}
+for the redirect, which is
           specified from the application.
         </Text>
         <Measure ml={[0, 3]}>

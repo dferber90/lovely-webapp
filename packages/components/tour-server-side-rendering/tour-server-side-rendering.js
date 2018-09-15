@@ -15,6 +15,7 @@ import { Layout } from '../layout';
 // eslint-disable-next-line react/no-multi-comp
 export class TourServerSideRendering extends React.Component {
   static displayName = 'TourServerSideRendering';
+
   render() {
     return (
       <Layout>
@@ -45,14 +46,23 @@ export class TourServerSideRendering extends React.Component {
           Considerations
         </Subhead>
         <Text py={1}>
-          There are many things to consider when rendering on the server with{' '}
+          There are many things to consider when rendering on the server with
+          {' '}
           <LocalLink to="/tour/client-side-takeover">
             Client-Side Takeover
-          </LocalLink>. For <LocalLink to="/tour/routing">Routing</LocalLink>,
+          </LocalLink>
+. For
+          <LocalLink to="/tour/routing">Routing</LocalLink>
+,
           the client and the server need to be aware of all routes including
-          redirects and 404 pages. Both must be able to handle{' '}
-          <LocalLink to="/tour/account-system">authentication</LocalLink> and{' '}
-          <LocalLink to="/tour/data-fetching">data fetching</LocalLink>.
+          redirects and 404 pages. Both must be able to handle
+          {' '}
+          <LocalLink to="/tour/account-system">authentication</LocalLink>
+          {' '}
+and
+          {' '}
+          <LocalLink to="/tour/data-fetching">data fetching</LocalLink>
+.
         </Text>
         <Text py={1}>
           Luckily, this stack has all these things figured out.

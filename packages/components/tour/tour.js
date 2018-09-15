@@ -11,6 +11,7 @@ import { NotFound } from '../route-helpers';
 
 export class Tour extends React.Component {
   static displayName = 'Tour';
+
   render() {
     return (
       <Switch>

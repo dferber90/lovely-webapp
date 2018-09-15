@@ -14,9 +14,11 @@ export const LOGGED_IN_USER_QUERY = gql`
 
 export class Me extends React.Component {
   static displayName = 'Me';
+
   static propTypes = {
     children: PropTypes.func.isRequired,
   };
+
   render() {
     return (
       <Query query={LOGGED_IN_USER_QUERY}>

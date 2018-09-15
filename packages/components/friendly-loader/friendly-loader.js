@@ -4,6 +4,7 @@ import { Loading } from '../loading';
 
 export class FriendlyLoader extends React.Component {
   static displayName = 'FriendlyLoader';
+
   static propTypes = {
     error: PropTypes.shape({
       message: PropTypes.string.isRequired,
@@ -11,14 +12,21 @@ export class FriendlyLoader extends React.Component {
     timeout: PropTypes.number,
     delay: PropTypes.number,
   };
+
   static defaultProps = {
     delay: 200,
     timeout: 5000,
   };
+
   state = {
     pastDelay: false,
     timedOut: false,
   };
+
+  timeoutTimer = null;
+
+  delayTimer = null;
+
   componentDidMount() {
     this.delayTimer = setTimeout(
       () => this.setState({ pastDelay: true }),
@@ -30,6 +38,7 @@ export class FriendlyLoader extends React.Component {
       this.props.timeout
     );
   }
+
   componentWillUnmount() {
     clearTimeout(this.delayTimer);
     this.delayTimer = null;
@@ -37,8 +46,8 @@ export class FriendlyLoader extends React.Component {
     clearTimeout(this.timeoutTimer);
     this.timeoutTimer = null;
   }
-  timeoutTimer = null;
-  delayTimer = null;
+
+
   render() {
     return (
       <Loading

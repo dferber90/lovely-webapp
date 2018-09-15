@@ -14,6 +14,7 @@ import { Layout } from '../layout';
 
 export class RecipiesHome extends React.Component {
   static displayName = 'RecipiesHome';
+
   render() {
     return (
       <Layout>
@@ -52,7 +53,13 @@ export class RecipiesHome extends React.Component {
                 </ul>
               </li>
               <li>
-                Dead Code Elimination (<Code>DEV</Code> and <Code>SERVER</Code>{' '}
+                Dead Code Elimination (
+                <Code>DEV</Code>
+                {' '}
+and 
+                {' '}
+                <Code>SERVER</Code>
+                {' '}
                 constants)
               </li>
               <li>Apollo & GraphQL</li>

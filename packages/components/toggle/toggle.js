@@ -6,6 +6,7 @@ export class Toggle extends React.Component {
     super(...args);
     this.state = { on: true };
   }
+
   render() {
     return (
       <PrimaryButton

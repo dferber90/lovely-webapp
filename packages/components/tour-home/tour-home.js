@@ -13,6 +13,7 @@ import { Layout } from '../layout';
 
 export class TourHome extends React.Component {
   static displayName = 'TourHome';
+
   render() {
     return (
       <Layout>

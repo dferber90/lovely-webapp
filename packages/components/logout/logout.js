@@ -5,11 +5,14 @@ import Cookies from 'cookies-js';
 
 export class Logout extends React.Component {
   static displayName = 'Logout';
+
   static propTypes = {
     to: PropTypes.string,
     children: PropTypes.func.isRequired,
   };
+
   state = { loading: false };
+
   // remove cookie and reload page to reset apollo client
   logout = () => {
     // remove cookie and reload page to reset apollo client
@@ -20,6 +23,7 @@ export class Logout extends React.Component {
       window.location.reload();
     }
   };
+
   render() {
     return this.props.children({
       loading: this.state.loading,

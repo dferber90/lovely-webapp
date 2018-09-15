@@ -22,7 +22,7 @@ export const Data = () => (
 
       return (
         <div>
-          <button onClick={() => refetch()}>Refresh</button>
+          <button type="button" onClick={() => refetch()}>Refresh</button>
           <ul>
             {feed &&
               feed.map(post => <li key={post.id}>{post.description}</li>)}

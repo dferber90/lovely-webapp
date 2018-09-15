@@ -157,7 +157,8 @@ export class LoginForm extends React.Component {
                             <ErrorMessage>
                               Oops, seems like you used an invalid password
                             </ErrorMessage>
-                          )}{' '}
+                          )}
+                        {' '}
                         {formik.errors.unknownError && (
                           <React.Fragment>
                             <Divider />

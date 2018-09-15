@@ -43,10 +43,12 @@ export class Home extends React.Component {
             modern stack can fulfill the needs of web applications.
           </Text>
           <Text py={1}>
-            The source code is available at{' '}
+            The source code is available at
+            {' '}
             <Link href="https://github.com/dferber90/lovely-webapp" target="_blank">
               github.com/dferber90/lovely-webapp
-            </Link>.
+            </Link>
+.
           </Text>
           <Subhead pt={2} pb={1}>
             Why?
@@ -79,7 +81,11 @@ export class Home extends React.Component {
             ideal web application stack for specific requirements would look
             like. It&apos;s likely that you may have different requirements for
             your site for which a differnt staring point is more appropriate.
-            See the <LocalLink to="/comparison">Comparison</LocalLink> section
+            See the 
+            {' '}
+            <LocalLink to="/comparison">Comparison</LocalLink>
+            {' '}
+section
             for alternatives and a comparison of use-cases.
           </Text>
           <Text py={1}>
@@ -129,7 +135,11 @@ export class Home extends React.Component {
             fetching, authentication and routing is already set up.
           </Text>
           <Text py={1}>
-            You can take a <LocalLink to="/tour">Tour</LocalLink> of the cool
+            You can take a 
+            {' '}
+            <LocalLink to="/tour">Tour</LocalLink>
+            {' '}
+of the cool
             things this web app does. The tour shows off some unique features
             enabled by the modern stack the site is built on.
           </Text>

@@ -28,9 +28,11 @@ const GET_FEED = gql`
 
 export class TourDataFetching extends React.Component {
   static displayName = 'TourDataFetching';
+
   state = {
     apolloState: {},
   };
+
   componentDidMount() {
     // We use setState here to ensure that the output rendered on the server
     // matches the one when rendering on the client for the first time.
@@ -40,10 +42,12 @@ export class TourDataFetching extends React.Component {
       this.setState({ apolloState: window.APOLLO_STATE });
     }, 500);
   }
+
   componentWillUnmount() {
     clearInterval(this.foo);
     this.foo = null;
   }
+
   render() {
     return (
       <Layout>
@@ -102,7 +106,10 @@ export class TourDataFetching extends React.Component {
         <Text py={1}>
           The server also inlines the fetched data, so that the client can
           rehydrate the state without having to fetch again. The state provided
-          by the server is stored under <code>window.APOLLO_STATE</code>. You
+          by the server is stored under 
+          {' '}
+          <code>window.APOLLO_STATE</code>
+. You
           can see the content below:
         </Text>
         <Measure>
@@ -111,14 +118,19 @@ export class TourDataFetching extends React.Component {
           </Card>
         </Measure>
         <Text py={1}>
-          Because of the cache in <code>window.APOLLO_STATE</code>, we usually
+          Because of the cache in 
+          {' '}
+          <code>window.APOLLO_STATE</code>
+, we usually
           don&apos;t need to fetch any data when rendering on the client for the
           first time as the client already has all the data required for the
           current view.
         </Text>
         <Text py={1}>
-          As an example to see the client fetches in action, you could start{' '}
-          <LocalLink to="/tour">the tour view</LocalLink>. Do a full page reload
+          As an example to see the client fetches in action, you could start
+          {' '}
+          <LocalLink to="/tour">the tour view</LocalLink>
+. Do a full page reload
           there to reset the cache. Then, open the Network panel in your browser
           to see which data is being fetched. Finally, navigate to this page
           which will fetch data.
@@ -139,7 +151,8 @@ export class TourDataFetching extends React.Component {
               default
             />
             Sorry, your browser doesn&apos;t support embedded videos, but
-            don&apos;t worry, you can{' '}
+            don&apos;t worry, you can
+            {' '}
             <a href="/data-fetching.mp4">download it</a>
             and watch it with your favorite video player!
           </video>
