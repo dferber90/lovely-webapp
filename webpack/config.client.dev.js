@@ -1,8 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require("webpack");
 const path = require("path");
-const history = require("connect-history-api-fallback");
-const convert = require("koa-connect");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
@@ -86,17 +84,12 @@ module.exports = {
     new HtmlWebpackHarddiskPlugin()
   ],
   devServer: {
+    historyApiFallback: true,
     contentBase: [
       path.join(outputPath, "..", "static"),
       path.join(outputPath, "..", "static-dev")
     ],
     hot: true,
-    compress: true,
-    after: app => {
-      const historyOptions = {
-        // ... see: https://github.com/bripkens/connect-history-api-fallback#options
-      };
-      app.use(convert(history(historyOptions)));
-    }
+    compress: true
   }
 };
