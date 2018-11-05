@@ -15,7 +15,7 @@
     "prisma": "prisma",
     "cypress": "cypress",
     "start": "./scripts/run-dev.sh .runtime.dev.env",
-    "start:client": "webpack-serve --config webpack/config.client.dev.js",
+    "start:client": "webpack-dev-server --config webpack/config.client.dev.js --hot",
     "start:api": "webpack --watch --config webpack/config.api.dev.js",
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build:dev": "env-cmd .runtime.dev.env ./scripts/run-prod.sh",
@@ -58,9 +58,9 @@
     "uglifyjs-webpack-plugin": "2.0.0",
     "webpack": "4.19.0",
     "webpack-cli": "3.1.0",
+    "webpack-dev-server": "3.1.10",
     "webpack-node-externals": "1.7.2",
     "webpack-node-server-plugin": "1.0.1",
-    "webpack-serve": "2.0.2",
     "webpack-stats-plugin": "0.2.1",
     "wsrun": "2.2.1"
   }
