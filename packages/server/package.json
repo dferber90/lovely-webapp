@@ -21,7 +21,7 @@
     "graphql-tag": "2.10.0",
     "koa": "2.6.1",
     "koa-cookie": "1.0.0",
-    "koa-mount": "3.0.0",
+    "koa-mount": "4.0.0",
     "koa-router": "7.4.0",
     "koa-static": "5.0.0",
     "lodash.flatten": "4.4.0",
