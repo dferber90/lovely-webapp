@@ -18,7 +18,7 @@
     "apollo-link-error": "1.1.1",
     "apollo-link-http": "1.5.5",
     "cookies-js": "1.2.3",
-    "graphql": "0.13.2",
+    "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
     "react": "16.6.0",
     "react-apollo": "2.2.4",
@@ -32,9 +32,9 @@
     "@babel/plugin-transform-async-to-generator": "7.1.0",
     "@babel/plugin-transform-react-jsx": "7.0.0",
     "@babel/preset-env": "7.1.0",
-    "html-webpack-harddisk-plugin": "0.2.0",
+    "html-webpack-harddisk-plugin": "1.0.1",
     "html-webpack-plugin": "3.2.0",
-    "jest-dom": "1.12.0",
+    "jest-dom": "2.1.0",
     "react-testing-library": "5.2.3"
   }
 }

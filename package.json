@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack/config.prod.js",
-    "postbuild": "rm dist-production/frontend/assets/*.map",
+    "postbuild": "rm -f dist-production/frontend/assets/*.map",
     "e2e": "env-cmd .runtime.e2e.env ./scripts/e2e.sh",
     "e2e:dev": "env-cmd .runtime.e2e.env ./scripts/e2e-dev.sh",
     "lint": "eslint packages cypress",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/core": "7.1.2",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
     "clean-webpack-plugin": "0.1.19",
@@ -56,7 +56,7 @@
     "lodash.flatten": "4.4.0",
     "lodash.omit": "4.5.0",
     "prisma": "1.19.3",
-    "uglifyjs-webpack-plugin": "2.0.1",
+    "terser-webpack-plugin": "1.1.0",
     "webpack": "4.25.1",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.10",
