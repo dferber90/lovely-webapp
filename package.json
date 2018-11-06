@@ -20,7 +20,7 @@
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build:dev": "env-cmd .runtime.dev.env ./scripts/run-prod.sh",
     "start:build:e2e": "env-cmd .runtime.e2e.env ./scripts/run-prod.sh",
-    "test": "wsrun test"
+    "test": "jest --projects packages/*"
   },
   "workspaces": [
     "packages/*"
@@ -62,7 +62,6 @@
     "webpack-dev-server": "3.1.10",
     "webpack-node-externals": "1.7.2",
     "webpack-node-server-plugin": "1.0.1",
-    "webpack-stats-plugin": "0.2.1",
-    "wsrun": "2.2.1"
+    "webpack-stats-plugin": "0.2.1"
   }
 }
