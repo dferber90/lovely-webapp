@@ -19,7 +19,16 @@
     "start:server": "webpack --watch --config webpack/config.server.dev.js",
     "start:build:dev": "env-cmd .runtime.dev.env ./scripts/run-prod.sh",
     "start:build:e2e": "env-cmd .runtime.e2e.env ./scripts/run-prod.sh",
-    "test": "jest --projects packages/*"
+    "test": "jest"
+  },
+  "jest": {
+    "projects": [
+      "<rootDir>/packages/api/jest.config.js",
+      "<rootDir>/packages/client/jest.config.js",
+      "<rootDir>/packages/components/jest.config.js",
+      "<rootDir>/packages/design-system/jest.config.js",
+      "<rootDir>/packages/server/jest.config.js"
+    ]
   },
   "workspaces": [
     "packages/*"
