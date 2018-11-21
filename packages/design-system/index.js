@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import { Provider, NavLink, Flex, Box, Text, Button } from "rebass";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import sys from "system-components";
 import { theme } from "./theme";
 
 export * from "rebass";
