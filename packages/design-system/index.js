@@ -17,15 +17,10 @@ export * from "rebass";
 export const NavItem = props => <NavLink {...props} is={Link} />;
 NavItem.propTypes = { to: PropTypes.string };
 
-// implementation from https://github.com/jxnblk/rebass/blob/master/src/Link.js
-export const LocalLink = sys(
-  {
-    is: Link,
-    color: "fuschia"
-  },
-  "space"
-).extend`
+export const LocalLink = styled(Link)`
   text-decoration: none;
+  color: #e932d9;
+
   &:hover {
     text-decoration: underline;
   }
