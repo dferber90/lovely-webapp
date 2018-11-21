@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack/config.prod.js",
-    "postbuild": "rm -f dist-production/frontend/assets/*.map",
     "e2e": "env-cmd .runtime.e2e.env ./scripts/e2e.sh",
     "e2e:dev": "env-cmd .runtime.e2e.env ./scripts/e2e-dev.sh",
     "lint": "eslint packages cypress",
