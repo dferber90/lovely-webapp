@@ -28,6 +28,7 @@ class CreateSignupForm extends React.Component {
   static propTypes = {
     redirectTo: PropTypes.string,
   };
+
   state = {
     name: '',
     email: '',

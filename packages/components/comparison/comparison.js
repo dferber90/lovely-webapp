@@ -15,6 +15,7 @@ import { Layout } from '../layout';
 
 export class Comparison extends React.Component {
   static displayName = 'Comparison';
+
   render() {
     return (
       <Layout>
@@ -43,7 +44,8 @@ export class Comparison extends React.Component {
         <Text py={1}>
           <Link href="https://www.gatsbyjs.org/" target="_blank">
             Gatsby
-          </Link>{' '}
+          </Link>
+          {' '}
           is a wonderful static site generator. Gatsby is great for static sites
           where the page content changes seldomly, and in which most routes are
           publicly accessible.
@@ -79,10 +81,12 @@ export class Comparison extends React.Component {
             I don&apos;t have any experience with Gatsby and this comparison was
             written based on chats with colleagues and articles I&apos;ve read.
             If something is off, I&apos;m happy to correct it. You can let me
-            know{' '}
+            know
+            {' '}
             <Link href="https://twitter.com/dferber90" target="_blank">
               on Twitter
-            </Link>.
+            </Link>
+.
           </i>
         </Text>
         <Subhead pt={3} pb={1}>
@@ -94,12 +98,15 @@ export class Comparison extends React.Component {
             target="_blank"
           >
             <Code>create-react-app</Code>
-          </Link>{' '}
+          </Link>
+          {' '}
           is huge timesaver when staring new React projects. It is very beginner
           friendly and offers a great developer experience.
         </Text>
         <Text py={1}>
-          <Code>create-react-app</Code> is only concerned with the frontend
+          <Code>create-react-app</Code>
+          {' '}
+is only concerned with the frontend
           bundle. It doesn&apos;t have server-side rendering, nor does it come
           with any solution for data fetching or a database. It is a basic
           starting point for the frontend part of web applications.
@@ -110,28 +117,38 @@ export class Comparison extends React.Component {
         <Text py={1}>
           <Link href="https://github.com/jaredpalmer/razzle" target="_blank">
             Razzle
-          </Link>{' '}
-          is similar to{' '}
+          </Link>
+          {' '}
+          is similar to
+          {' '}
           <Link
             href="https://github.com/facebook/create-react-app/"
             target="_blank"
           >
             <Code>create-react-app</Code>
-          </Link>. Razzle comes with server-side rendering out of the box.
+          </Link>
+. Razzle comes with server-side rendering out of the box.
           However, it doesn&apos;t have any solution to routing or data fetching
           included. Those are hard to get right and it&apos;s up to the user of
           Razzle to set these things up. Razzle further doesn&apos;t include any
-          data backend. Razzle uses{' '}
+          data backend. Razzle uses
+          {' '}
           <Link
             href="https://github.com/css-modules/css-modules"
             target="_blank"
           >
             CSS Modules
-          </Link>{' '}
-          for styling whereas this project uses{' '}
+          </Link>
+          {' '}
+          for styling whereas this project uses
+          {' '}
           <Link href="https://www.styled-components.com/" target="_blank">
             styled-components
-          </Link>. The biggest advantage of <Code>styled-components</Code> in is
+          </Link>
+. The biggest advantage of
+          <Code>styled-components</Code>
+          {' '}
+in is
           that they are ideal to set up a design system which cultivates the
           usages of best practices like the usage of design tokens.
         </Text>

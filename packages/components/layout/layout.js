@@ -15,10 +15,12 @@ import { ScrollToTop } from '../scroll-to-top';
 
 export class Layout extends React.Component {
   static displayName = 'Layout';
+
   static propTypes = {
     children: PropTypes.node.isRequired,
     mt: PropTypes.array,
   };
+
   render() {
     return (
       <React.Fragment>
@@ -81,7 +83,8 @@ export class Layout extends React.Component {
           <Flex>
             <Box mx={[-2, 2, 6]} py={3} mt={5}>
               <Text fontSize={12} pt={2}>
-                Source code at{' '}
+                Source code at
+                {' '}
                 <Link
                   href="https://github.com/dferber90/lovely-webapp"
                   target="_blank"

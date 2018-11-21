@@ -22,6 +22,7 @@ import { Logout } from '../logout';
 
 export class TourAccountSystem extends React.Component {
   static displayName = 'TourAccountSystem';
+
   render() {
     return (
       <Layout>
@@ -56,10 +57,12 @@ export class TourAccountSystem extends React.Component {
         </Text>
         <Text py={1}>
           Created accounts are stored in the underyling database. The passwords
-          are stored as salted hashes using{' '}
+          are stored as salted hashes using
+          {' '}
           <Link href="https://www.npmjs.com/package/bcrypt" target="_blank">
             bcrypt
-          </Link>.
+          </Link>
+.
         </Text>
         <Measure ml={[0, 3]}>
           <Card my={[2, 3]} p={3}>
@@ -155,8 +158,10 @@ export class TourAccountSystem extends React.Component {
         </Text>
         <Text py={1}>
           As further proof the box below will contain the string &quot;Hello,
-          you are not signed in&quot; while logged out, and &quot;Hello,{' '}
-          <i>your name</i>&quot; when signed in. You can reload the page in
+          you are not signed in&quot; while logged out, and &quot;Hello,
+          {' '}
+          <i>your name</i>
+&quot; when signed in. You can reload the page in
           either scenario and search the server-rendered HTML for &quot;Hello,
           &quot; to verify that the server can render authenticated parts.
         </Text>
@@ -166,7 +171,12 @@ export class TourAccountSystem extends React.Component {
               {({ loading, error, me }) => {
                 if (loading) return <FriendlyLoader />;
                 if (error) return <Text>An unknown error occurred</Text>;
-                if (me) return <Text>Hello, {me.name}</Text>;
+                if (me) return (
+                  <Text>
+Hello,
+                    {me.name}
+                  </Text>
+);
                 return <Text>Hello, you are not signed in</Text>;
               }}
             </Me>

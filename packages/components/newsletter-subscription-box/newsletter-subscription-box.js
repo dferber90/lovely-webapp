@@ -22,12 +22,15 @@ const SUBSCRIBE_MUTATION = gql`
 
 export class NewsletterSubscriptionBox extends React.Component {
   static displayName = 'NewsletterSubscriptionBox';
+
   state = { subscribed: false };
+
   handleSuccessfulSubscription = formikBag => {
     formikBag.setSubmitting(false);
     formikBag.resetForm();
     this.setState({ subscribed: true });
   };
+
   render() {
     return (
       <Mutation mutation={SUBSCRIBE_MUTATION}>
@@ -103,6 +106,7 @@ export class NewsletterSubscriptionBox extends React.Component {
                     <PrimaryButton
                       data-cypress-id="newsletter-subscribe-btn"
                       disabled={formik.isSubmitting}
+                      type="submit"
                     >
                       Subscribe
                     </PrimaryButton>

@@ -27,7 +27,7 @@ import { Me } from '../me';
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   * { box-sizing: border-box; }
-  body { margin: 0; padding: 0; }
+  body { margin: 0; padding: 0; background: #fdfdfd; color: #292929; }
 `;
 
 // Every loadable uses webpack's prefetch feature by specifying

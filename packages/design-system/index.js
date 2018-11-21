@@ -3,15 +3,15 @@
 // the existing rebass which gets many design-system concepts right already
 //
 // However we need to reconfigure rebass to make it work with react-router
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Provider, NavLink, Flex, Box, Text, Button } from 'rebass';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import sys from 'system-components';
-import { theme } from './theme';
+import React from "react";
+import PropTypes from "prop-types";
+import { Provider, NavLink, Flex, Box, Text, Button } from "rebass";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import sys from "system-components";
+import { theme } from "./theme";
 
-export * from 'rebass';
+export * from "rebass";
 
 // Implementation from https://github.com/jxnblk/rebass/issues/36
 export const NavItem = props => <NavLink {...props} is={Link} />;
@@ -21,9 +21,9 @@ NavItem.propTypes = { to: PropTypes.string };
 export const LocalLink = sys(
   {
     is: Link,
-    color: 'fuschia',
+    color: "fuschia"
   },
-  'space'
+  "space"
 ).extend`
   text-decoration: none;
   &:hover {
@@ -47,7 +47,7 @@ export const PrimaryButton = styled(Button)`
   cursor: pointer;
 `;
 PrimaryButton.defaultProps = {
-  bg: 'fuschia',
+  bg: "fuschia"
 };
 
 export const Breadcrumbs = ({ children }) => (
@@ -66,23 +66,23 @@ export const Breadcrumbs = ({ children }) => (
   </Flex>
 );
 Breadcrumbs.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export const ThemeProvider = props => <Provider {...props} theme={theme} />;
 
 export const ErrorMessage = styled(Text)``;
 ErrorMessage.defaultProps = {
-  color: 'red',
+  color: "red",
   fontSize: 12,
-  m: 1,
+  m: 1
 };
 
 export const SuccessMessage = styled(Text)``;
 SuccessMessage.defaultProps = {
-  color: 'green',
+  color: "green",
   fontSize: 12,
-  m: 1,
+  m: 1
 };
 
-LocalLink.displayName = 'LocalLink';
+LocalLink.displayName = "LocalLink";

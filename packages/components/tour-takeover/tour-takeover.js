@@ -22,9 +22,11 @@ console.log('The client has now taken over the rendering');
 
 class ClickCount extends React.Component {
   static displayName = 'ClickCount';
+
   state = {
     count: 0,
   };
+
   render() {
     return (
       <React.Fragment>
@@ -36,8 +38,12 @@ class ClickCount extends React.Component {
           Increment
         </PrimaryButton>
         <Text pt={2}>
-          You clicked {this.state.count}{' '}
-          {this.state.count === 1 ? 'time' : 'times'}.
+          You clicked 
+          {' '}
+          {this.state.count}
+          {' '}
+          {this.state.count === 1 ? 'time' : 'times'}
+.
         </Text>
       </React.Fragment>
     );
@@ -47,6 +53,7 @@ class ClickCount extends React.Component {
 // eslint-disable-next-line react/no-multi-comp
 export class TourTakeover extends React.Component {
   static displayName = 'TourTakeover';
+
   render() {
     return (
       <Layout>
@@ -124,7 +131,9 @@ export class TourTakeover extends React.Component {
               default
             />
             Sorry, your browser doesn&apos;t support embedded videos, but
-            don&apos;t worry, you can <a href="/takeover.mp4">download it</a>
+            don&apos;t worry, you can 
+            {' '}
+            <a href="/takeover.mp4">download it</a>
             and watch it with your favorite video player!
           </video>
         </Card>
@@ -142,8 +151,11 @@ export class TourTakeover extends React.Component {
           browser takes over we can do the routing on the client.
         </Text>
         <Text py={1}>
-          You can see this in action by going back and forth between the{' '}
-          <LocalLink to="/tour">Tour overview</LocalLink> and this page. Keep
+          You can see this in action by going back and forth between the
+          {' '}
+          <LocalLink to="/tour">Tour overview</LocalLink>
+          {' '}
+and this page. Keep
           the Network tab open in Google Chromes&apos; developer tools to verify
           for your self that no additional HTML is loaded.
         </Text>
@@ -164,7 +176,8 @@ export class TourTakeover extends React.Component {
             style={{ width: '100%' }}
           >
             Sorry, your browser doesn&apos;t support embedded videos, but
-            don&apos;t worry, you can{' '}
+            don&apos;t worry, you can
+            {' '}
             <a href="/incremental-load.mp4">download it</a>
             and watch it with your favorite video player!
           </video>

@@ -4,6 +4,7 @@ import { RecipiesHome } from '../recipies-home';
 
 export class Recipies extends React.Component {
   static displayName = 'Recipies';
+
   render() {
     return (
       <Switch>

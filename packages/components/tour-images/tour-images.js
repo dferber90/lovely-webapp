@@ -17,6 +17,7 @@ import partyParrotUrl from '../assets/party-parrot.png';
 
 export class TourImages extends React.Component {
   static displayName = 'TourImages';
+
   render() {
     return (
       <Layout>

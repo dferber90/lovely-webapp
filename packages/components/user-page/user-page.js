@@ -9,11 +9,13 @@ import { Logout } from '../logout';
 
 class LogoutButton extends React.Component {
   static displayName = 'LogoutButton';
+
   render() {
     return (
       <Logout to="/user">
         {({ loading, logout }) => (
           <button
+            type="button"
             className="dib bg-red white pa3 pointer dim"
             disabled={loading}
             onClick={logout}
@@ -30,6 +32,7 @@ export class UserPage extends React.Component {
   state = {
     tab: 'login',
   };
+
   render() {
     return (
       <div>
@@ -42,7 +45,10 @@ export class UserPage extends React.Component {
             if (isLoggedIn)
               return (
                 <div>
-                  <span>User: {me.name}</span>
+                  <span>
+User:
+                    {me.name}
+                  </span>
                   <div className="pv3">
                     <LogoutButton />
                   </div>
